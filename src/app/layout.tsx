@@ -2,9 +2,9 @@ import "@/styles/globals.css";
 import Layout from "@/components/layout";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ReactChildren } from "@/lib/types";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
 
-const font = Inter({ subsets: ["latin"] });
+const font = Nunito({ subsets: ["latin"] });
 
 export default function RootLayout({ children }: ReactChildren) {
 	return (
@@ -13,7 +13,7 @@ export default function RootLayout({ children }: ReactChildren) {
 			<body className={`${font.className} min-h-screen w-full`}>
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="system"
+					defaultTheme="light"
 					enableSystem
 					disableTransitionOnChange
 				>
