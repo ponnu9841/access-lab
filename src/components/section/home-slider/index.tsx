@@ -15,7 +15,7 @@ export default function HomeSlider(props: HomeSliderProps) {
 	return (
 		<CarouselSlider
 			images={heroImages}
-			cardContentClassName="min-h-[70vh] lg:min-h-[80vh] xl:min-h-[100vh_-_100px]"
+			cardContentClassName="min-h-[70vh] lg:min-h-[80vh] xl:min-h-screen"
 			id="home-slider"
 		>
 			<div className="absolute left-10"></div>

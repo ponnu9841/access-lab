@@ -1,11 +1,7 @@
+import { SvgIconProps } from "@/interfaces/common";
 import * as React from "react";
-import { SVGProps } from "react";
 
-type StethoscopeIconProps = SVGProps<SVGSVGElement> & {
-	size?: number;
-};
-
-const StethoscopeIcon = (props: StethoscopeIconProps) => {
+const StethoscopeIcon = (props: SvgIconProps) => {
 	const { size = 24 } = props;
 	return (
 		<svg
