@@ -12,7 +12,7 @@ export default function Heading({
 }) {
 	return React.createElement(
 		variant,
-		{ className: cn("font-bold text-2xl lg:text-4xl xl:text-5xl", className) },
+		{ className: cn("font-semibold text-2xl lg:text-4xl xl:text-5xl", className) },
 		title
 	);
 }

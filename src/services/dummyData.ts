@@ -17,11 +17,11 @@ export const galleryImages = [
 	{ src: "/service-1.jpg", alt: "Image 1" },
 	{ src: "/service-2.jpg", alt: "Image 2" },
 	{ src: "/about.jpeg", alt: "Image 3" },
-	{ src: "/service-3.jpg", alt: "Image 3" },
-	{ src: "/hero-1.jpg", alt: "Image 3" },
-	{ src: "/hero-2.jpg", alt: "Image 3" },
-	{ src: "/hero-3.jpg", alt: "Image 3" },
-	{ src: "/about.jpeg", alt: "Image 3" },
+	{ src: "/service-3.jpg", alt: "Image 4" },
+	{ src: "/hero-1.jpg", alt: "Image 5" },
+	{ src: "/hero-2.jpg", alt: "Image 6" },
+	{ src: "/hero-3.jpg", alt: "Image 7" },
+	{ src: "/about.jpeg", alt: "Image 8" },
 ];
 
 export const heroData = [
@@ -46,29 +46,47 @@ export const heroData = [
 ];
 
 export const testimonials = [
-    {
-        name: "Dr. John Martin",
-        avatarImage:  "/testimonial/1.png",
-        role: "Dentist",
-        testimonial: "Very efficient And prompt customer service . Much thanks to the dealing staff at Access. With lots of appreciation and Regards. Satisfied Customer."
-    },
-    {
-        name: "Sreepriya Sreekumar",
-        avatarImage: "/testimonial/2.png",
-        role: "Dentist",
-        testimonial: "Access Labz was very helpful at this critical time to do covid test by coming home. All safety measures were taken care. Results were also provided quickly as I had to travel within 24 hours of the test. Highly recommended!"
-    },
-    {
-        name: "SREEKUMAR PUNNAPPILLY",
-        role: "Cancer Researcher",
-        testimonial: "We had recently used the services of Access Labz for home testing. Their services were excellent and delivered by professional staff adhering to all clinical and hygiene protocols. We recommend their testing services wholeheartedly"
-    },
-    // {
-    //     name: "Dhanwin M",
-    //     testimonial: "I had used access labz home test services for my father. Excellent service. The staff come on time and are professional. Well mannered staff. Test results are shared on time. Fully satisfied with their services. Would recommend them.", 
-    // },
-    // {
-    //     name: "Angelon Raphael",
-    //     testimonial: "In this covid situation they provide picking our samples from our homes as fast as possible and share the results on time. Good customer services and staff also do their work well."
-    // }
-]
+	{
+		name: "Dr. John Martin",
+		avatarImage: "/testimonial/1.png",
+		role: "Dentist",
+		testimonial:
+			"Very efficient And prompt customer service . Much thanks to the dealing staff at Access. With lots of appreciation and Regards. Satisfied Customer.",
+	},
+	{
+		name: "Sreepriya Sreekumar",
+		avatarImage: "/testimonial/2.png",
+		role: "Dentist",
+		testimonial:
+			"Access Labz was very helpful at this critical time to do covid test by coming home. All safety measures were taken care. Results were also provided quickly as I had to travel within 24 hours of the test. Highly recommended!",
+	},
+	{
+		name: "SREEKUMAR PUNNAPPILLY",
+		role: "Cancer Researcher",
+		testimonial:
+			"We had recently used the services of Access Labz for home testing. Their services were excellent and delivered by professional staff adhering to all clinical and hygiene protocols. We recommend their testing services wholeheartedly",
+	},
+	// {
+	//     name: "Dhanwin M",
+	//     testimonial: "I had used access labz home test services for my father. Excellent service. The staff come on time and are professional. Well mannered staff. Test results are shared on time. Fully satisfied with their services. Would recommend them.",
+	// },
+	// {
+	//     name: "Angelon Raphael",
+	//     testimonial: "In this covid situation they provide picking our samples from our homes as fast as possible and share the results on time. Good customer services and staff also do their work well."
+	// }
+];
+
+export const aboutCounter = [
+	{
+		totalCount: 20,
+		title: "Happy Patients",
+	},
+	{
+		totalCount: 100,
+		title: "Saved Hearts",
+	},
+	{
+		totalCount: 59,
+		title: "Expert Doctors",
+	},
+];

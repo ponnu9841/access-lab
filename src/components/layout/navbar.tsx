@@ -44,8 +44,8 @@ export default function Navbar() {
 	}, []);
 	return (
 		<div className="min-h-[85px]">
-			<div ref={headerRef} className="h-[85px] bg-background z-10 w-full">
-				<nav className="flex items-center gap-4 justify-between w-full z-10 h-full container">
+			<div ref={headerRef} className="h-[85px] bg-background z-50 w-full">
+				<nav className="flex items-center gap-4 justify-between w-full z-50 h-full container">
 					<div className="relative h-[72px] min-w-[206px]">
 						<NextImage src="/logo.png" alt="logo" />
 					</div>
@@ -68,7 +68,7 @@ export default function Navbar() {
 							<ThemeToggle />
 						</div>
 					</ul>
-					<div className="sm:hidden flex items-center z-10">
+					<div className="sm:hidden flex items-center z-50">
 						<Sheet open={isOpen} onOpenChange={setIsOpen}>
 							<SheetTrigger asChild>
 								<Button variant="ghost" size="icon" className="text-gray-600">

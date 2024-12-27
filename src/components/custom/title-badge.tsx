@@ -11,7 +11,7 @@ export default function TitleBadge({
 	return (
 		<div
 			className={cn(
-				"rounded-[3px] text-sm uppercase py-1 px-4 text-primary bg-primary/10 flex max-w-fit tracking-wide",
+				"rounded-[3px] text-sm font-semibold uppercase py-1.5 px-3 text-primary bg-primary/10 flex max-w-fit tracking-wide flex justify-center items-center leading-3",
 				className
 			)}
 		>

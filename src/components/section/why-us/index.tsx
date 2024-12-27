@@ -17,11 +17,11 @@ const features = [
 export default function WhyUs() {
 	return (
 		<div className="container">
-			<div className="flex flex-col lg:flex-row gap-8 items-stretch">
+			<div className="flex flex-col lg:flex-row gap-16 items-stretch">
 				<div className="aspect-square flex-1">
 					<NextImage src="/about.jpeg" imageClassName="object-cover" />
 				</div>
-				<div className="lg:mt-2 flex-1">
+				<div className="lg:my-2 flex-1">
 					<TitleBadge title="What About Us" />
 					<Heading
 						title="The Heart and Science of Medicate test"
@@ -42,12 +42,12 @@ export default function WhyUs() {
 					<ul className="mt-2 leading-10">
 						{features.map((feature, index) => (
 							<li className="flex space-x-2 items-center" key={index}>
-								<Check className="text-primary" />
+								<Check className="text-secondary" />
 								<span>{feature}</span>
 							</li>
 						))}
 					</ul>
-					<Button className="mt-4 flex items-center" size={"lg"}>
+					<Button className="mt-4 flex items-center text-foreground" size="lg" variant="secondary">
 						Read More <span className="text-2xl">+</span>
 					</Button>
 				</div>

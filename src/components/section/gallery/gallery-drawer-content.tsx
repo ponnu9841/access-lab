@@ -33,14 +33,12 @@ export default function GalleryDrawerContent(props: GalleryImagesProps) {
 		<>
 			{selectedImage && (
 				<div className="relative w-full h-full">
-					{/* <VisuallyHidden> */}
 					<DialogTitle
 						aria-describedby=""
 						className="text-center relative z-10 mt-2"
 					>
-						test
+						{images[selectedImage - 1].alt || "Image"}
 					</DialogTitle>
-					{/* </VisuallyHidden> */}
 					<Image
 						src={images[selectedImage - 1].src || "/no-image.png"}
 						alt={images[selectedImage - 1].alt || "/no-image.png"}
