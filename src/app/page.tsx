@@ -6,8 +6,14 @@ import { Metadata } from "next";
 import ImageGallery from "@/components/section/gallery";
 import HomeSlider from "@/components/section/home-slider";
 import Testimonials from "@/components/testimonials";
-import { galleryImages, heroData, images, testimonials } from "@/services/dummyData";
+import {
+	galleryImages,
+	heroData,
+	images,
+	testimonials,
+} from "@/services/dummyData";
 import About from "@/components/section/about";
+import BannerWhy from "@/components/section/banner-why";
 
 export const metadata: Metadata = {
 	title: "Home Page",
@@ -22,7 +28,7 @@ export default function HomePage() {
 				<section className="pt-12">
 					<ImageScroll images={images} />
 				</section>
-				<section className="pb-32">
+				<section className="pb-32 pt-0">
 					<WhyUs />
 				</section>
 			</div>
@@ -34,14 +40,17 @@ export default function HomePage() {
 					</div>
 				</div>
 			</section> */}
-			<section>
+			<section className="container">
 				<ImageGallery imagesArray={galleryImages} />
 			</section>
-			<section className="pt-0 container">
-				<Testimonials testimonials={testimonials}/>
+			<section className="container pt-0 pb-24">
+				<Testimonials testimonials={testimonials} />
 			</section>
-			<section className="pt-0">
+			<section className="py-28 bg-primary/5 relative before:content-[''] lg:before:absolute lg:before:top-0 lg:before:right-0 lg:before:w-[45%] lg:before:h-full lg:before:bg-primary">
 				<About />
+			</section>
+			<section className="pt-0 mb-96">
+				<BannerWhy />
 			</section>
 		</>
 	);

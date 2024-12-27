@@ -83,7 +83,10 @@ body {
 		@apply bg-background text-foreground;
 	}
 	section {
-		@apply pt-12 md:pt-20;
+		@apply pt-12 md:py-16;
+	}
+	p {
+		@apply text-base;
 	}
 	.container {
 		@apply px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-32 mx-auto;

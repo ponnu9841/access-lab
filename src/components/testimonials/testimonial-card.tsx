@@ -10,7 +10,7 @@ export default function TestimonialCard(props: TestimonialProps) {
 	const { testimonial } = props;
 	return (
 		<div>
-			<p className="text-muted-foreground line-clamp-5 break-all max-w-md text-sm leading-6">
+			<p className="text-muted-foreground line-clamp-5 break-all max-w-md leading-6">
 				{testimonial.testimonial}
 			</p>
 			<div className="mt-4 flex items-center gap-3">
@@ -18,6 +18,7 @@ export default function TestimonialCard(props: TestimonialProps) {
 					<RenderAvatar
 						name={testimonial.name}
 						image={testimonial.avatarImage}
+						avatarFallbackClassName="bg-primary text-white"
 					/>
 				</div>
 				<div>
