@@ -7,6 +7,7 @@ import ImageGallery from "@/components/section/gallery";
 import HomeSlider from "@/components/section/home-slider";
 import Testimonials from "@/components/testimonials";
 import {
+	blogData,
 	galleryImages,
 	heroData,
 	images,
@@ -16,6 +17,7 @@ import About from "@/components/section/about";
 import BannerWhy from "@/components/section/banner-why";
 import ServiceCards from "@/components/section/service-cards";
 import Team from "@/components/section/teams";
+import Blog from "@/components/section/blog";
 
 export const metadata: Metadata = {
 	title: "Home Page",
@@ -48,8 +50,11 @@ export default function HomePage() {
 			<section className="pt-0">
 				<Team />
 			</section>
-			<section className="pt-0 mb-96">
+			<section className="pt-0">
 				<BannerWhy />
+			</section>
+			<section className="pt-0 mb-96">
+				<Blog blogs={blogData} />
 			</section>
 		</>
 	);

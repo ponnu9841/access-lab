@@ -90,3 +90,27 @@ export const aboutCounter = [
 		title: "Expert Doctors",
 	},
 ];
+
+export const blogData = [
+	{
+		image: "/blog/1.webp",
+		date: new Date().toDateString(),
+		title: "Laboratory Equipment Operation Guide For The Laboratory Worker",
+		description:
+			"Ultricies lacus ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec ...",
+	},
+	{
+		image: "/blog/2.webp",
+		date: new Date().toDateString(),
+		title: "How To Provide The Best Lab Experience For Your Patient",
+		description:
+			"Sed turpis ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec molli...",
+	},
+	{
+		image: "/blog/3.webp",
+		date: new Date().toDateString(),
+		title: "Find The Right Doctors For Your Perfect Health",
+		description:
+			"Pulvinar neque ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec",
+	},
+];

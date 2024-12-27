@@ -22,6 +22,7 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 		children,
 		orientation = "horizontal",
 		id,
+		togglerPosition = "default",
 	} = props;
 	const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
@@ -72,8 +73,20 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 				))}
 				{!!!images && <>{!!children && children}</>}
 			</CarouselContent>
-			<CarouselPrevious className="absolute left-8 z-3" />
-			<CarouselNext className="absolute right-8 z-3" />
+			<CarouselPrevious
+				className={
+					togglerPosition === "default"
+						? "left-8 z-3"
+						: "bottom-0 left-1/2 -translate-x-[calc(50%+1.5rem)] z-3 translate-y-0 top-[calc(100%+1.5rem)]"
+				}
+			/>
+			<CarouselNext
+				className={
+					togglerPosition === "default"
+						? "right-8 z-3"
+						: "bottom-0 left-1/2 -translate-x-[calc(50%-1.5rem)] z-3 translate-y-0 top-[calc(100%+1.5rem)]"
+				}
+			/>
 		</Carousel>
 	);
 };
