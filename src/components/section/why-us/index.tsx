@@ -47,7 +47,7 @@ export default function WhyUs() {
 							</li>
 						))}
 					</ul>
-					<Button className="mt-4 flex items-center text-foreground" size="lg" variant="secondary">
+					<Button className="mt-4 flex items-center" size="lg">
 						Read More <span className="text-2xl">+</span>
 					</Button>
 				</div>

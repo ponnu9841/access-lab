@@ -10,4 +10,5 @@ type CarouselSliderProps = CarouselCardProps & {
 	carouselContentClassName?: string | undefined;
 	orientation?: "horizontal" | "vertical" | undefined;
 	id?: string;
+	togglerPosition?: string
 };
