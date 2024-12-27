@@ -1,54 +1,23 @@
-import WhyUs from "@/components/why-us";
-import HomeSlider from "@/components/home-slider";
+import WhyUs from "@/components/section/why-us";
 import ImageScroll from "@/components/horizontal-image-scroll";
 // import TitleBadge from "@/components/custom/title-badge";
 import { Metadata } from "next";
 // import Heading from "@/components/custom/heading";
-import ImageGallery from "@/components/gallery";
+import ImageGallery from "@/components/section/gallery";
+import HomeSlider from "@/components/section/home-slider";
+import Testimonials from "@/components/testimonials";
+import { galleryImages, heroData, images, testimonials } from "@/services/dummyData";
+import About from "@/components/section/about";
 
 export const metadata: Metadata = {
 	title: "Home Page",
 	description: "Home Page description",
 };
 
-const images = [
-	"/partner-logo-1.png",
-	"/partner-logo-2.png",
-	"/partner-logo-3.png",
-	"/partner-logo-4.png",
-	"/partner-logo-5.png",
-	"/partner-logo-6.png",
-	// "/partner-logo-7.png",
-	// "/partner-logo-8.jpg",
-	// "/partner-logo-9.png",
-	// "/partner-logo-7.png",
-	// "/partner-logo-8.jpg",
-	// "/partner-logo-9.png",
-];
-
-const galleryImages = [
-	{ src: "/service-1.jpg", alt: "Image 1" },
-	{ src: "/service-2.jpg", alt: "Image 2" },
-	{ src: "/service-3.jpg", alt: "Image 3" },
-	{ src: "/hero-1.jpg", alt: "Image 3" },
-	{ src: "/hero-2.jpg", alt: "Image 3" },
-	{ src: "/hero-3.jpg", alt: "Image 3" },
-	{ src: "/about.jpeg", alt: "Image 3" },
-	{ src: "/partner-logo-1.png", alt: "Image 3" },
-	{ src: "/partner-logo-2.png", alt: "Image 3" },
-	{ src: "/partner-logo-3.png", alt: "Image 3" },
-	{ src: "/partner-logo-4.png", alt: "Image 3" },
-	{ src: "/partner-logo-5.png", alt: "Image 3" },
-	{ src: "/partner-logo-6.png", alt: "Image 3" },
-	{ src: "/partner-logo-7.png", alt: "Image 3" },
-	{ src: "/partner-logo-8.jpg", alt: "Image 3" },
-	{ src: "/partner-logo-9.png", alt: "Image 3" },
-];
-
 export default function HomePage() {
 	return (
 		<>
-			<HomeSlider />
+			<HomeSlider sliderData={heroData} />
 			<div className="bg-primary/5">
 				<section className="pt-12">
 					<ImageScroll images={images} />
@@ -66,7 +35,13 @@ export default function HomePage() {
 				</div>
 			</section> */}
 			<section>
-				<ImageGallery imagesArray={galleryImages}/>
+				<ImageGallery imagesArray={galleryImages} />
+			</section>
+			<section className="pt-0 container">
+				<Testimonials testimonials={testimonials}/>
+			</section>
+			<section className="pt-0">
+				<About />
 			</section>
 		</>
 	);
