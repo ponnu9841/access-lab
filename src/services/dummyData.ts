@@ -14,14 +14,14 @@ export const images = [
 ];
 
 export const galleryImages = [
-	{ src: "/service-1.jpg", alt: "Image 1" },
-	{ src: "/service-2.jpg", alt: "Image 2" },
-	{ src: "/about.jpeg", alt: "Image 3" },
-	{ src: "/service-3.jpg", alt: "Image 4" },
-	{ src: "/hero-1.jpg", alt: "Image 5" },
-	{ src: "/hero-2.jpg", alt: "Image 6" },
-	{ src: "/hero-3.jpg", alt: "Image 7" },
-	{ src: "/about.jpeg", alt: "Image 8" },
+	{ src: "/gallery/1.jpg", alt: "Image 1" },
+	{ src: "/gallery/2.jpg", alt: "Image 2" },
+	{ src: "/gallery/3.jpg", alt: "Image 3" },
+	{ src: "/gallery/4.jpg", alt: "Image 4" },
+	{ src: "/gallery/5.jpg", alt: "Image 5" },
+	{ src: "/gallery/6.jpg", alt: "Image 6" },
+	// { src: "/gallery/7.jpg", alt: "Image 7" },
+	// { src: "/gallery/8.jpg", alt: "Image 8" },
 ];
 
 export const heroData = [
@@ -93,23 +93,23 @@ export const aboutCounter = [
 
 export const blogData = [
 	{
-		image: "/blog/1.webp",
+		image: "/blog/blog-1.jpg",
 		date: new Date().toDateString(),
-		title: "Laboratory Equipment Operation Guide For The Laboratory Worker",
+		title: "How your sales can work together in account-based marketing",
 		description:
 			"Ultricies lacus ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec ...",
 	},
 	{
-		image: "/blog/2.webp",
+		image: "/blog/blog-2.jpg",
 		date: new Date().toDateString(),
-		title: "How To Provide The Best Lab Experience For Your Patient",
+		title: "The six things marketers need to understand about DTC marketing",
 		description:
 			"Sed turpis ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec molli...",
 	},
 	{
-		image: "/blog/3.webp",
+		image: "/blog/blog-3.jpg",
 		date: new Date().toDateString(),
-		title: "Find The Right Doctors For Your Perfect Health",
+		title: "Eleven top tips for developing agile marketing",
 		description:
 			"Pulvinar neque ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec",
 	},
