@@ -40,11 +40,11 @@ const teams = [
 
 export default function Team() {
 	return (
-		<div className="container pt-32">
+		<>
             <div className="flex justify-center mb-4"><TitleBadge title="Our Team" /></div>
             <Heading title="Meet Our Dedicated Team" className="text-center mb-12" />
 		    <CarouselSlider
-    			carouselContentClassName="justify-stretch max-w-[100%]  pb-24"
+    			carouselContentClassName="justify-stretch max-w-[100%] pb-16"
     			id="teams-slider"
     		>
     			{teams.map((team, index) => (
@@ -58,6 +58,6 @@ export default function Team() {
     				</RenderCarouselItem>
     			))}
     		</CarouselSlider>
-		</div>
+		</>
 	);
 }
