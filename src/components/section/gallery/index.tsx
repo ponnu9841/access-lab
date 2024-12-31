@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Heading from "../../custom/heading";
 import NextImage from "../../Image";
-import TitleBadge from "../../custom/title-badge";
+// import TitleBadge from "../../custom/title-badge";
 import GalleryDrawerContent from "./gallery-drawer-content";
 import { Link } from "lucide-react";
 
@@ -29,9 +29,9 @@ export default function ImageGallery(props: GalleryImagesProps) {
 
 	return (
 		<div>
-			<div className="flex justify-center items-center mb-2">
+			{/* <div className="flex justify-center items-center mb-2">
 				<TitleBadge title="gallery" />
-			</div>
+			</div> */}
 			<Heading title="Image Gallery" className="text-center mb-8" />
 			<div className="flex flex-wrap justify-center items-start gap-4">
 				{images.map((image, index) => (

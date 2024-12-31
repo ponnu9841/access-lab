@@ -3,22 +3,23 @@ import ImageScroll from "@/components/horizontal-image-scroll";
 import { Metadata } from "next";
 import ImageGallery from "@/components/section/gallery";
 import HomeSlider from "@/components/section/home-slider";
-// import Testimonials from "@/components/testimonials";
+import Testimonials from "@/components/testimonials";
 import {
-	// blogData,
+	blogData,
 	galleryImages,
 	heroData,
 	images,
 	services,
-	// testimonials,
+	testimonials,
 } from "@/services/dummyData";
-// import About from "@/components/section/about";
-// import BannerWhy from "@/components/section/banner-why";
+import About from "@/components/section/about";
+import BannerWhy from "@/components/section/banner-why";
 // import ServiceCards from "@/components/section/service-cards";
-// import Team from "@/components/section/teams";
-// import Blog from "@/components/section/blog";
+import Team from "@/components/section/teams";
+import Blog from "@/components/section/blog";
 import AboutNew from "@/components/section/about/about-2";
 import Services from "@/components/section/services/services2";
+import HomeSuccess from "@/components/section/home-success";
 
 export const metadata: Metadata = {
 	title: "Home Page",
@@ -39,13 +40,21 @@ export default function HomePage() {
 			<section className="pb-16 bg-primary/5">
 				<Services services={services} />
 			</section>
+			<section>
+				<HomeSuccess />
+			</section>
+			<section className="container">
+				<ImageGallery imagesArray={galleryImages} />
+			</section>
+			<section className="container">
+				<Blog blogs={blogData} />
+			</section>
+
 			<section className="pb-16">
 				<WhyUs />
 			</section>
-			 <section className="container">
-				<ImageGallery imagesArray={galleryImages} />
-			</section>
-			{/*<section className="container pb-32">
+			
+			<section className="container pb-32">
 				<Testimonials testimonials={testimonials} />
 			</section>
 
@@ -58,9 +67,6 @@ export default function HomePage() {
 			<section>
 				<BannerWhy />
 			</section>
-			<section className="container mb-96">
-				<Blog blogs={blogData} />
-			</section> */}
 		</>
 	);
 }
