@@ -2,32 +2,20 @@ import "@/styles/globals.css";
 import Layout from "@/components/layout";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ReactChildren } from "@/lib/types";
-import localFont from "next/font/local";
-
-// Font files can be colocated inside of `pages`
-const myFont = localFont({
-	src: [
-		{
-			path: "../../public/font/Nunito/Nunito-VariableFont_wght.ttf",
-			style: "normal",
-		},
-		{
-			path: "../../public/font/Nunito/Nunito-Italic-VariableFont_wght.ttf",
-			style: "italic",
-		},
-	],
-});
-
-// const font = Nunito({ subsets: ["latin"] });
+import { montserrat, nunito } from "./fonts";
 
 export default function RootLayout({ children }: ReactChildren) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html
+			lang="en"
+			suppressHydrationWarning
+			className={`${nunito.variable} ${montserrat.variable}`}
+		>
 			<head />
-			<body className={`${myFont.className} min-h-screen w-full`}>
+			<body className="min-h-screen w-full">
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="light"
+					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>

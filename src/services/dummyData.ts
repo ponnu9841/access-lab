@@ -114,3 +114,24 @@ export const blogData = [
 			"Pulvinar neque ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec",
 	},
 ];
+
+export const services = [
+	{
+		icon: "/icons/service-1.svg",
+		title: "Branding",
+		description:
+			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
+	},
+	{
+		icon: "/icons/service-2.svg",
+		title: "UX Design",
+		description:
+			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
+	},
+	{
+		icon: "/icons/service-3.svg",
+		title: "Strategy",
+		description:
+			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
+	},
+];
