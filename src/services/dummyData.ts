@@ -98,6 +98,7 @@ export const blogData = [
 		title: "How your sales can work together in account-based marketing",
 		description:
 			"Ultricies lacus ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec ...",
+		views: 70,
 	},
 	{
 		image: "/blog/blog-2.jpg",
@@ -105,6 +106,7 @@ export const blogData = [
 		title: "The six things marketers need to understand about DTC marketing",
 		description:
 			"Sed turpis ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec molli...",
+		views: 70,
 	},
 	{
 		image: "/blog/blog-3.jpg",
@@ -112,6 +114,7 @@ export const blogData = [
 		title: "Eleven top tips for developing agile marketing",
 		description:
 			"Pulvinar neque ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec",
+		views: 70,
 	},
 ];
 
@@ -133,5 +136,26 @@ export const services = [
 		title: "Strategy",
 		description:
 			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
+	},
+];
+
+export const contactData = [
+	{
+		title: "Our Locations",
+		icon: "/icons/map.svg",
+		line1: "110 W 34th St, NYC.",
+		line2: "67 Madison Avenue.",
+	},
+	{
+		title: "Give Us A Call",
+		icon: "/icons/message.svg",
+		line1: "(+1) 012-345-6789",
+		line2: "(+1) 012-345-6789",
+	},
+	{
+		title: "Help Desk",
+		icon: "/icons/help.svg",
+		line1: "demo@yourmail.com",
+		line2: "demo@yourmail.com",
 	},
 ];

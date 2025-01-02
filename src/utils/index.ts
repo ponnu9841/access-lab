@@ -30,7 +30,9 @@ export function formatDateToMonthYear(dateString: string) {
 	// Extract the month and year
 	const month = shortMonths[date.getMonth()];
 	const year = date.getFullYear();
+	const day = `0${date.getDate()}`.slice(-2);
 
 	// Return the formatted string
-	return `${month} ${year}`;
+	// return `${month} ${year}`;
+	return `${day} ${month} ${year}`;
 }

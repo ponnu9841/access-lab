@@ -19,7 +19,7 @@ export const RenderCarouselItem = ({
 	return (
 		<CarouselItem
 			className={cn(
-				"carousel-item",
+				"carousel-item relative",
 				`${paddingValue ? "pl-" + paddingValue : "p-0"}`,
 				carouselItemClassName
 			)}

@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import { RenderCarouselItem } from "./carousel-item";
 import { cn } from "@/lib/utils";
+import Heading from "../custom/heading";
 
 const CarouselSlider = (props: CarouselSliderProps) => {
 	const {
@@ -23,6 +24,7 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 		orientation = "horizontal",
 		id,
 		togglerPosition = "default",
+		showTitle = false,
 	} = props;
 	const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
@@ -69,6 +71,17 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 							priority={index === 0}
 						/>
 						{!!children && children}
+						{showTitle && (
+							<>
+								<div className="absolute inset-0 bg-black/50"></div>
+								<div className="absolute top-1/2 -translate-y-1/2 left-0 px-10 md:px-32 text-white">
+									<Heading title={image.title} variant="h1" />
+									<p className="max-w-2xl mt-2 text-base">
+										{image.description}
+									</p>
+								</div>
+							</>
+						)}
 					</RenderCarouselItem>
 				))}
 				{!!!images && <>{!!children && children}</>}

@@ -1,5 +1,5 @@
 import React from "react";
-import TitleBadge from "@/components/custom/title-badge";
+// import TitleBadge from "@/components/custom/title-badge2";
 import Heading from "@/components/custom/heading";
 import CarouselSlider from "@/components/carousel";
 import { RenderCarouselItem } from "@/components/carousel/carousel-item";
@@ -12,10 +12,10 @@ type TestimonialPropsType = {
 export default function Testimonials(props: TestimonialPropsType) {
 	const { testimonials } = props;
 	return (
-		<>
+		<div className="container">
 			<div className="flex flex-col items-center justify-center mb-3">
-				<TitleBadge title="Our Clients" />
-				<Heading title="Our Client Happy Say About Us" />
+				{/* <TitleBadge title="Our Clients" /> */}
+				<Heading title="What our Clients Say About Us" />
 			</div>
 			<div className="mt-6">
 				<CarouselSlider
@@ -35,6 +35,6 @@ export default function Testimonials(props: TestimonialPropsType) {
 					))}
 				</CarouselSlider>
 			</div>
-		</>
+		</div>
 	);
 }

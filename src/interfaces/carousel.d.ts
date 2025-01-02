@@ -6,9 +6,10 @@ type CarouselCardProps = {
 };
 
 type CarouselSliderProps = CarouselCardProps & {
-	images?: { image: string }[];
+	images?: { image: string; title: string; description: string }[];
 	carouselContentClassName?: string | undefined;
 	orientation?: "horizontal" | "vertical" | undefined;
 	id?: string;
-	togglerPosition?: string
+	togglerPosition?: string;
+	showTitle?: boolean;
 };
