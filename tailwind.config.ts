@@ -14,7 +14,7 @@ export default {
 			colors: {
 				background: "hsla(var(--background))",
 				foreground: {
-					DEFAULT: "hsla(var(--foreground))"
+					DEFAULT: "hsla(var(--foreground))",
 				},
 				card: {
 					DEFAULT: "hsla(var(--card))",
@@ -65,8 +65,11 @@ export default {
 			},
 			keyframes: {
 				scroll: {
-					"to": { transform: "translateX(-50%)" },
+					to: { transform: "translateX(-50%)" },
 				},
+			},
+			boxShadow: {
+				"2xl": "0 0px 50px -12px rgb(0 0 0 / 0.25)",
 			},
 		},
 	},

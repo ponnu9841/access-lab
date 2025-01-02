@@ -11,14 +11,13 @@ type HomeSliderProps = {
 
 export default function HomeSlider(props: HomeSliderProps) {
 	const { sliderData } = props;
-	const heroImages = sliderData.map((item) => ({ image: item.image }));
 	return (
 		<CarouselSlider
-			images={heroImages}
+			images={sliderData}
 			cardContentClassName="min-h-[70vh] lg:min-h-[80vh] xl:min-h-screen"
 			id="home-slider"
+			showTitle
 		>
-			<div className="absolute left-10"></div>
 		</CarouselSlider>
 	);
 }

@@ -3,4 +3,5 @@ type BlogProps = {
     date: string;
     title: string;
     description: string;
+    views: number;
 }
