@@ -12,4 +12,5 @@ type CarouselSliderProps = CarouselCardProps & {
 	id?: string;
 	togglerPosition?: string;
 	showTitle?: boolean;
+	enableScroll?: boolean;
 };

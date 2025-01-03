@@ -41,8 +41,11 @@ export default function BlogCard(props: BlogProps) {
 					{description}
 				</CardDescription>
 				<div className="mt-4">
-					<Link href="#" className="link">
-						<mark>Read More</mark>
+					<Link
+						href="#"
+						className="relative before:absolute before:w-full before:-bottom-1 before:right-0 before:border-b before:border-b-2 hover:before:w-0 hover:before:ml-2 hover:before:transition-all hover:before:duration-500 after:absolute after:w-0 after:-bottom-1 after:left-0 after:border-b after:border-primary after:border-b-2 hover:after:w-full hover:after:transition-all hover:after:duration-500 transition-all duration-500"
+					>
+						Read More
 					</Link>
 				</div>
 			</CardContent>
