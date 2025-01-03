@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import {
 	Carousel,
@@ -25,6 +25,7 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 		id,
 		togglerPosition = "default",
 		showTitle = false,
+		enableScroll = false,
 	} = props;
 	const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
@@ -38,6 +39,35 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 		paddingValue = parseInt(carouselItemClassName?.split("pl-")[1] || "0") || 0;
 	}
 
+	const carousel = useRef<HTMLDivElement>(null);
+	const [api, setApi] = useState<any>(null); //eslint-disable-line
+
+	useEffect(() => {
+		if (!api) return;
+
+		const handleScroll = (event: WheelEvent) => {
+			event.preventDefault();
+			if (event.deltaY > 0) {
+				api.scrollNext();
+			} else {
+				api.scrollPrev();
+			}
+		};
+
+		const currentCarousel = carousel.current;
+		if (currentCarousel && enableScroll) {
+			currentCarousel.addEventListener("wheel", handleScroll, {
+				passive: false,
+			});
+		}
+
+		return () => {
+			if (currentCarousel) {
+				currentCarousel.removeEventListener("wheel", handleScroll);
+			}
+		};
+	}, [api]);
+
 	return (
 		<Carousel
 			plugins={[plugin.current]}
@@ -47,6 +77,8 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 			id={id || "carousel-slider"}
 			orientation={orientation}
 			opts={opts}
+			ref={carousel}
+			setApi={setApi}
 		>
 			<CarouselContent
 				className={cn(

@@ -21,7 +21,7 @@ export default function Testimonials(props: TestimonialPropsType) {
 				<CarouselSlider
 					id="testimonials-slider"
 					carouselContentClassName="justify-stretch max-w-[100%]"
-					togglerPosition="bottom"
+					enableScroll
 				>
 					{testimonials?.map((testimonial, index) => (
 						<RenderCarouselItem

@@ -60,7 +60,7 @@ export default function Navbar() {
 						className="aspect-square max-w-[72px] max-h-[72px]"
 					/>
 					<div>
-						<ul className="hidden md:flex gap-6">
+						<ul className="hidden md:flex gap-6 text-white">
 							{navItems.map((item, index) => (
 								<li key={index} className="flex justify-center items-center">
 									<Link
@@ -112,7 +112,6 @@ export default function Navbar() {
 					</div>
 				</nav>
 			</div>
-			{/* <div className="h-[0.3px] relative top-[85px] bg-gray-300 w-full z-40"></div> */}
 		</>
 	);
 }
