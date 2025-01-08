@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 // import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-import NextImage from "../Image";
+import NextImage from "@/components/Image";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
@@ -24,38 +24,39 @@ export default function Navbar() {
 	const headerRef = useRef<HTMLDivElement | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	useEffect(() => {
-		const handleScroll = () => {
+		const handleScroll = (e: MouseEvent) => {
 			if (headerRef.current) {
-				const topHeight = 0;
-				const classes = ["shadow-md", "bg-black", "border-none"];
-				if (window.scrollY > topHeight) {
+				const classes = ["shadow-md", "border-none", "fixed", "bg-black"];
+				const { clientY } = e;
+				if (clientY < 85 && window.scrollY > 85) {
 					headerRef.current.classList.add(...classes);
-					headerRef.current.classList.remove("bg-black/50");
+					headerRef.current.classList.remove("absolute", "bg-black/50");
 				} else {
 					headerRef.current.classList.remove(
 						...classes,
 						"border-b",
 						"borer-gray-500"
 					);
-					headerRef.current.classList.add("bg-black/50", "border-b");
+					headerRef.current.classList.add("border-b", "absolute");
+					headerRef.current.classList.remove("fixed");
 				}
 			}
 		};
 
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("mousemove", handleScroll);
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("mousemove", handleScroll);
 		};
 	}, []);
 	return (
 		<>
 			<div
 				ref={headerRef}
-				className="h-[85px] z-50 w-full fixed top-0 left-0 z-50 md:text-background bg-black/50 border-b border-gray-300"
+				className="h-[85px] z-50 w-full absolute top-0 left-0 z-50 md:text-background bg-black/50 border-b border-gray-300 transition-ease-in duration-300"
 			>
 				<nav className="flex items-center gap-4 justify-between w-full h-full container">
 					<NextImage
-						src="/logo.svg"
+						src="/logo-textless.svg"
 						alt="logo"
 						className="aspect-square max-w-[72px] max-h-[72px]"
 					/>
@@ -66,7 +67,7 @@ export default function Navbar() {
 									<Link
 										key={item.name}
 										href={item.link}
-										className="inline-flex items-center px-1 text-sm font-medium"
+										className="inline-flex items-center px-1 text-sm font-medium hover:text-secondary transition-ease-in duration-300"
 									>
 										{item.name}
 									</Link>

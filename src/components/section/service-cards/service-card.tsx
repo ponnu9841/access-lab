@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 // import NextImage from "@/components/Image";
 import Heading from "@/components/custom/heading";
 // import Doctor from "@/icons/doctor";
