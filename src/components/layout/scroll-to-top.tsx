@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import React, { useState, useEffect } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import { Button } from "@/components/ui/button";

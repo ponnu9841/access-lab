@@ -33,10 +33,10 @@ export default function HomePage() {
 		<>
 			<HomeSlider sliderData={heroData} />
 			{/* <ServiceCards /> */}
-			<section>
+			<section className="pt-6">
 				<ImageScroll images={images} />
 			</section>
-			<section className="pb-16">
+			<section className="pb-8 pt-10">
 				<AboutNew />
 			</section>
 			<section className="pb-16 bg-primary/5">
@@ -61,15 +61,15 @@ export default function HomePage() {
 				<Testimonials testimonials={testimonials} />
 			</section>
 
-			<section className="container">
-				<ImageGallery imagesArray={galleryImages} />
-			</section>
-
 			{/* <section className="py-28 bg-primary/5 relative before:content-[''] lg:before:absolute lg:before:top-0 lg:before:right-0 lg:before:w-[45%] lg:before:h-full lg:before:bg-primary">
 				<About />
 			</section> */}
 			<section className="container">
 				<Team />
+			</section>
+
+			<section className="container">
+				<ImageGallery imagesArray={galleryImages} />
 			</section>
 
 			<section>

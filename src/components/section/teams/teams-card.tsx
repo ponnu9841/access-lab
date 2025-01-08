@@ -1,4 +1,4 @@
-import { FaFacebookF, FaInstagramSquare, FaPinterest } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
 import NextImage from "@/components/Image";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -20,9 +20,9 @@ export default function TeamCard(props: TeamsCardProps) {
 						className="rounded-sm"
 						imageClassName="rounded-sm"
 					/>
-					<div className="absolute right-12 -top-12 opacity-0 group-hover:opacity-100 group-hover:top-0 transition-ease-in duration-500">
+					<div className="absolute right-12 top-0 md:-top-12 md:opacity-0 group-hover:opacity-100 md:group-hover:top-0 transition-ease-in duration-500">
 						<div className="flex flex-col bg-primary ">
-							<Link
+							{/* <Link
 								href="#"
 								className="hover:bg-black p-4 transition-all duration-500"
                                 target="_blank"
@@ -35,13 +35,13 @@ export default function TeamCard(props: TeamsCardProps) {
                                 target="_blank"
 							>
 								<FaInstagramSquare size={20} className="text-white" />
-							</Link>
+							</Link> */}
 							<Link
 								href="#"
 								className="hover:bg-black p-4 transition-all duration-500"
                                 target="_blank"
 							>
-								<FaPinterest size={20} className="text-white" />
+								<FaLinkedinIn size={20} className="text-white" />
 							</Link>
 						</div>
 					</div>

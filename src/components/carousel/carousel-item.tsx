@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { CarouselItem } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";

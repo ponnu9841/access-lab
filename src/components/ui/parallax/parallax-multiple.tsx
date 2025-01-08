@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import NextImage from "@/components/Image";
 // import Image from "next/image";
