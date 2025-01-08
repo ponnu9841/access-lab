@@ -66,7 +66,7 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 				currentCarousel.removeEventListener("wheel", handleScroll);
 			}
 		};
-	}, [api]);
+	}, [api]); //eslint-disable-line
 
 	return (
 		<Carousel
