@@ -11,7 +11,7 @@ type NextImageProps = {
 };
 
 export default function NextImage(props: NextImageProps) {
-	const { src, alt = "", className, priority = true, imageClassName } = props;
+	const { src, alt = "", className, priority = false, imageClassName } = props;
 	return (
 		<div className={cn("relative w-full h-full", className)}>
 			<Image
@@ -19,7 +19,7 @@ export default function NextImage(props: NextImageProps) {
 				fill={true}
 				className={cn("object-contain w-full relative", imageClassName)}
 				alt={alt}
-				sizes="(max-width: 768px) 100vw, 60vw"
+				sizes="50vw(min-width: 768px) 100vw"
 				priority={priority}
 			/>
 		</div>

@@ -22,6 +22,7 @@ import AboutNew from "@/components/section/about/about-2";
 import Services from "@/components/section/services/services2";
 import HomeSuccess from "@/components/section/home-success";
 import Contact from "@/components/section/contact";
+import Layout from "@/components/layout";
 
 export const metadata: Metadata = {
 	title: "Home Page",
@@ -82,3 +83,7 @@ export default function HomePage() {
 		</>
 	);
 }
+
+HomePage.getLayout = function getLayout(page: React.ReactElement) {
+	return <Layout>{page}</Layout>;
+};

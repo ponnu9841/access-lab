@@ -1,9 +1,11 @@
 import "@/styles/globals.css";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
-import { montserrat, nunito } from "@/utils/fonts";
 import { ThemeProvider } from "@/components/theme-provider";
-import Layout from "@/components/layout";
+import { Provider } from "react-redux";
+import { Toaster } from "sonner";
+import store from "@/redux/store";
+import ReduxWrapper from "@/reduxWrapper";
 
 //eslint-disable-next-line
 export type PageLayoutType<P = {}, IP = P> = NextPage<P, IP> & {
@@ -18,15 +20,22 @@ export default function App(props: AppPropsWithLayout) {
 	const { Component, pageProps } = props;
 	const getLayout = Component.getLayout ?? ((page) => page);
 	return (
-			<div className={`min-h-screen w-full ${montserrat.variable} ${nunito.className}`} >
+		<Provider store={store}>
+			<ReduxWrapper>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="dark"
 					enableSystem
 					disableTransitionOnChange
 				>
-					<Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+					{getLayout(
+						<>
+							<Component {...pageProps} />
+							<Toaster />
+						</>
+					)}
 				</ThemeProvider>
-			</div>
+			</ReduxWrapper>
+		</Provider>
 	);
 }

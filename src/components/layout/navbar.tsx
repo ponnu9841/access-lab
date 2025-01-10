@@ -59,6 +59,7 @@ export default function Navbar() {
 						src="/logo-textless.svg"
 						alt="logo"
 						className="aspect-square max-w-[72px] max-h-[72px]"
+						priority
 					/>
 					<div>
 						<ul className="hidden md:flex gap-6 text-white">
