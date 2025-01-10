@@ -1,0 +1,121 @@
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { loginSchema, LoginFormData } from "@/schemas/login-schema";
+import axiosClient from "@/axios/axios-client";
+import { useState } from "react";
+import Layout from "@/components/layout";
+import { setToken } from "@/services/localStorageService";
+import { useAppDispatch } from "@/redux/hooks/use-dispatch";
+import { setUser } from "@/redux/features/user-slice";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { useRouter } from "next/router";
+
+export default function Login() {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<LoginFormData>({
+		resolver: zodResolver(loginSchema),
+	});
+
+	const [showPassword, setShowPassword] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const dispatch = useAppDispatch();
+	const router = useRouter();
+
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	};
+
+	const onSubmit = async (data: LoginFormData) => {
+		setLoading(true);
+		try {
+			const response = await axiosClient.post("/auth/login", data);
+			setLoading(false);
+			if (response.status === 200) {
+				const { user, accessToken } = response.data;
+				if (accessToken) setToken(accessToken);
+				dispatch(setUser(user));
+				router.push("/dashboard");
+			}
+		} catch (error) {
+			console.log(error);
+			setLoading(false);
+		}
+	};
+
+	return (
+		<div className="bg-primary/5">
+			<div className="container flex items-center justify-center min-h-screen">
+				<div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+					<h2 className="text-3xl font-bold text-center text-gray-800">
+						Login
+					</h2>
+					<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+						<div className="space-y-2">
+							<Label htmlFor="email">Email</Label>
+							<Input
+								id="email"
+								type="email"
+								placeholder="Enter your email"
+								{...register("email")}
+								className={errors.email ? "border-red-500" : ""}
+								aria-invalid={errors.email ? "true" : "false"}
+								aria-describedby={errors.email ? "email-error" : undefined}
+							/>
+							{errors.email && (
+								<p id="email-error" className="text-sm text-red-500">
+									{errors.email.message}
+								</p>
+							)}
+						</div>
+						<div className="space-y-2">
+							<Label htmlFor="password">Password</Label>
+							<div className="relative">
+								<Input
+									id="password"
+									type={showPassword ? "text" : "password"}
+									placeholder="Enter your password"
+									{...register("password")}
+									className={`pr-10 ${errors.password ? "border-red-500" : ""}`}
+									aria-invalid={errors.password ? "true" : "false"}
+									aria-describedby={
+										errors.password ? "password-error" : undefined
+									}
+								/>
+								<button
+									type="button"
+									onClick={togglePasswordVisibility}
+									className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-500"
+									aria-label={showPassword ? "Hide password" : "Show password"}
+								>
+									{showPassword ? (
+										<EyeOffIcon className="w-5 h-5" />
+									) : (
+										<EyeIcon className="w-5 h-5" />
+									)}
+								</button>
+							</div>
+							{errors.password && (
+								<p id="password-error" className="text-sm text-red-500">
+									{errors.password.message}
+								</p>
+							)}
+						</div>
+						<Button type="submit" className="w-full" disabled={loading}>
+							{loading ? "Logging In..." : "Log In"}
+						</Button>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+Login.getLayout = function getLayout(page: React.ReactElement) {
+	return <Layout>{page}</Layout>;
+};
