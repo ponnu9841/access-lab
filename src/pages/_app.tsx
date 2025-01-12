@@ -24,16 +24,12 @@ export default function App(props: AppPropsWithLayout) {
 			<ReduxWrapper>
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="dark"
+					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
-					{getLayout(
-						<>
-							<Component {...pageProps} />
-							<Toaster />
-						</>
-					)}
+					{getLayout(<Component {...pageProps} />)}
+					<Toaster />
 				</ThemeProvider>
 			</ReduxWrapper>
 		</Provider>

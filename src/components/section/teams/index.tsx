@@ -48,7 +48,6 @@ export default function Team() {
 			<CarouselSlider
 				carouselContentClassName="justify-stretch max-w-[100%] pb-16"
 				id="teams-slider"
-				enableScroll
 			>
 				{teams.map((team, index) => (
 					<RenderCarouselItem

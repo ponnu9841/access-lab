@@ -14,7 +14,7 @@ import {
 	testimonials,
 } from "@/services/dummyData";
 // import About from "@/components/section/about";
-import BannerWhy from "@/components/section/banner-why";
+// import BannerWhy from "@/components/section/banner-why";
 // import ServiceCards from "@/components/section/service-cards";
 import Team from "@/components/section/teams";
 import Blog from "@/components/section/blog";
@@ -73,9 +73,9 @@ export default function HomePage() {
 				<ImageGallery imagesArray={galleryImages} />
 			</section>
 
-			<section>
+			{/* <section>
 				<BannerWhy />
-			</section>
+			</section> */}
 
 			<section className="container">
 				<Contact contactData={contactData} />

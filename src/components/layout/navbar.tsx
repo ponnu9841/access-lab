@@ -52,15 +52,17 @@ export default function Navbar() {
 		<>
 			<div
 				ref={headerRef}
-				className="h-[85px] z-50 w-full absolute top-0 left-0 z-50 md:text-background bg-black/50 border-b border-gray-300 transition-ease-in duration-300"
+				className="h-[70px] z-50 w-full absolute top-0 left-0 z-50 md:text-background bg-black/50 border-b border-gray-300 transition-ease-in duration-300"
 			>
 				<nav className="flex items-center gap-4 justify-between w-full h-full container">
-					<NextImage
-						src="/logo-textless.svg"
-						alt="logo"
-						className="aspect-square max-w-[72px] max-h-[72px]"
-						priority
-					/>
+					<Link href="/" className="aspect-square w-[50px] h-[50px]">
+						<NextImage
+							src="/logo-textless.svg"
+							alt="logo"
+							className="aspect-square max-w-[50px] max-h-[50px]"
+							priority
+						/>
+					</Link>
 					<div>
 						<ul className="hidden md:flex gap-6 text-white">
 							{navItems.map((item, index) => (
