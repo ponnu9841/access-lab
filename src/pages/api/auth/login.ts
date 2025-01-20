@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { findUserByEmail } from "@/services/user";
 import bcrypt from "bcrypt";
 import { generateTokens } from "@/utils/jwt";
+import { disconnectDb } from "@/utils/db";
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
@@ -26,13 +27,16 @@ export default async function handler(
 		const user = {
 			name: existingUser.name,
 			email: existingUser.email,
+			type: existingUser.type,
 		};
 
-		const { accessToken } = generateTokens(existingUser);
+		const { accessToken } = generateTokens(user);
 		res.status(200).json({ user, accessToken });
 
 		res.status(200).json({ success: true });
 	} catch (error) {
 		res.status(500).json({ error, message: "Something went wrong." });
+	} finally {
+		disconnectDb();
 	}
 }

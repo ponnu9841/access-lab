@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosInstance } from "axios";
 import { handleToast } from "./handleErrorToast";
+import { clearToken } from "@/services/localStorageService";
 
 // Define a common Axios instance
 const axiosClient: AxiosInstance = axios.create({
@@ -9,9 +10,11 @@ const axiosClient: AxiosInstance = axios.create({
 
 // Common error handler
 const handleError = (error: AxiosError): Promise<never> => {
+	if(error.code === "ERR_CANCELED") return new Promise(() => {}); 
 	if (error.response) {
 		// Response received but status is outside 2xx
 		const { status, data } = error.response;
+		
 
 		switch (status) {
 			case 400:
@@ -19,6 +22,8 @@ const handleError = (error: AxiosError): Promise<never> => {
 				break;
 			case 401:
 				handleToast("Unauthorized: Please log in again.");
+				clearToken();
+				window.location.href = "/login";
 				// Optional: Redirect to login or logout logic
 				break;
 			case 403:

@@ -1,7 +1,4 @@
-import {
-	ChevronsUpDown,
-	LogOut,
-} from "lucide-react";
+import { ChevronsUpDown, LogOut } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -19,10 +16,19 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import { useAppSelector } from "@/redux/hooks/use-selector";
+import { Button } from "./ui/button";
+import { clearToken } from "@/services/localStorageService";
+import { useRouter } from "next/router";
 
 export function NavUser() {
 	const { isMobile } = useSidebar();
-	const user = useAppSelector((state) => state.userReducer).user;
+	const { user } = useAppSelector((state) => state.rootReducer).user;
+	const router = useRouter();
+
+	const handleLogout = () => {
+		clearToken();
+		router.push("/login");
+	};
 
 	return (
 		<SidebarMenu>
@@ -64,8 +70,15 @@ export function NavUser() {
 						</DropdownMenuLabel>
 						<DropdownMenuSeparator />
 						<DropdownMenuItem>
-							<LogOut />
-							Log out
+							<Button
+								variant="ghost"
+								size="sm"
+								className="w-full text-left justify-start"
+								onClick={handleLogout}
+							>
+								<LogOut />
+								Log out
+							</Button>
 						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>

@@ -3,13 +3,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { loginSchema, LoginFormData } from "@/schemas/login-schema";
+import { loginSchema, LoginFormData } from "@/schemas/schema";
 import axiosClient from "@/axios/axios-client";
 import { useState } from "react";
 import Layout from "@/components/layout";
-import { setToken } from "@/services/localStorageService";
-import { useAppDispatch } from "@/redux/hooks/use-dispatch";
-import { setUser } from "@/redux/features/user-slice";
+import { setToken, setUser } from "@/services/localStorageService";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useRouter } from "next/router";
 
@@ -24,7 +22,6 @@ export default function Login() {
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const dispatch = useAppDispatch();
 	const router = useRouter();
 
 	const togglePasswordVisibility = () => {
@@ -39,7 +36,7 @@ export default function Login() {
 			if (response.status === 200) {
 				const { user, accessToken } = response.data;
 				if (accessToken) setToken(accessToken);
-				dispatch(setUser(user));
+				if (user) setUser(JSON.stringify(user));
 				router.push("/dashboard");
 			}
 		} catch (error) {
