@@ -1,7 +1,7 @@
 import { setWindowSize } from "@/redux/features/utils-slice";
 import React, { useEffect } from "react";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
-import { montserrat, nunito } from "@/utils/fonts";
+import { nunito } from "@/utils/fonts";
 
 
 export default function ReduxWrapper(props: { children: React.ReactNode }) {
@@ -22,7 +22,7 @@ export default function ReduxWrapper(props: { children: React.ReactNode }) {
 	}, []); //eslint-disable-line
 
 	const wrapper = React.createElement("div", {
-		className: `min-h-screen w-full ${montserrat.variable} ${nunito.className}`
+		className: `min-h-screen w-full ${nunito.className}`
 	}, props.children);
 
 	return wrapper;

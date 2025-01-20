@@ -1,6 +1,4 @@
-import * as React from "react";
 import { Home } from "lucide-react";
-
 import { NavUser } from "./nav-user";
 import { Logo } from "./logo";
 import {
@@ -19,6 +17,11 @@ import {
 import Link from "next/link";
 
 const items = [
+	{
+		title: "Dashboard",
+		url: "/dashboard",
+		icon: Home,
+	},
 	{
 		title: "Partners",
 		url: "/dashboard/partners",
