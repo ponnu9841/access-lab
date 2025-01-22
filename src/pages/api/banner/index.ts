@@ -1,28 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { isAuthenticated } from "@/services/auth";
 import { db, disconnectDb } from "@/utils/db";
-import { IncomingForm, Files, Fields } from "formidable";
 import { createDirectory, deleteFile, uploadFile } from "@/utils/upload-file";
+import { parseForm } from "@/services/parseForm";
 
 export const config = {
 	api: {
 		bodyParser: false,
 	},
 };
-
-interface ParsedForm {
-	fields: Fields;
-	files: Files;
-}
-
-const parseForm = (req: NextApiRequest): Promise<ParsedForm> =>
-	new Promise((resolve, reject) => {
-		const form = new IncomingForm();
-		form.parse(req, (err, fields, files) => {
-			if (err) return reject(err);
-			resolve({ fields, files });
-		});
-	});
 
 export default async function handler(
 	req: NextApiRequest,

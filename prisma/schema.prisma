@@ -33,5 +33,15 @@ model Banner {
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
 
-  @@map("banner")
+  @@map("banners")
+}
+
+model Partner {
+  id         String   @id @default(uuid())
+  image      String
+  alt        String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("partners")
 }

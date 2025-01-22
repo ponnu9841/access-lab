@@ -13,39 +13,49 @@ import { z } from "zod";
 //     { message: "Invalid document file type" }
 //   );
 
+const fileValidation = (val: unknown) => {
+	if (val === null) {
+		return {
+			valid: false,
+			issues: [
+				{
+					code: z.ZodIssueCode.invalid_type,
+					message: "Input must be a file",
+				},
+			],
+		};
+	}
+	if (val instanceof File) {
+		return { valid: true, issues: [] };
+	}
+	return {
+		valid: false,
+		issues: [
+			{
+				code: z.ZodIssueCode.invalid_type,
+				message: "Input must be a file",
+			},
+		],
+	};
+};
+
 export const loginSchema = z.object({
 	email: z.string().email("Invalid email address"),
 	password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 export const bannerSchema = z.object({
-	image: z.custom<File[] | null>(
-		(val) => {
-			if (val === null)
-				return {
-					valid: false,
-					issues: [
-						{
-							code: z.ZodIssueCode.invalid_type,
-							message: "Input must be a file",
-						},
-					],
-				};
-			if (val instanceof File) return { valid: true, issues: [] };
-			return {
-				valid: false,
-				issues: [
-					{
-						code: z.ZodIssueCode.invalid_type,
-						message: "Input must be a file",
-					},
-				],
-			};
-		},
-	),
-  title: z.string(),
-  description: z.string(),
+	image: z.custom<File[] | null>(fileValidation),
+	title: z.string(),
+	description: z.string(),
 });
+
+export const partnerSchema = z.object({
+	image: z.custom<File[] | null>(fileValidation),
+	imageAlt: z.string(),
+});
+
+export type PartnerFormData = z.infer<typeof partnerSchema>;
 
 export type BannerFormData = z.infer<typeof bannerSchema>;
 

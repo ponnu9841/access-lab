@@ -4,3 +4,9 @@ type Banner = {
     title: string;
     description: string;
 }
+
+type Partner = {
+    id: string;
+    image: string;
+    alt: string;
+}
