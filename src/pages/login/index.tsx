@@ -42,11 +42,11 @@ export default function Login() {
 	const onSubmit = async (data: LoginFormData) => {
 		setLoading(true);
 		try {
-			const response = await axiosClient.post("/auth/login", data);
+			const response = await axiosClient.post("/login", data);
 			setLoading(false);
 			if (response.status === 200) {
-				const { user, accessToken } = response.data;
-				if (accessToken) setToken(accessToken);
+				const { user, token } = response.data;
+				if (token) setToken(token);
 				if (user) setUser(JSON.stringify(user));
 				router.push("/dashboard");
 			}
