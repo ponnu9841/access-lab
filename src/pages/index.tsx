@@ -8,6 +8,7 @@ import {
 	blogData,
 	contactData,
 	galleryImages,
+	images,
 	heroData,
 	services,
 	testimonials,
@@ -34,11 +35,11 @@ export default function HomePage({ partners }: { partners: Partner[] }) {
 		<>
 			<HomeSlider sliderData={heroData} />
 			{/* <ServiceCards /> */}
-			{partners.length > 0 && (
-				<section className="pt-6">
-					<ImageScroll images={partners} />
-				</section>
-			)}
+
+			<section className="pt-6">
+				<ImageScroll images={partners.length > 0 ? partners : images } />
+			</section>
+
 			<section className="pb-8 pt-10">
 				<AboutNew />
 			</section>

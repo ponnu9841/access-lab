@@ -1,10 +1,34 @@
 export const images = [
-	"/partner-logo-1.png",
-	"/partner-logo-2.png",
-	"/partner-logo-3.png",
-	"/partner-logo-4.png",
-	"/partner-logo-5.png",
-	"/partner-logo-6.png",
+	{
+		id: "1",
+		image: "/partner-logo-1.png",
+		alt: "",
+	},
+	{
+		id: "2",
+		image: "/partner-logo-2.png",
+		alt: ""
+	},
+	{
+		id: "3",
+		image: "/partner-logo-3.png",
+		alt: ""
+	},
+	{
+		id: "4",
+		image: "/partner-logo-4.png",
+		alt: ""
+	},
+	{
+		id: "5",
+		image: "/partner-logo-5.png",
+		alt: ""
+	},
+	{
+		id: "6",
+		image: "/partner-logo-6.png",
+		alt: ""
+	},
 	// "/partner-logo-7.png",
 	// "/partner-logo-8.jpg",
 	// "/partner-logo-9.png",
