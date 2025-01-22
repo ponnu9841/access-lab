@@ -31,6 +31,9 @@ export default function PartnerImages() {
 			<h2 className="text-xl">Uploaded Images</h2>
 
 			<div className="grid grid-cols-4 gap-6 max-h-[500px] overflow-auto">
+				{!loading && data.length === 0 && (
+					<div className="col-span-4 text-center mt-3 text-red-500">No Record Found</div>
+				)}
 				{loading &&
 					Array(4)
 						.fill(null)
