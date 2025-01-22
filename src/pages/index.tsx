@@ -9,7 +9,6 @@ import {
 	contactData,
 	galleryImages,
 	heroData,
-	images,
 	services,
 	testimonials,
 } from "@/services/dummyData";
@@ -23,20 +22,23 @@ import Services from "@/components/section/services/services2";
 import HomeSuccess from "@/components/section/home-success";
 import Contact from "@/components/section/contact";
 import Layout from "@/components/layout";
+import axiosClient from "@/axios/axios-client";
 
 export const metadata: Metadata = {
 	title: "Home Page",
 	description: "Home Page description",
 };
 
-export default function HomePage() {
+export default function HomePage({ partners }: { partners: Partner[] }) {
 	return (
 		<>
 			<HomeSlider sliderData={heroData} />
 			{/* <ServiceCards /> */}
-			<section className="pt-6">
-				<ImageScroll images={images} />
-			</section>
+			{partners.length > 0 && (
+				<section className="pt-6">
+					<ImageScroll images={partners} />
+				</section>
+			)}
 			<section className="pb-8 pt-10">
 				<AboutNew />
 			</section>
@@ -46,13 +48,10 @@ export default function HomePage() {
 			<section>
 				<HomeSuccess />
 			</section>
-			
-			
+
 			<section className="container pb-12">
 				<Blog blogs={blogData} />
 			</section>
-
-			
 
 			{/* <section className="pb-16">
 				<WhyUs />
@@ -87,3 +86,25 @@ export default function HomePage() {
 HomePage.getLayout = function getLayout(page: React.ReactElement) {
 	return <Layout>{page}</Layout>;
 };
+
+export async function getServerSideProps() {
+	try {
+		const response = await axiosClient.get("/partner");
+		const data = await response.data.data;
+
+		return {
+			props: {
+				partners: data,
+			},
+		};
+	} catch (error) {
+		console.error("Error fetching data:", error);
+
+		// Handle the error appropriately, e.g., redirect to an error page
+		return {
+			props: {
+				error: "Error fetching Data",
+			},
+		};
+	}
+}

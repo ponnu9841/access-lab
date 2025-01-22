@@ -14,17 +14,16 @@ export default function PartnerForm() {
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<PartnerFormData>({
 		resolver: zodResolver(partnerSchema),
 	});
 
 	const dispatch = useAppDispatch();
-	const { loading, data } = useAppSelector(
+	const { loading } = useAppSelector(
 		(state) => state.rootReducer.partner
 	);
-
-  console.log(data)
 
 	const onSubmit = (data: PartnerFormData) => {
 		const formData = new FormData();
@@ -36,6 +35,7 @@ export default function PartnerForm() {
 			.post("/partner", formData)
 			.then((response) => {
 				if (response.status === 200) {
+					reset();
 					dispatch(fetchPartner());
 				}
 			})
