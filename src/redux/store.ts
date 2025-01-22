@@ -2,12 +2,14 @@ import { Action, combineReducers, configureStore } from "@reduxjs/toolkit";
 import utilsReducer from "./features/utils-slice";
 import userReducer from "./features/user-slice";
 import bannerReducer from "./features/banner-slice";
+import partnerReducer from "./features/partner-slice";
 
 //Step 1
 const combinedReducer = combineReducers({
 	user: userReducer,
 	utils: utilsReducer,
-	banner: bannerReducer
+	banner: bannerReducer,
+	partner: partnerReducer,
 });
 
 //eslint-disable-next-line
