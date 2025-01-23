@@ -10,7 +10,7 @@ import {
 	galleryImages,
 	images,
 	heroData,
-	services,
+	services as serviceDummyData,
 	testimonials,
 } from "@/services/dummyData";
 // import About from "@/components/section/about";
@@ -30,21 +30,28 @@ export const metadata: Metadata = {
 	description: "Home Page description",
 };
 
-export default function HomePage({ partners }: { partners: Partner[] }) {
+export default function HomePage({
+	partners,
+	services,
+}: {
+	partners: Partner[];
+	services: Service[];
+}) {
+	console.log(services)
 	return (
 		<>
 			<HomeSlider sliderData={heroData} />
 			{/* <ServiceCards /> */}
 
 			<section className="pt-6">
-				<ImageScroll images={partners?.length > 0 ? partners : images } />
+				<ImageScroll images={partners?.length > 0 ? partners : images} />
 			</section>
 
 			<section className="pb-8 pt-10">
 				<AboutNew />
 			</section>
 			<section className="pb-16 bg-primary/5">
-				<Services services={services} />
+				<Services services={services?.length > 0 ? services : serviceDummyData} />
 			</section>
 			<section>
 				<HomeSuccess />
@@ -90,12 +97,13 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 
 export async function getServerSideProps() {
 	try {
-		const response = await axiosClient.get("/partner");
-		const data = await response.data.data;
+		const partners = await axiosClient.get("/partner");
+		const services = await axiosClient.get("/service");
 
 		return {
 			props: {
-				partners: data,
+				partners: partners.data.data,
+				services: services.data.data,
 			},
 		};
 	} catch (error) {

@@ -42,7 +42,7 @@ export default function PartnerImages() {
 						.map((_, index) => (
 							<Skeleton key={index} className="aspect-square" />
 						))}
-				{data.map((partner: Partner) => (
+				{!loading && data.map((partner: Partner) => (
 					<div key={partner.id} className="relative">
 						<NextImage
 							src={partner.image}

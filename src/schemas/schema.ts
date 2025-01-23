@@ -55,6 +55,16 @@ export const partnerSchema = z.object({
 	imageAlt: z.string(),
 });
 
+export const serviceSchema = z.object({
+	image: z.custom<File[] | null>(fileValidation),
+	imageAlt: z.string(),
+	title: z.string(),
+	shortDescription: z.string(),
+	longDescription: z.string(),
+});
+
+export type ServiceFormData = z.infer<typeof serviceSchema>;
+
 export type PartnerFormData = z.infer<typeof partnerSchema>;
 
 export type BannerFormData = z.infer<typeof bannerSchema>;

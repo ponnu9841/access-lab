@@ -10,8 +10,13 @@ const nextConfig: NextConfig = {
 		ignoreBuildErrors: true,
 	},
 	images: {
-		
 		remotePatterns: [
+			{
+				protocol: "http",
+				hostname: "127.0.0.1",
+				pathname: "/uploads/**",
+				port: "8000",
+			},
 			{
 				protocol: "http",
 				hostname: "localhost",

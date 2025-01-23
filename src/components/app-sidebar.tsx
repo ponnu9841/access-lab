@@ -28,6 +28,11 @@ const items = [
 		icon: Home,
 	},
 	{
+		title: "Services",
+		url: "/dashboard/services",
+		icon: Home,
+	},
+	{
 		title: "Gallery",
 		url: "/dashboard/gallery",
 		icon: Home,

@@ -17,7 +17,7 @@ export default function Services({ services }: { services: Service[] }) {
 				className="mx-auto text-center mb-12 max-w-lg"
 			/> */}
 			<div className="lg:flex gap-8 mt-12">
-				{services.map((service, index) => (
+				{services?.map((service, index) => (
 					<div key={index} className="mb-8 lg:mb-0 flex-1">
 						<ServiceCard {...service} />
 					</div>
