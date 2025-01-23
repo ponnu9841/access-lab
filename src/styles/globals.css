@@ -7,6 +7,12 @@
 	color: white;
 	border-radius: var(--radius);
 }
+.ql-toolbar {
+	border-radius: 0.25rem 0.25rem 0 0 !important;
+}
+.ql-container {
+	border-radius: 0 0 0.25rem 0.25rem !important;
+}
 
 /* body {
 	cursor: none;

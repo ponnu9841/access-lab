@@ -10,3 +10,9 @@ type Partner = {
     image: string;
     alt: string;
 }
+
+type Service = Partner & {
+    title: string;
+    short_description: string;
+    long_description: string
+}

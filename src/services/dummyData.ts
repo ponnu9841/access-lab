@@ -144,25 +144,31 @@ export const blogData = [
 
 export const services = [
 	{
-		icon: "/icons/service-1.svg",
+		id: "1",
 		image: "/about.jpeg",
+		alt: "",
 		title: "Branding",
-		description:
+		short_description:
 			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
+		long_description: "Lorem Ipsum"
 	},
 	{
-		icon: "/icons/service-2.svg",
+		id: "2",
 		image: "/about.jpeg",
+		alt: "",
 		title: "UX Design",
-		description:
+		short_description:
 			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
+		long_description: "Lorem Ipsum"
 	},
 	{
-		icon: "/icons/service-3.svg",
+		id: "3",
 		image: "/about.jpeg",
+		alt: "",
 		title: "Strategy",
-		description:
+		short_description:
 			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
+		long_description: "Lorem Ipsum"
 	},
 ];
 

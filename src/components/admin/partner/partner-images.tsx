@@ -32,7 +32,9 @@ export default function PartnerImages() {
 
 			<div className="grid grid-cols-4 gap-6 max-h-[500px] overflow-auto">
 				{!loading && data.length === 0 && (
-					<div className="col-span-4 text-center mt-3 text-red-500">No Record Found</div>
+					<div className="col-span-4 text-center mt-3 text-red-500">
+						No Record Found
+					</div>
 				)}
 				{loading &&
 					Array(4)
@@ -40,7 +42,7 @@ export default function PartnerImages() {
 						.map((_, index) => (
 							<Skeleton key={index} className="aspect-square" />
 						))}
-				{data.map((partner) => (
+				{!loading && data.map((partner: Partner) => (
 					<div key={partner.id} className="relative">
 						<NextImage
 							src={partner.image}
