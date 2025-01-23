@@ -37,7 +37,7 @@ export default function HomePage({ partners }: { partners: Partner[] }) {
 			{/* <ServiceCards /> */}
 
 			<section className="pt-6">
-				<ImageScroll images={partners.length > 0 ? partners : images } />
+				<ImageScroll images={partners?.length > 0 ? partners : images } />
 			</section>
 
 			<section className="pb-8 pt-10">
