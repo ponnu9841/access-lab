@@ -7,7 +7,12 @@ import { loginSchema, LoginFormData } from "@/schemas/schema";
 import axiosClient from "@/axios/axios-client";
 import { useEffect, useState } from "react";
 import Layout from "@/components/layout";
-import { getToken, setToken, setUser } from "@/services/localStorageService";
+import {
+	getToken,
+	getUser,
+	setToken,
+	setUser,
+} from "@/services/localStorageService";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useRouter } from "next/router";
 
@@ -28,9 +33,12 @@ export default function Login() {
 	useEffect(() => {
 		const token = getToken();
 		if (token) {
-			setIsAuthenticated(true);
-			router.push("/dashboard");
-			return;
+			const user = getUser();
+			if (user.type === "admin") {
+				setIsAuthenticated(true);
+				router.push("/dashboard");
+				return;
+			}
 		}
 		router.push("/login");
 	}, []); //eslint-disable-line
