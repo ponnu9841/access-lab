@@ -42,7 +42,5 @@ export default function DashBoardLayout({ children }: ReactChildren) {
 				</div>
 			</SidebarProvider>
 		);
-	} else {
-		return <></>;
 	}
 }
