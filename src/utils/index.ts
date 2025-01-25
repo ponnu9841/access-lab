@@ -36,3 +36,20 @@ export function formatDateToMonthYear(dateString: string) {
 	// return `${month} ${year}`;
 	return `${day} ${month} ${year}`;
 }
+
+export async function urlToFile(url: string, filename: string): Promise<File> {
+	// Fetch the content from the URL
+	const response = await fetch(url, {
+		mode: 'no-cors',
+	});
+
+	if (!response.ok) {
+		throw new Error(`Failed to fetch URL: ${response.statusText}`);
+	}
+
+	// Get the data as a Blob
+	const blob = await response.blob();
+
+	// Create a File from the Blob
+	return new File([blob], filename, { type: blob.type });
+}

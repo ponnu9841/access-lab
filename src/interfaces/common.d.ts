@@ -1,6 +1,4 @@
-import { ReactNode, SVGProps } from "react";
-
-export type AvatarProps = {
+type AvatarProps = {
 	name?: string;
 	image?: string;
 	avatarClassName?: string;
@@ -10,15 +8,19 @@ export type AvatarProps = {
 	icon?: ReactNode;
 };
 
-export type SvgIconProps = SVGProps<SVGSVGElement> & {
+type SvgIconProps = SVGProps<SVGSVGElement> & {
 	size?: number;
 };
 
-export type ServiceCardProps = {
+type ServiceCardProps = {
 	icon: React.JSX.Element;
 	hoverIcon: React.JSX.Element;
 	title: string ;
 	description?: string;
 	children: ReactNode;
 	variant?: "primary" | "secondary"
+}
+
+type ExtendedFile = File & {
+	url: string;
 }

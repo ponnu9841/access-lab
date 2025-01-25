@@ -51,16 +51,16 @@ export const bannerSchema = z.object({
 });
 
 export const partnerSchema = z.object({
-	image: z.custom<File[] | null>(fileValidation),
+	// image: z.custom<File[] | null>(fileValidation),
 	imageAlt: z.string(),
 });
 
 export const serviceSchema = z.object({
-	image: z.custom<File[] | null>(fileValidation),
+	// image: z.custom<File[] | null>(fileValidation),
 	imageAlt: z.string(),
-	title: z.string(),
-	shortDescription: z.string(),
-	longDescription: z.string(),
+	title: z.string().min(3, "Title must be at least 3 characters"),
+	shortDescription: z.string().min(3, "Title must be at least 3 characters"),
+	longDescription: z.string().min(3, "Title must be at least 3 characters"),
 });
 
 export type ServiceFormData = z.infer<typeof serviceSchema>;

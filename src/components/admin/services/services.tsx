@@ -19,8 +19,6 @@ export default function UploadedServices() {
 		(state) => state.rootReducer.service
 	);
 
-	console.log(data);
-
 	const deleteService = async (id: string, image: string) => {
 		try {
 			const response = await axiosClient.delete(`/service`, {
@@ -74,10 +72,14 @@ export default function UploadedServices() {
 							</div>
 						</div>
 						<div className="mt-4">
-							{parse(parse(service?.short_description))}
+							<span className="font-bold">Title: </span> {service?.title}
 						</div>
 						<div className="mt-4">
-							{parse(parse(service?.long_description))}
+							<span className="font-bold">Short Description </span> {parse(service?.short_description)}
+						</div>
+						<div className="mt-4">
+							<b>Long Description </b>
+							{parse(service?.long_description)}
 						</div>
 					</div>
 				))}
