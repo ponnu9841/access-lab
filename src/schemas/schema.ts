@@ -72,6 +72,15 @@ export const testimonialsSchema = z.object({
 	testimonial: z.string().min(3, "Testimonial must be at least 3 characters"),
 });
 
+export const gallerySchema = z.object({
+	// image: z.custom<File[] | null>(fileValidation),
+	imageAlt: z.string().optional(),
+	title: z.string().optional(),
+	description: z.string().optional(),
+});
+
+export type GalleryFormData = z.infer<typeof gallerySchema>;
+
 export type TestimonialsFormData = z.infer<typeof testimonialsSchema>;
 
 export type ServiceFormData = z.infer<typeof serviceSchema>;

@@ -1,6 +1,6 @@
 // "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Heading from "../../custom/heading";
 import NextImage from "../../Image";
@@ -11,25 +11,31 @@ import CarouselSlider from "@/components/carousel";
 import { RenderCarouselItem } from "@/components/carousel/carousel-item";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useAppDispatch } from "@/redux/hooks/use-dispatch";
+import { useAppSelector } from "@/redux/hooks/use-selector";
+import { fetchGallery } from "@/redux/features/gallery-slice";
 
 interface GalleryImagesProps {
-	imagesArray: GalleryImage[];
+	imagesArray: Gallery[];
 }
 
 export default function ImageGallery(props: GalleryImagesProps) {
 	const { imagesArray } = props;
-	const [selectedImage, setSelectedImage] = useState<number | null>(null);
-	const images = useMemo(
-		() =>
-			imagesArray.map((image, index) => ({
-				...image,
-				id: index + 1,
-			})),
-		[imagesArray]
-	);
+	const [selectedImage, setSelectedImage] = useState<string | null>(null);
+	const { gallery } = useAppSelector((state) => state.rootReducer.gallery);
+	const dispatch = useAppDispatch();
+	const images = gallery?.data?.length ? gallery?.data : imagesArray;
 
-	const openDialog = (id: number) => setSelectedImage(id);
+	console.log(gallery?.data);
+
+	const openDialog = (id: string) => setSelectedImage(id);
 	const closeDialog = () => setSelectedImage(null);
+
+	useEffect(() => {
+		const controller = new AbortController();
+		dispatch(fetchGallery({ controller }));
+		return () => controller.abort();
+	}, []);
 
 	return (
 		<div>
@@ -67,7 +73,7 @@ export default function ImageGallery(props: GalleryImagesProps) {
 				id="gallery-slider"
 				enableScroll
 			>
-				{images.map((image, index) => (
+				{images?.map((image, index) => (
 					<RenderCarouselItem
 						key={index}
 						carouselItemClassName="basis-full md:basis-1/2 lg:basis-1/3"
@@ -88,8 +94,8 @@ export default function ImageGallery(props: GalleryImagesProps) {
 							</div>
 							<div className="aspect-square">
 								<NextImage
-									src={image.src}
-									alt={image.alt}
+									src={image.image}
+									alt={image.alt || ""}
 									className="rounded-sm overflow-hidden"
 									imageClassName="object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
 								/>
@@ -100,12 +106,14 @@ export default function ImageGallery(props: GalleryImagesProps) {
 			</CarouselSlider>
 
 			<Link href="/gallery" className="flex justify-center">
-				<Button variant="link" className="text-lg underline">View All</Button>
+				<Button variant="link" className="text-lg underline">
+					View All
+				</Button>
 			</Link>
 
 			<Dialog open={selectedImage !== null} onOpenChange={closeDialog}>
 				<DialogContent className="max-w-[90vw] w-full max-h-[90vh] h-full p-5 text-white bg-transparent border-none">
-					{selectedImage && (
+					{selectedImage && images && (
 						<GalleryDrawerContent
 							images={images}
 							selectedImage={selectedImage}
