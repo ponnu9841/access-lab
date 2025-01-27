@@ -5,6 +5,7 @@ import bannerReducer from "./features/banner-slice";
 import partnerReducer from "./features/partner-slice";
 import serviceReducer from "./features/service-slice";
 import testimonialReducer from "./features/testimonial-slice";
+import galleryReducer from "./features/gallery-slice";
 
 //Step 1
 const combinedReducer = combineReducers({
@@ -14,6 +15,7 @@ const combinedReducer = combineReducers({
 	partner: partnerReducer,
 	service: serviceReducer,
 	testimonial: testimonialReducer,
+	gallery: galleryReducer,
 });
 
 //eslint-disable-next-line

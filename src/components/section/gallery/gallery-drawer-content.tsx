@@ -5,13 +5,9 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type GalleryImagesProps = {
-	images: {
-		id: number;
-		src: string;
-		alt: string;
-	}[];
-	selectedImage: number;
-	setSelectedImage: React.Dispatch<React.SetStateAction<number | null>>;
+	images: Gallery[];
+	selectedImage: string;
+	setSelectedImage: React.Dispatch<React.SetStateAction<string | null>>;
 	arrayLength?: number;
 	currentIndex?: number;
 };
@@ -29,6 +25,8 @@ export default function GalleryDrawerContent(props: GalleryImagesProps) {
 		setSelectedImage(images[newIndex].id);
 	};
 
+	const currentImage = images.find((im) => im.id === selectedImage)
+
 	return (
 		<>
 			{selectedImage && (
@@ -37,11 +35,11 @@ export default function GalleryDrawerContent(props: GalleryImagesProps) {
 						aria-describedby=""
 						className="text-center relative z-10 mt-2"
 					>
-						{images[selectedImage - 1].alt || "Image"}
+						{currentImage?.alt || "Image"}
 					</DialogTitle>
 					<Image
-						src={images[selectedImage - 1].src || "/no-image.png"}
-						alt={images[selectedImage - 1].alt || "/no-image.png"}
+						src={currentImage?.image || "/no-image.png"}
+						alt={currentImage?.alt || "/no-image.png"}
 						fill
 						className="object-contain"
 						priority

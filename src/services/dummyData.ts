@@ -7,27 +7,27 @@ export const images = [
 	{
 		id: "2",
 		image: "/partner-logo-2.png",
-		alt: ""
+		alt: "",
 	},
 	{
 		id: "3",
 		image: "/partner-logo-3.png",
-		alt: ""
+		alt: "",
 	},
 	{
 		id: "4",
 		image: "/partner-logo-4.png",
-		alt: ""
+		alt: "",
 	},
 	{
 		id: "5",
 		image: "/partner-logo-5.png",
-		alt: ""
+		alt: "",
 	},
 	{
 		id: "6",
 		image: "/partner-logo-6.png",
-		alt: ""
+		alt: "",
 	},
 	// "/partner-logo-7.png",
 	// "/partner-logo-8.jpg",
@@ -38,12 +38,48 @@ export const images = [
 ];
 
 export const galleryImages = [
-	{ src: "/gallery/1.jpg", alt: "Image 1" },
-	{ src: "/gallery/2.jpg", alt: "Image 2" },
-	{ src: "/gallery/3.jpg", alt: "Image 3" },
-	{ src: "/gallery/4.jpg", alt: "Image 4" },
-	{ src: "/gallery/5.jpg", alt: "Image 5" },
-	{ src: "/gallery/6.jpg", alt: "Image 6" },
+	{
+		id: "1",
+		image: "/gallery/1.jpg",
+		alt: "Image 1",
+		title: null,
+		description: null,
+	},
+	{
+		id: "2",
+		image: "/gallery/2.jpg",
+		alt: "Image 2",
+		title: null,
+		description: null,
+	},
+	{
+		id: "3",
+		image: "/gallery/3.jpg",
+		alt: "Image 3",
+		title: null,
+		description: null,
+	},
+	{
+		id: "4",
+		image: "/gallery/4.jpg",
+		alt: "Image 4",
+		title: null,
+		description: null,
+	},
+	{
+		id: "5",
+		image: "/gallery/5.jpg",
+		alt: "Image 5",
+		title: null,
+		description: null,
+	},
+	{
+		id: "6",
+		image: "/gallery/6.jpg",
+		alt: "Image 6",
+		title: null,
+		description: null,
+	},
 	// { src: "/gallery/7.jpg", alt: "Image 7" },
 	// { src: "/gallery/8.jpg", alt: "Image 8" },
 ];
@@ -153,7 +189,7 @@ export const services = [
 		title: "Branding",
 		short_description:
 			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
-		long_description: "Lorem Ipsum"
+		long_description: "Lorem Ipsum",
 	},
 	{
 		id: "2",
@@ -162,7 +198,7 @@ export const services = [
 		title: "UX Design",
 		short_description:
 			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
-		long_description: "Lorem Ipsum"
+		long_description: "Lorem Ipsum",
 	},
 	{
 		id: "3",
@@ -171,7 +207,7 @@ export const services = [
 		title: "Strategy",
 		short_description:
 			"First impressions count! Make sure your brand works for you. We offer digital marketing.",
-		long_description: "Lorem Ipsum"
+		long_description: "Lorem Ipsum",
 	},
 ];
 
