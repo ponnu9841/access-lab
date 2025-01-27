@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import TitleBadge from "@/components/custom/title-badge2";
 import Heading from "@/components/custom/heading";
 import CarouselSlider from "@/components/carousel";
 import { RenderCarouselItem } from "@/components/carousel/carousel-item";
 import TestimonialCard from "./testimonial-card2";
+import { useAppDispatch } from "@/redux/hooks/use-dispatch";
+import { fetchTestimonial } from "@/redux/features/testimonial-slice";
+import { useAppSelector } from "@/redux/hooks/use-selector";
 
 type TestimonialPropsType = {
 	testimonials: Testimonial[];
 };
 
 export default function Testimonials(props: TestimonialPropsType) {
-	const { testimonials } = props;
+	const dispatch = useAppDispatch();
+	const { data } = useAppSelector(
+		(state) => state.rootReducer.testimonial
+	);
+	const testimonials = data.length > 0 ? data : props.testimonials;
+
+	useEffect(() => {
+		const controller = new AbortController();
+		dispatch(fetchTestimonial(controller));
+		// dispatch partner
+		return () => controller.abort();
+	}, []);
+	
 	return (
 		<div className="container">
 			<div className="flex flex-col items-center justify-center mb-3">

@@ -5,6 +5,7 @@ import React from "react";
 export type TextEditorProps = {
 	value: string;
 	setValue: React.Dispatch<React.SetStateAction<string>>;
+	placeholder?: string;
 };
 
 const modules = {
@@ -36,7 +37,7 @@ const formats = [
 ];
 
 export default function TextEditor(props: TextEditorProps) {
-	const { value, setValue } = props;
+	const { value, setValue, placeholder = "" } = props;
 
 	return (
 		<ReactQuill
@@ -45,7 +46,8 @@ export default function TextEditor(props: TextEditorProps) {
 			onChange={(e) => setValue(e)}
 			modules={modules}
 			formats={formats}
-            className="rounded"
+			className="rounded"
+			placeholder={placeholder}
 		/>
 	);
 }

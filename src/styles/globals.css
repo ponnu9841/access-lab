@@ -13,6 +13,9 @@
 .ql-container {
 	border-radius: 0 0 0.25rem 0.25rem !important;
 }
+.ql-editor {
+	min-height: 80px !important;
+}
 
 /* body {
 	cursor: none;
@@ -117,8 +120,7 @@
 	.container {
 		@apply px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-32 mx-auto;
 	}
-	
-	
+
 	/* width */
 	::-webkit-scrollbar {
 		width: 5px;
