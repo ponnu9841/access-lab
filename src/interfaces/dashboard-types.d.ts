@@ -16,3 +16,14 @@ type Service = Partner & {
     short_description: string;
     long_description: string
 }
+
+type Testimonial = {
+    id: string;
+    video_url?: string;
+    image?: string;
+    alt?: string;
+    name: string;
+    designation?: string;
+    testimonial: string;
+    
+}

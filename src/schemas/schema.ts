@@ -57,11 +57,22 @@ export const partnerSchema = z.object({
 
 export const serviceSchema = z.object({
 	// image: z.custom<File[] | null>(fileValidation),
-	imageAlt: z.string(),
+	imageAlt: z.string().optional(),
 	title: z.string().min(3, "Title must be at least 3 characters"),
 	shortDescription: z.string().min(3, "Title must be at least 3 characters"),
 	longDescription: z.string().min(3, "Title must be at least 3 characters"),
 });
+
+export const testimonialsSchema = z.object({
+	// image: z.custom<File[] | null>(fileValidation),
+	videoUrl: z.string().optional(),
+	imageAlt: z.string().optional(),
+	name: z.string().min(3, "Name must be at least 3 characters"),
+	designation: z.string().min(3, "Designation must be at least 3 characters"),
+	testimonial: z.string().min(3, "Testimonial must be at least 3 characters"),
+});
+
+export type TestimonialsFormData = z.infer<typeof testimonialsSchema>;
 
 export type ServiceFormData = z.infer<typeof serviceSchema>;
 

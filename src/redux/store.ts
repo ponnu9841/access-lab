@@ -4,6 +4,7 @@ import userReducer from "./features/user-slice";
 import bannerReducer from "./features/banner-slice";
 import partnerReducer from "./features/partner-slice";
 import serviceReducer from "./features/service-slice";
+import testimonialReducer from "./features/testimonial-slice";
 
 //Step 1
 const combinedReducer = combineReducers({
@@ -12,6 +13,7 @@ const combinedReducer = combineReducers({
 	banner: bannerReducer,
 	partner: partnerReducer,
 	service: serviceReducer,
+	testimonial: testimonialReducer,
 });
 
 //eslint-disable-next-line

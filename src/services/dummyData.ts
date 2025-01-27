@@ -71,22 +71,25 @@ export const heroData = [
 
 export const testimonials = [
 	{
+		id: "1",
 		name: "Dr. John Martin",
-		avatarImage: "/testimonial/1.png",
-		role: "Dentist",
+		image: "/testimonial/1.png",
+		designation: "Dentist",
 		testimonial:
 			"Very efficient And prompt customer service . Much thanks to the dealing staff at Access. With lots of appreciation and Regards. Satisfied Customer.",
 	},
 	{
+		id: "2",
 		name: "Sreepriya Sreekumar",
-		avatarImage: "/testimonial/2.png",
-		role: "Dentist",
+		image: "/testimonial/2.png",
+		designation: "Dentist",
 		testimonial:
 			"Access Labz was very helpful at this critical time to do covid test by coming home. All safety measures were taken care. Results were also provided quickly as I had to travel within 24 hours of the test. Highly recommended!",
 	},
 	{
+		id: "3",
 		name: "SREEKUMAR PUNNAPPILLY",
-		role: "Cancer Researcher",
+		designation: "Cancer Researcher",
 		testimonial:
 			"We had recently used the services of Access Labz for home testing. Their services were excellent and delivered by professional staff adhering to all clinical and hygiene protocols. We recommend their testing services wholeheartedly",
 	},
