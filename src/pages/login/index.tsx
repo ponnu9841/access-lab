@@ -7,14 +7,11 @@ import { loginSchema, LoginFormData } from "@/schemas/schema";
 import axiosClient from "@/axios/axios-client";
 import { useEffect, useState } from "react";
 import Layout from "@/components/layout";
-import {
-	getToken,
-	getUser,
-	setToken,
-	setUser,
-} from "@/services/localStorageService";
+import { getToken, setToken } from "@/services/localStorageService";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useRouter } from "next/router";
+import { useAppDispatch } from "@/redux/hooks/use-dispatch";
+import { fetchUser } from "@/redux/features/user-slice";
 
 export default function Login() {
 	const {
@@ -25,6 +22,8 @@ export default function Login() {
 		resolver: zodResolver(loginSchema),
 	});
 
+	const dispatch = useAppDispatch();
+
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -33,14 +32,9 @@ export default function Login() {
 	useEffect(() => {
 		const token = getToken();
 		if (token) {
-			const user = getUser();
-			if (user.type === "admin") {
-				setIsAuthenticated(true);
-				router.push("/dashboard");
-				return;
-			}
+			setIsAuthenticated(true);
+			router.push("/dashboard");
 		}
-		router.push("/login");
 	}, []); //eslint-disable-line
 
 	const togglePasswordVisibility = () => {
@@ -53,9 +47,9 @@ export default function Login() {
 			const response = await axiosClient.post("/login", data);
 			setLoading(false);
 			if (response.status === 200) {
-				const { user, token } = response.data;
+				const { token } = response.data;
 				if (token) setToken(token);
-				if (user) setUser(JSON.stringify(user));
+				dispatch(fetchUser({}))
 				router.push("/dashboard");
 			}
 		} catch (error) {

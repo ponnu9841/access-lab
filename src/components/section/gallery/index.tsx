@@ -26,8 +26,6 @@ export default function ImageGallery(props: GalleryImagesProps) {
 	const dispatch = useAppDispatch();
 	const images = gallery?.data?.length ? gallery?.data : imagesArray;
 
-	console.log(gallery?.data);
-
 	const openDialog = (id: string) => setSelectedImage(id);
 	const closeDialog = () => setSelectedImage(null);
 

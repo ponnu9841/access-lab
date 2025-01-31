@@ -23,7 +23,7 @@ import axiosClient from "@/axios/axios-client";
 
 export function NavUser() {
 	const { isMobile } = useSidebar();
-	const { user } = useAppSelector((state) => state.rootReducer).user;
+	const { user } = useAppSelector((state) => state.rootReducer.user);
 	const router = useRouter();
 
 	const handleLogout = () => {

@@ -1,32 +1,34 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
-import { useEffect, useState } from "react";
-import { getToken, getUser } from "@/services/localStorageService";
+import { useEffect } from "react";
+import { clearToken } from "@/services/localStorageService";
 import { useRouter } from "next/router";
 import getCurrentRoute from "@/utils/getCurrentRoute";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
-import { setUser } from "@/redux/features/user-slice";
+import { fetchUser } from "@/redux/features/user-slice";
+import { useAppSelector } from "@/redux/hooks/use-selector";
 import { handleToast } from "@/axios/handleErrorToast";
 export default function DashBoardLayout({ children }: ReactChildren) {
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	// const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const { user } = useAppSelector((state) => state.rootReducer.user);
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		const token = getToken();
-		if (token) {
-			const user = getUser();
-			if (user.type === "admin") {
-				setIsAuthenticated(true);
-				dispatch(setUser(user));
-				return;
-			}
-			handleToast("You are not authorized to access this page");
-			router.push("/login");
-		}
-		router.push("/login");
+		const controller = new AbortController();
+		dispatch(fetchUser({ controller }));
+		return () => controller.abort();
 	}, []); //eslint-disable-line
 
-	if (isAuthenticated) {
+	useEffect(() => {
+		if(user?.type !== "admin") {
+			clearToken();
+			router.push("/login");
+			handleToast("You are not authorized to access this page");
+			return
+		}
+	}, [user]);
+
+	if (user?.type === "admin") {
 		return (
 			<SidebarProvider>
 				<AppSidebar />
