@@ -56,7 +56,6 @@ export default function ServicesForm() {
 	};
 
 	useEffect(() => {
-		console.log(selectedService);
 		if (selectedService) {
 			reset({
 				title: selectedService.title,
