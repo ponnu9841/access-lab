@@ -1,7 +1,6 @@
 import axiosClient from "@/axios/axios-client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { fetchService } from "@/redux/features/service-slice";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import { useAppSelector } from "@/redux/hooks/use-selector";
 import { TeamsFormData, teamsSchema } from "@/schemas/schema";
@@ -11,6 +10,7 @@ import ImageUpload from "@/components/custom/imageUpload";
 import RenderError from "@/components/render-error";
 import FormAction from "../form-action";
 import { useForm } from "react-hook-form";
+import { fetchTeams } from "@/redux/features/teams-slice";
 
 export default function TeamsForm() {
 	const {
@@ -39,7 +39,7 @@ export default function TeamsForm() {
 			.post("/teams", form)
 			.then((response) => {
 				if (response.status === 200) {
-					dispatch(fetchService());
+					dispatch(fetchTeams());
 					reset();
 					setImages([]);
 				}
