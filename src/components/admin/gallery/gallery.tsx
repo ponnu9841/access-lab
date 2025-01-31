@@ -36,8 +36,6 @@ export default function Gallery() {
 		}
 	};
 
-	console.log(gallery);
-
 	return (
 		<div>
 			<div className="grid grid-cols-2 lg:grid-cols-3 gap-4 max-h-[500px] overflow-auto">

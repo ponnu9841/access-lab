@@ -16,6 +16,8 @@ export default function getCurrentRoute(pathname: string) {
 			return "Contact";
 		case "/dashboard/gallery":
 			return "Gallery";
+		case "/dashboard/teams":
+			return "Teams";
 		default:
 			break;
 	}

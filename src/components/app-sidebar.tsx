@@ -42,6 +42,11 @@ const items = [
 		url: "/dashboard/gallery",
 		icon: Home,
 	},
+	{
+		title: "Teams",
+		url: "/dashboard/teams",
+		icon: Home,
+	},
 ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

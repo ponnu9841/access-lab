@@ -37,7 +37,6 @@ export default function HomePage({
 	partners: Partner[];
 	services: Service[];
 }) {
-	console.log(services)
 	return (
 		<>
 			<HomeSlider sliderData={heroData} />

@@ -15,7 +15,6 @@ interface PaginationProps {
 }
 
 export function Pagination({ pageNo, totalPages, setPageNo }: PaginationProps) {
-	console.log(pageNo);
 	if (pageNo <= totalPages) {
 		return (
 			<PaginationComponent className="justify-start">
