@@ -23,7 +23,7 @@ const handleError = (error: AxiosError): Promise<never> => {
 			case 401:
 				handleToast("Unauthorized: Please log in again.");
 				clearToken();
-				window.location.href = "/login";
+				// window.location.href = "/login";
 				// Optional: Redirect to login or logout logic
 				break;
 			case 403:

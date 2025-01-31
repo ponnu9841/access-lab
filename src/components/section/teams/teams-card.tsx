@@ -3,14 +3,8 @@ import NextImage from "@/components/Image";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 
-type TeamsCardProps = {
-	image: string;
-	name: string;
-	designation: string;
-};
-
-export default function TeamCard(props: TeamsCardProps) {
-	const { image, name, designation } = props;
+export default function TeamCard(props: Teams) {
+	const { image, name, designation, alt, linkedin_profile } = props;
 	return (
 		<>
 			<Card className="border-none group w-full relative h-full">
@@ -19,6 +13,7 @@ export default function TeamCard(props: TeamsCardProps) {
 						src={image}
 						className="rounded-sm"
 						imageClassName="rounded-sm"
+						alt={alt || ""}
 					/>
 					<div className="absolute right-12 top-0 md:-top-12 md:opacity-0 group-hover:opacity-100 md:group-hover:top-0 transition-ease-in duration-500">
 						<div className="flex flex-col bg-primary ">
@@ -36,13 +31,15 @@ export default function TeamCard(props: TeamsCardProps) {
 							>
 								<FaInstagramSquare size={20} className="text-white" />
 							</Link> */}
-							<Link
-								href="#"
-								className="hover:bg-black p-4 transition-all duration-500"
-                                target="_blank"
-							>
-								<FaLinkedinIn size={20} className="text-white" />
-							</Link>
+							{linkedin_profile !== null && (
+								<Link
+									href={linkedin_profile}
+									className="hover:bg-black p-4 transition-all duration-500"
+									target="_blank"
+								>
+									<FaLinkedinIn size={20} className="text-white" />
+								</Link>
+							)}
 						</div>
 					</div>
 				</div>

@@ -20,15 +20,15 @@ export default function DashBoardLayout({ children }: ReactChildren) {
 	}, []); //eslint-disable-line
 
 	useEffect(() => {
-		if(user?.type !== "admin") {
+		if(user.type && user.type !== "admin") {
 			clearToken();
 			router.push("/login");
 			handleToast("You are not authorized to access this page");
 			return
 		}
-	}, [user]);
+	}, [user, router]);
 
-	if (user?.type === "admin") {
+	if (user.type === "admin") {
 		return (
 			<SidebarProvider>
 				<AppSidebar />

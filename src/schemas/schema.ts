@@ -79,6 +79,15 @@ export const gallerySchema = z.object({
 	description: z.string().optional(),
 });
 
+export const teamsSchema = z.object({
+	imageAlt: z.string().optional(),
+	name: z.string().min(3, "Name must be at least 3 characters"),
+	designation: z.string().optional(),
+	lindedInProfile: z.string().optional(),
+})
+
+export type TeamsFormData = z.infer<typeof teamsSchema>;
+
 export type GalleryFormData = z.infer<typeof gallerySchema>;
 
 export type TestimonialsFormData = z.infer<typeof testimonialsSchema>;

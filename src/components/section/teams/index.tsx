@@ -1,44 +1,80 @@
-import React from "react";
+import { useEffect } from "react";
 import TeamCard from "./teams-card";
 import CarouselSlider from "@/components/carousel";
 import { RenderCarouselItem } from "@/components/carousel/carousel-item";
 // import TitleBadge from "@/components/custom/title-badge";
 import Heading from "@/components/custom/heading";
+import { useAppDispatch } from "@/redux/hooks/use-dispatch";
+import { fetchTeams } from "@/redux/features/teams-slice";
+import { useAppSelector } from "@/redux/hooks/use-selector";
 
-const teams = [
+const teamsData: Teams[] = [
 	{
+		id: "1",
 		image: "/teams/1.jpg",
+		alt: null,
 		name: "Naiden Smith",
 		designation: "outpatient surgery",
+		linkedin_profile: "#",
 	},
 	{
+		id: "2",
 		image: "/teams/2.jpg",
+		alt: null,
 		name: "Daniel Frankie",
 		designation: "outpatient surgery",
+		linkedin_profile: "#",
 	},
 	{
+		id: "3",
 		image: "/teams/3.jpg",
+		alt: null,
 		name: "Alex Jhon",
 		designation: "outpatient surgery",
+		linkedin_profile: "#",
 	},
 	{
+		id: "4",
 		image: "/teams/3.jpg",
+		alt: null,
 		name: "Alex Jhon",
 		designation: "outpatient surgery",
+		linkedin_profile: "#",
 	},
 	{
+		id: "5",
 		image: "/teams/4.jpg",
+		alt: null,
 		name: "Rihana Roy",
 		designation: "outpatient surgery",
+		linkedin_profile: "#",
 	},
 	{
+		id: "6",
 		image: "/teams/5.jpg",
+		alt: null,
 		name: "Jason Roy",
 		designation: "outpatient surgery",
+		linkedin_profile: "#",
 	},
 ];
 
 export default function Team() {
+	const dispatch = useAppDispatch();
+	const { loading, data } = useAppSelector((state) => state.rootReducer.teams);
+
+	let teams = teamsData;
+
+	if (!loading && data.length > 0) {
+		teams = data;
+	}
+
+	useEffect(() => {
+		const controller = new AbortController();
+		dispatch(fetchTeams(controller));
+		// dispatch partner
+		return () => controller.abort();
+	}, []); //eslint-disable-line
 	return (
 		<>
 			{/* <div className="flex justify-center mb-4">
