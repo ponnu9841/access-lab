@@ -51,7 +51,7 @@ export default function Gallery() {
 					</div>
 				)}
 				{!loading &&
-					gallery?.data.map((image) => (
+					gallery?.data.map((image: Gallery) => (
 						<div key={image.id}>
 							<div className="relative">
 								<NextImage className="aspect-square" src={image.image} />

@@ -33,13 +33,18 @@ export const metadata: Metadata = {
 export default function HomePage({
 	partners,
 	services,
+	banners,
 }: {
 	partners: Partner[];
 	services: Service[];
+	banners: Banner[];
 }) {
+	let sliderData = heroData;
+	if(banners && banners.length > 0) sliderData = banners
+
 	return (
 		<>
-			<HomeSlider sliderData={heroData} />
+			<HomeSlider sliderData={sliderData} />
 			{/* <ServiceCards /> */}
 
 			<section className="pt-6">
@@ -98,11 +103,13 @@ export async function getServerSideProps() {
 	try {
 		const partners = await axiosClient.get("/partner");
 		const services = await axiosClient.get("/service");
+		const banners = await axiosClient.get("/banner");
 
 		return {
 			props: {
 				partners: partners.data.data,
 				services: services.data.data,
+				banners: banners.data.data,
 			},
 		};
 	} catch (error) {

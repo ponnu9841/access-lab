@@ -1,4 +1,3 @@
-import { SvgIconProps } from "@/interfaces/common";
 const DoctorAlternate = (props: SvgIconProps) => (
 	<svg
 		id="Layer_1"

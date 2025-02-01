@@ -84,20 +84,26 @@ export const galleryImages = [
 	// { src: "/gallery/8.jpg", alt: "Image 8" },
 ];
 
-export const heroData = [
+export const heroData: Banner[] = [
 	{
+		id: "1",
 		image: "/hero-1.jpg",
+		alt: "",
 		title: "Convenient Home Lab Testing",
 		description:
 			"Experience the comfort of professional lab testing without leaving your home. ACCESS brings certified phlebotomists to your doorstep in Calicut, Ernakulam, Palakkad, and Thrissur.",
 	},
 	{
+		id: "2",
 		image: "/hero-2.jpg",
+		alt: "",
 		title: "Comprehensive Health Checkups",
 		description:
 			"From COVID-19 tests to full body health packages, ACCESS offers a wide range of essential medical tests. Take control of your health with our convenient and reliable services.",
 	},
 	{
+		id: "3",
+		alt: "",
 		image: "/hero-3.jpg",
 		title: "Fast, Secure Results",
 		description:

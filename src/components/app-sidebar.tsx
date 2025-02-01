@@ -18,7 +18,7 @@ import Link from "next/link";
 
 const items = [
 	{
-		title: "Dashboard",
+		title: "Home",
 		url: "/dashboard",
 		icon: Home,
 	},

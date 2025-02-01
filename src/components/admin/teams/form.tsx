@@ -50,13 +50,12 @@ export default function TeamsForm() {
 	};
 
 	useEffect(() => {
-		console.log(selectedData);
 		if (selectedData) {
 			reset({
 				name: selectedData.name,
 				imageAlt: selectedData.alt || "",
 				designation: selectedData.designation || "",
-				lindedInProfile: selectedData.lindedInProfile || "", // Assuming you have this field
+				lindedInProfile: selectedData.linkedin_profile || "", // Assuming you have this field
 			});
 			(async () => {
 				const fileUrl = selectedData.image; // Replace with your URL

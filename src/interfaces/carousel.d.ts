@@ -6,7 +6,7 @@ type CarouselCardProps = {
 };
 
 type CarouselSliderProps = CarouselCardProps & {
-	images?: { image: string; title: string; description: string }[];
+	images?: Banner[];
 	carouselContentClassName?: string | undefined;
 	orientation?: "horizontal" | "vertical" | undefined;
 	id?: string;

@@ -27,13 +27,12 @@ const ImageUpload = (props: ImageUploadPropsType) => {
 					const url = URL.createObjectURL(file);
 					file.url = url;
 					setImages((previousImages) => [...previousImages, file]);
-					// setSelectedImages((previousUrls) => [...previousUrls, url]);
 				});
 			} else if (files.length > 0) {
+				if(selectedImages.length > 0) URL.revokeObjectURL(selectedImages[0]);
 				const url = URL.createObjectURL(files[0]);
 				files[0].url = url;
 				setImages([files[0]]);
-				// setSelectedImages([url]);
 			}
 		}
 
@@ -48,7 +47,16 @@ const ImageUpload = (props: ImageUploadPropsType) => {
 		setSelectedImages((previousUrls) =>
 			previousUrls.filter((image) => image !== url)
 		);
+		URL.revokeObjectURL(url);
 	};
+
+	useEffect(() => {
+		return () => {
+			if (selectedImages.length > 0) {
+				selectedImages.forEach((url) => URL.revokeObjectURL(url));
+			}
+		};
+	}, [selectedImages]);
 
 	return (
 		<div

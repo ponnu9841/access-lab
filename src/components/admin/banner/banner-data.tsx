@@ -40,7 +40,7 @@ export default function BannerData() {
 										onDelete={() => deleteBanner(banner.id, banner.image)}
 									/>
 								</div>
-								<div className="absolute top-3 right-16">edit</div>
+								{/* <div className="absolute top-3 right-16">edit</div> */}
 							</div>
 
 							<div>

@@ -2,11 +2,7 @@ import React from "react";
 import CarouselSlider from "@/components/carousel";
 
 type HomeSliderProps = {
-	sliderData: {
-		image: string;
-		title: string;
-		description: string;
-	}[];
+	sliderData: Banner[];
 };
 
 export default function HomeSlider(props: HomeSliderProps) {
