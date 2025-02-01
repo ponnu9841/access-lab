@@ -7,11 +7,11 @@ import axiosClient from "@/axios/axios-client";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import {
 	fetchService,
-	setSelectedService,
+	// setSelectedService,
 } from "@/redux/features/service-slice";
 import parse from "html-react-parser";
-import { Button } from "@/components/ui/button";
-import { MdEdit } from "react-icons/md";
+// import { Button } from "@/components/ui/button";
+// import { MdEdit } from "react-icons/md";
 
 export default function UploadedServices() {
 	const dispatch = useAppDispatch();
@@ -55,13 +55,13 @@ export default function UploadedServices() {
 								src={service.image}
 								className="aspect-square max-w-[100px]"
 							/>
-							<Button
+							{/* <Button
 								size="icon"
 								className="w-8 h-8 absolute bottom-0 right-10"
 								onClick={() => dispatch(setSelectedService(service))}
 							>
 								<MdEdit />
-							</Button>
+							</Button> */}
 
 							<div className="absolute bottom-0 right-0">
 								<DeleteDrawer

@@ -47,6 +47,11 @@ const items = [
 		url: "/dashboard/teams",
 		icon: Home,
 	},
+	{
+		title: "Contact",
+		url: "/dashboard/contact",
+		icon: Home,
+	},
 ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

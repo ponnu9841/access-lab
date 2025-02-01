@@ -70,3 +70,12 @@ type Teams = {
 	designation: string | null;
     linkedin_profile: string | null;
 };
+
+type Contact = {
+	id: string;
+	location: string;
+	contactno_one: string;
+	contactno_two: string | null;
+	email_one: string;
+	email_two: string | null;
+}

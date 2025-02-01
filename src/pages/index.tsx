@@ -6,7 +6,7 @@ import HomeSlider from "@/components/section/home-slider";
 import Testimonials from "@/components/testimonials";
 import {
 	blogData,
-	contactData,
+	contactData as contactDummyData,
 	galleryImages,
 	images,
 	heroData,
@@ -34,13 +34,39 @@ export default function HomePage({
 	partners,
 	services,
 	banners,
+	contact,
 }: {
 	partners: Partner[];
 	services: Service[];
 	banners: Banner[];
+	contact: Contact;
 }) {
 	let sliderData = heroData;
-	if(banners && banners.length > 0) sliderData = banners
+	if (banners && banners.length > 0) sliderData = banners;
+
+	let contactData = contactDummyData;
+	if(contact) {
+		contactData = [
+			{
+				title: "Our Locations",
+				icon: "/icons/map.svg",
+				line1: contact.location,
+				line2: "",
+			},
+			{
+				title: "Give Us A Call",
+				icon: "/icons/message.svg",
+				line1: `+91 ${contact.contactno_one}`,
+				line2: contact.contactno_two ? `+91 ${contact.contactno_two}` : "",
+			},
+			{
+				title: "Help Desk",
+				icon: "/icons/help.svg",
+				line1: contact.email_one,
+				line2: contact.email_two || "",
+			},
+		]
+	}
 
 	return (
 		<>
@@ -55,7 +81,9 @@ export default function HomePage({
 				<AboutNew />
 			</section>
 			<section className="pb-16 bg-primary/5">
-				<Services services={services?.length > 0 ? services : serviceDummyData} />
+				<Services
+					services={services?.length > 0 ? services : serviceDummyData}
+				/>
 			</section>
 			<section>
 				<HomeSuccess />
@@ -104,12 +132,14 @@ export async function getServerSideProps() {
 		const partners = await axiosClient.get("/partner");
 		const services = await axiosClient.get("/service");
 		const banners = await axiosClient.get("/banner");
+		const contact = await axiosClient.get("/contact");
 
 		return {
 			props: {
 				partners: partners.data.data,
 				services: services.data.data,
 				banners: banners.data.data,
+				contact: contact.data.data,
 			},
 		};
 	} catch (error) {

@@ -1,11 +1,11 @@
 import axiosClient from "@/axios/axios-client";
 import NextImage from "@/components/Image";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { fetchTeams, setSelectedTeam } from "@/redux/features/teams-slice";
+import { fetchTeams } from "@/redux/features/teams-slice";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import { useAppSelector } from "@/redux/hooks/use-selector";
-import { MdEdit } from "react-icons/md";
+// import { MdEdit } from "react-icons/md";
 import { DeleteDrawer } from "../delete-drawer";
 
 export default function Teams() {
@@ -47,13 +47,13 @@ export default function Teams() {
 								src={team.image}
 								className="aspect-square max-w-[100px]"
 							/>
-							<Button
+							{/* <Button
 								size="icon"
 								className="w-8 h-8 absolute bottom-0 right-10"
 								onClick={() => dispatch(setSelectedTeam(team))}
 							>
 								<MdEdit />
-							</Button>
+							</Button> */}
 
 							<div className="absolute bottom-0 right-0">
 								<DeleteDrawer
@@ -67,9 +67,9 @@ export default function Teams() {
 							<span className="font-bold">Name: </span> {team?.name}
 						</div>
 						<div className="mt-4">
-							<span className="font-bold">Designation: </span> {team?.designation}
+							<span className="font-bold">Designation: </span>{" "}
+							{team?.designation}
 						</div>
-						
 					</div>
 				))}
 			</div>

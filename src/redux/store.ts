@@ -7,6 +7,7 @@ import serviceReducer from "./features/service-slice";
 import testimonialReducer from "./features/testimonial-slice";
 import galleryReducer from "./features/gallery-slice";
 import teamsReducer from "./features/teams-slice";
+import contactReducer from "./features/contact-slice";
 
 //Step 1
 const combinedReducer = combineReducers({
@@ -18,6 +19,7 @@ const combinedReducer = combineReducers({
 	testimonial: testimonialReducer,
 	gallery: galleryReducer,
 	teams: teamsReducer,
+	contact: contactReducer,
 });
 
 //eslint-disable-next-line
