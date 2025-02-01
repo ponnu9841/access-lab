@@ -84,7 +84,28 @@ export const teamsSchema = z.object({
 	name: z.string().min(3, "Name must be at least 3 characters"),
 	designation: z.string().optional(),
 	lindedInProfile: z.string().optional(),
-})
+});
+
+export const contactSchema = z.object({
+	id: z.string().optional(),
+	location: z.string().min(3, "Location must be at least 3 characters"),
+	contactOne: z.string().regex(/^\d{10}$/, {
+		message: "Phone number must be exactly 10 digits",
+	}),
+	contactTwo: z
+		.string()
+		.regex(/^\d{10}$/, {
+			message: "Phone number must be exactly 10 digits",
+		})
+		.optional(),
+	emailOne: z
+		.string()
+		.min(1, { message: "This field has to be filled." })
+		.email("This is not a valid email."),
+	emailTwo: z.string().email("This is not a valid email.").optional(),
+});
+
+export type ContactFormData = z.infer<typeof contactSchema>;
 
 export type TeamsFormData = z.infer<typeof teamsSchema>;
 

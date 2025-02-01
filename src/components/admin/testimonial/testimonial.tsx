@@ -1,14 +1,14 @@
 import NextImage from "@/components/Image";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
 	fetchTestimonial,
-	setSelectedTestimonial,
+	// setSelectedTestimonial,
 } from "@/redux/features/testimonial-slice";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import { useAppSelector } from "@/redux/hooks/use-selector";
 import React from "react";
-import { MdEdit } from "react-icons/md";
+// import { MdEdit } from "react-icons/md";
 import { DeleteDrawer } from "../delete-drawer";
 import axiosClient from "@/axios/axios-client";
 import parse from "html-react-parser";
@@ -61,13 +61,13 @@ export default function Testimonials() {
 									src={testimonial.video_url}
 								</iframe>
 							)}
-							<Button
+							{/* <Button
 								size="icon"
 								className="w-8 h-8 absolute bottom-0 right-10"
 								onClick={() => dispatch(setSelectedTestimonial(testimonial))}
 							>
 								<MdEdit />
-							</Button>
+							</Button> */}
 
 							<div className="absolute bottom-0 right-0">
 								<DeleteDrawer
