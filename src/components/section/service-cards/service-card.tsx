@@ -2,7 +2,6 @@
 // import NextImage from "@/components/Image";
 import Heading from "@/components/custom/heading";
 // import Doctor from "@/icons/doctor";
-import { ServiceCardProps } from "@/interfaces/common";
 import React from "react";
 
 export default function ServiceCard(props: ServiceCardProps) {

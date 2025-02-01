@@ -1,8 +1,9 @@
 type Banner = {
 	id: string;
 	image: string;
-	title: string;
-	description: string;
+	alt?: string;
+	title?: string;
+	description?: string;
 };
 
 type Partner = {

@@ -3,7 +3,6 @@ import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { getInitials } from "@/utils";
 import { cn } from "@/lib/utils";
-import { AvatarProps } from "@/interfaces/common";
 // import { User, type LucideIcon } from "lucide-react";
 
 // const sizeClasses = {

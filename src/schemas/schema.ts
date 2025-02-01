@@ -13,7 +13,7 @@ import { z } from "zod";
 //     { message: "Invalid document file type" }
 //   );
 
-const fileValidation = (val: unknown) => {
+export const fileValidation = (val: unknown) => {
 	if (val === null) {
 		return {
 			valid: false,
@@ -45,9 +45,9 @@ export const loginSchema = z.object({
 });
 
 export const bannerSchema = z.object({
-	image: z.custom<File[] | null>(fileValidation),
-	title: z.string(),
-	description: z.string(),
+	imageAlt: z.string().optional(),
+	title: z.string().optional(),
+	description: z.string().optional(),
 });
 
 export const partnerSchema = z.object({

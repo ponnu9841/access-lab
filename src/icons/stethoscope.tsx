@@ -1,5 +1,3 @@
-import { SvgIconProps } from "@/interfaces/common";
-import * as React from "react";
 
 const StethoscopeIcon = (props: SvgIconProps) => {
 	const { size = 24 } = props;
