@@ -14,6 +14,7 @@ export default function Blog(props: BlogPropsType) {
 			<SectionTitle
 				title="We are a full-service creative agency"
 				description="Our team of designers, developers and creatives are perfectionists who love what they do and love"
+				headingAnimation="fadeInDown"
 			/>
 			{/* <div className="flex justify-center mb-4">
 				<TitleBadge title="Blog" />

@@ -15,12 +15,21 @@ type SvgIconProps = SVGProps<SVGSVGElement> & {
 type ServiceCardProps = {
 	icon: React.JSX.Element;
 	hoverIcon: React.JSX.Element;
-	title: string ;
+	title: string;
 	description?: string;
 	children: ReactNode;
-	variant?: "primary" | "secondary"
-}
+	variant?: "primary" | "secondary";
+};
 
 type ExtendedFile = File & {
 	url: string;
-}
+};
+
+type AnimationType =
+	| "fadeIn"
+	| "fadeInUp"
+	| "fadeInDown"
+	| "zoomIn"
+	| "slideInLeft"
+	| "slideInRight"
+	| "textAnimation";

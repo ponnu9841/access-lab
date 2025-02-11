@@ -7,6 +7,8 @@ export default function Services({ services }: { services: Service[] }) {
 			<SectionTitle
 				title="We create a unique action plan for brands"
 				description="Get your company heading in the right direction with our digital marketing strategist"
+				headingAnimation="fadeInDown"
+				descriptionAnimation="fadeInUp"
 			/>
 			{/* <Heading
 				title="We create a unique action plan for brands"

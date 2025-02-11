@@ -17,33 +17,36 @@ export default function HomeSuccess() {
 				}
 				sectionRight={
 					<div>
-						<TitleBadge title="Your success is our success" />
+						<TitleBadge
+							title="Your success is our success"
+							animation="slideInRight"
+						/>
 						<SectionHeading
 							title="Web design, marketing & SEO solutions that get results"
+							headingAnimation="fadeInUp"
 						/>
-                        <div className="flex flex-col gap-y-8">
-                            <CustomSlider
-                                title="UX Design"
-                                value={81}
-                                backgroundColor="bg-primary"
-                            />
-                            <CustomSlider
-                                title="Marketing"
-                                value={72}
-                                backgroundColor="bg-primary"
-                            />
-                            <CustomSlider
-                                title="Web Design"
-                                value={81}
-                                backgroundColor="bg-primary"
-                            />
-                            <CustomSlider
-                                title="Development"
-                                value={81}
-                                backgroundColor="bg-primary"
-                            />
-                        </div>
-
+						<div className="flex flex-col gap-y-8">
+							<CustomSlider
+								title="UX Design"
+								value={81}
+								backgroundColor="bg-primary"
+							/>
+							<CustomSlider
+								title="Marketing"
+								value={72}
+								backgroundColor="bg-primary"
+							/>
+							<CustomSlider
+								title="Web Design"
+								value={81}
+								backgroundColor="bg-primary"
+							/>
+							<CustomSlider
+								title="Development"
+								value={81}
+								backgroundColor="bg-primary"
+							/>
+						</div>
 					</div>
 				}
 				// sectionRight={

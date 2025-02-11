@@ -80,7 +80,11 @@ export default function Team() {
 			{/* <div className="flex justify-center mb-4">
 				<TitleBadge title="Our Team" />
 			</div> */}
-			<Heading title="Meet Our Dedicated Team" className="text-center mb-12" />
+			<Heading
+				title="Meet Our Dedicated Team"
+				className="text-center mb-12"
+				animation="fadeInDown"
+			/>
 			<CarouselSlider
 				carouselContentClassName="justify-stretch max-w-[100%] pb-16"
 				id="teams-slider"

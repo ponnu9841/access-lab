@@ -105,10 +105,22 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 							<>
 								<div className="absolute inset-0 bg-black/50"></div>
 								<div className="absolute top-1/2 -translate-y-1/2 left-0 px-10 md:px-32 text-white">
-									{image.title && <Heading title={image.title} variant="h2" className="text-3xl xl:text-5xl" />}
-									<p className="max-w-2xl mt-2 text-base">
-										{image.description}
-									</p>
+									{image.title && (
+										<Heading
+											title={image.title}
+											variant="h2"
+											className="text-3xl xl:text-5xl"
+											animation="fadeInDown"
+										/>
+									)}
+									{image.description && (
+										<Heading
+											className="max-w-2xl mt-2 text-base"
+											title={image.description}
+											variant="p"
+											animation="slideInRight"
+										/>
+									)}
 								</div>
 							</>
 						)}

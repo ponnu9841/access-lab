@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import { useAppSelector } from "@/redux/hooks/use-selector";
 import { fetchGallery } from "@/redux/features/gallery-slice";
+import ZoomAnimation from "@/components/animation/zoom-animation";
 
 interface GalleryImagesProps {
 	imagesArray: Gallery[];
@@ -40,7 +41,11 @@ export default function ImageGallery(props: GalleryImagesProps) {
 			{/* <div className="flex justify-center items-center mb-2">
 				<TitleBadge title="gallery" />
 			</div> */}
-			<Heading title="Image Gallery" className="text-center mb-8" />
+			<Heading
+				title="Image Gallery"
+				className="text-center mb-8"
+				animation="fadeInDown"
+			/>
 			{/* <div className="flex flex-wrap justify-center items-start gap-4">
 				{images.map((image, index) => (
 					<div
@@ -90,14 +95,16 @@ export default function ImageGallery(props: GalleryImagesProps) {
 									<LinkIcon size={15} />
 								</div>
 							</div>
-							<div className="aspect-square">
-								<NextImage
-									src={image.image}
-									alt={image.alt || ""}
-									className="rounded-sm overflow-hidden"
-									imageClassName="object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
-								/>
-							</div>
+							<ZoomAnimation>
+								<div className="aspect-square">
+									<NextImage
+										src={image.image}
+										alt={image.alt || ""}
+										className="rounded-sm overflow-hidden"
+										imageClassName="object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+									/>
+								</div>
+							</ZoomAnimation>
 						</div>
 					</RenderCarouselItem>
 				))}

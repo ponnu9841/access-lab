@@ -9,6 +9,8 @@ export default function Contact(props: { contactData: ContactCardProps[] }) {
 			<SectionTitle
 				title="We are a full-service creative agency"
 				description="Our team of designers, developers and creatives are perfectionists who love what they do and love"
+				headingAnimation="fadeInDown"
+				descriptionAnimation="fadeInUp"
 			/>
 			<div className="py-12">
 				<div className="flex flex-wrap justify-center gap-8">
