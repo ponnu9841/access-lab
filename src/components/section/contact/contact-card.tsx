@@ -1,3 +1,4 @@
+import AnimateText from "@/components/animation/animate-text";
 import NextImage from "@/components/Image";
 import {
 	Card,
@@ -27,10 +28,16 @@ export default function ContactCard(props: ContactCardProps) {
 						/>
 					</div>
 					<div>
-						<CardTitle>{title}</CardTitle>
+						<CardTitle>
+							<AnimateText text={title} />
+						</CardTitle>
 						<CardDescription className="text-base mt-3">
-							<div>{line1}</div>
-							<div>{line2}</div>
+							<div>
+								<AnimateText text={line1} />
+							</div>
+							<div>
+								<AnimateText text={line2} />
+							</div>
 						</CardDescription>
 					</div>
 				</div>

@@ -1,3 +1,5 @@
+import ZoomAnimation from "@/components/animation/zoom-animation";
+import Heading from "@/components/custom/heading";
 import NextImage from "@/components/Image";
 import {
 	Card,
@@ -15,11 +17,13 @@ export default function BlogCard(props: BlogProps) {
 	return (
 		<Card className="group border-none">
 			<Link href="#" className="relative">
-				<NextImage
-					src={image}
-					className="aspect-video min-w-full"
-					imageClassName="object-cover"
-				/>
+				<ZoomAnimation>
+					<NextImage
+						src={image}
+						className="aspect-video min-w-full"
+						imageClassName="object-cover"
+					/>
+				</ZoomAnimation>
 				{/* <div className="absolute -bottom-4 left-4 bg-primary w-32 group-hover:bg-black text-white px-4 py-1.5 transition ease-in duration-500 flex justify-center items-center">
 					<div className="block group-hover:hidden">
 						{formatDateToMonthYear(date)}
@@ -34,11 +38,11 @@ export default function BlogCard(props: BlogProps) {
 				</div>
 				<Link href="#">
 					<CardTitle className="text-lg xl:text-xl hover:text-secondary">
-						{title}
+						<Heading variant="h5" title={title} />
 					</CardTitle>
 				</Link>
 				<CardDescription className="mt-3 line-clamp-4">
-					{description}
+					<Heading variant="p" title={description} className="text-sm" />
 				</CardDescription>
 				<div className="mt-4">
 					<Link

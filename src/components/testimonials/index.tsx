@@ -30,7 +30,7 @@ export default function Testimonials(props: TestimonialPropsType) {
 		<div className="container">
 			<div className="flex flex-col items-center justify-center mb-3">
 				{/* <TitleBadge title="Our Clients" /> */}
-				<Heading title="What our Clients Say About Us" />
+				<Heading title="What our Clients Say About Us" animation="fadeInDown" />
 			</div>
 			<div className="mt-6">
 				<CarouselSlider

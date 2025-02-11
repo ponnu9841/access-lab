@@ -2,6 +2,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import NextImage from "@/components/Image";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import AnimateText from "@/components/animation/animate-text";
 
 export default function TeamCard(props: Teams) {
 	const { image, name, designation, alt, linkedin_profile } = props;
@@ -45,10 +46,14 @@ export default function TeamCard(props: Teams) {
 				</div>
 				<CardContent>
 					<div className="border-none bg-background shadow-md w-[calc(100%-8rem)] absolute left-1/2 -translate-x-1/2 -bottom-10 group-hover:-bottom-6 px-6 py-4 transition-all duration-500">
-						<h3 className="text-2xl text-center font-semibold">{name}</h3>
-						<p className="text-primary text-sm uppercase text-center font-semibold">
-							{designation}
-						</p>
+						<h3 className="text-2xl text-center font-semibold">
+							<AnimateText text={name} />
+						</h3>
+						{designation && (
+							<p className="text-primary text-sm uppercase text-center font-semibold">
+								<AnimateText text={designation} />
+							</p>
+						)}
 					</div>
 				</CardContent>
 			</Card>

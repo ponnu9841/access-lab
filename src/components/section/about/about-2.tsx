@@ -4,6 +4,7 @@ import SectionTitle from "@/components/custom/section-title";
 import TitleBadge from "@/components/custom/title-badge2";
 import { Button } from "@/components/ui/button";
 import ParallaxTiltMultiple from "@/components/ui/parallax/parallax-multiple";
+import Link from "next/link";
 
 export default function AboutNew() {
 	return (
@@ -11,6 +12,8 @@ export default function AboutNew() {
 			<SectionTitle
 				title="We are a full-service creative agency"
 				description="Our team of designers, developers and creatives are perfectionists who love what they do and love"
+				headingAnimation="fadeInDown"
+				descriptionAnimation="fadeInUp"
 			/>
 			<div className="mt-12">
 				<SectionLayout
@@ -22,12 +25,20 @@ export default function AboutNew() {
 					}
 					sectionRight={
 						<div className="max-w-md">
-							<TitleBadge title="Every day brings new challenges" />
+							<TitleBadge
+								title="Every day brings new challenges"
+								animation="slideInRight"
+							/>
 							<SectionHeading
 								title="Creative agency focused on vision, product and people"
 								description="We’re boldly individual, always original and refreshingly easy-going. Our vision, passion and ideas are matched with focus, expertise and flair."
+								headingAnimation="fadeInUp"
 							/>
-							<Button size="lg">About Us</Button>
+							<Link href="/about">
+								<Button size="lg" className="mt-3">
+									About Us
+								</Button>
+							</Link>
 						</div>
 					}
 				/>
