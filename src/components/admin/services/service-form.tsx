@@ -26,11 +26,13 @@ export default function ServicesForm() {
 
 	const dispatch = useAppDispatch();
 	const [images, setImages] = useState<ExtendedFile[]>([]);
-	const { loading, selectedService } = useAppSelector(
+	const [loading, setLoading] = useState(false)
+	const { selectedService } = useAppSelector(
 		(state) => state.rootReducer.service
 	);
 
 	const onSubmit = (data: ServiceFormData) => {
+		setLoading(true);
 		const form = new FormData();
 		form.append("title", data.title);
 		form.append("shortDescription", data.shortDescription);
@@ -52,7 +54,8 @@ export default function ServicesForm() {
 			})
 			.catch((error) => {
 				console.log(error);
-			});
+				setLoading(false)
+			}).finally(() => setLoading(false));
 	};
 
 	useEffect(() => {
