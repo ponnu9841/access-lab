@@ -31,9 +31,9 @@ export default function App(props: AppPropsWithLayout) {
 						disableTransitionOnChange
 					>
 						<Component {...pageProps} />
+						<Toaster />
 					</ThemeProvider>
 				)}
-				<Toaster />
 			</ReduxWrapper>
 		</Provider>
 	);
