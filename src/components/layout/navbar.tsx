@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import NextImage from "@/components/Image";
-import { ThemeToggle } from "./ThemeToggle";
+// import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
 	{ name: "Home", link: "/" },
@@ -76,9 +76,9 @@ export default function Navbar() {
 									</Link>
 								</li>
 							))}
-							<div className="ml-5">
+							{/* <div className="ml-5">
 								<ThemeToggle />
-							</div>
+							</div> */}
 						</ul>
 						<div className="md:hidden flex items-center z-50">
 							<Sheet open={isOpen} onOpenChange={setIsOpen}>
