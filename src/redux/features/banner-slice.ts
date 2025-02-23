@@ -5,10 +5,12 @@ const initialState: {
 	loading: boolean;
 	data: Banner[];
 	error: any; //eslint-disable-line
+	selectedBanner: Banner | null;
 } = {
 	loading: true,
 	data: [],
 	error: "",
+	selectedBanner: null
 };
 
 export const fetchBanner = createAsyncThunk(
@@ -24,7 +26,11 @@ export const fetchBanner = createAsyncThunk(
 export const bannerSlice = createSlice({
 	name: "banner",
 	initialState,
-	reducers: {},
+	reducers: {
+		setSelectedBanner(state, action) {
+			state.selectedBanner = action.payload
+		},
+	},
 	extraReducers: (builder) => {
 		// Add reducers for additional action types here, and handle loading state as needed
 		builder.addCase(fetchBanner.pending, (state) => {
@@ -41,5 +47,7 @@ export const bannerSlice = createSlice({
 		});
 	},
 });
+
+export const { setSelectedBanner } = bannerSlice.actions
 
 export default bannerSlice.reducer;

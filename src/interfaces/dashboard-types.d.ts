@@ -28,7 +28,7 @@ type Service = Partner & {
 
 type Testimonial = {
 	id: string;
-	video_url?: string;
+	vido_url?: string;
 	image?: string;
 	alt?: string;
 	name: string;
