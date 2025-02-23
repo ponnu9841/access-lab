@@ -79,3 +79,15 @@ type Contact = {
 	email_one: string;
 	email_two: string | null;
 }
+
+type About = {
+	id: string;
+	title: string;
+	sub_title: string | null;
+	image_one: string;
+	image_two: string;
+	image_one_alt: string | null;
+	image_two_alt: string | null;
+	short_description: string;
+	long_description: string | null;
+}
