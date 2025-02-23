@@ -25,10 +25,18 @@ export default function AboutNew() {
 					}
 					sectionRight={
 						<div className="max-w-md">
-							<TitleBadge
-								title="Every day brings new challenges"
-								animation="slideInRight"
-							/>
+							<div className="md:hidden">
+								<TitleBadge
+									title="Every day brings new challenges"
+									animation="fadeInDown"
+								/>
+							</div>
+							<div className="hidden md:block">
+								<TitleBadge
+									title="Every day brings new challenges"
+									animation="slideInRight"
+								/>
+							</div>
 							<SectionHeading
 								title="Creative agency focused on vision, product and people"
 								description="We’re boldly individual, always original and refreshingly easy-going. Our vision, passion and ideas are matched with focus, expertise and flair."
