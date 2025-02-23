@@ -1,7 +1,7 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { useEffect } from "react";
-import { clearToken } from "@/services/localStorageService";
+import { clearToken, getToken } from "@/services/localStorageService";
 import { useRouter } from "next/router";
 import getCurrentRoute from "@/utils/getCurrentRoute";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
@@ -14,6 +14,11 @@ export default function DashBoardLayout({ children }: ReactChildren) {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	useEffect(() => {
+		const token = getToken();
+		if(!token){
+			router.push("/login");
+			return;
+		}
 		const controller = new AbortController();
 		dispatch(fetchUser({ controller }));
 		return () => controller.abort();
@@ -26,6 +31,8 @@ export default function DashBoardLayout({ children }: ReactChildren) {
 			handleToast("You are not authorized to access this page");
 			return
 		}
+		
+		
 	}, [user, router]);
 
 	if (user.type === "admin") {

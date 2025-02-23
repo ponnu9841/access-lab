@@ -30,7 +30,7 @@ export default function ServiceCard(props: Service) {
 						animation="fadeInDown"
 					/>
 				</Link>
-				<div className="text-center">{parse(short_description)}</div>
+				<div className="text-center line-clamp-2">{parse(short_description)}</div>
 			</div>
 		</ZoomAnimation>
 	);

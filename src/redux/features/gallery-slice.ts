@@ -17,12 +17,14 @@ export const fetchGallery = createAsyncThunk(
 	"fetchGallery",
 	async ({
 		pageNo = 1,
+		pageSize = 8,
 		controller,
 	}: {
 		pageNo?: number;
+		pageSize?: number;
 		controller?: AbortController;
 	}) => {
-		const response = await axiosClient.get(`/gallery?page=${pageNo}`, {
+		const response = await axiosClient.get(`/gallery?page=${pageNo}&page_size=${pageSize}`, {
 			signal: controller?.signal,
 		});
 		return response.data.data;

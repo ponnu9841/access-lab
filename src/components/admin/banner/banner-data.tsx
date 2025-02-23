@@ -1,6 +1,6 @@
 import NextImage from "@/components/Image";
 import { useAppSelector } from "@/redux/hooks/use-selector";
-import { DeleteDrawer } from "../delete-drawer";
+import { DeleteDrawer } from "@/components/admin/delete-drawer";
 import axiosClient from "@/axios/axios-client";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import { fetchBanner } from "@/redux/features/banner-slice";
