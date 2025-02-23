@@ -3,7 +3,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import React from "react";
 
 export type TextEditorProps = {
-	value: string;
+	value: string | undefined;
 	setValue: React.Dispatch<React.SetStateAction<string>>;
 	placeholder?: string;
 };

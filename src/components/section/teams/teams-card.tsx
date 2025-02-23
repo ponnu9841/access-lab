@@ -3,6 +3,8 @@ import NextImage from "@/components/Image";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import AnimateText from "@/components/animation/animate-text";
+import BlurAnimation from "@/components/animation/blur-animation";
+import parse from "html-react-parser";
 
 export default function TeamCard(props: Teams) {
 	const { image, name, designation, alt, linkedin_profile } = props;
@@ -50,9 +52,11 @@ export default function TeamCard(props: Teams) {
 							<AnimateText text={name} />
 						</h3>
 						{designation && (
-							<p className="text-primary text-sm uppercase text-center font-semibold">
-								<AnimateText text={designation} />
-							</p>
+							<div className="text-primary text-sm uppercase text-center font-semibold">
+								<BlurAnimation>
+									{parse(designation)}
+								</BlurAnimation>
+							</div>
 						)}
 					</div>
 				</CardContent>

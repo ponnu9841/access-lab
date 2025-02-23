@@ -45,17 +45,20 @@ export const loginSchema = z.object({
 });
 
 export const bannerSchema = z.object({
+	id: z.string().optional(),
 	imageAlt: z.string().optional(),
 	title: z.string().optional(),
 	description: z.string().optional(),
 });
 
 export const partnerSchema = z.object({
+	id: z.string().optional(),
 	// image: z.custom<File[] | null>(fileValidation),
 	imageAlt: z.string(),
 });
 
 export const serviceSchema = z.object({
+	id: z.string().optional(),
 	// image: z.custom<File[] | null>(fileValidation),
 	imageAlt: z.string().optional(),
 	title: z.string().min(3, "Title must be at least 3 characters"),
@@ -64,6 +67,7 @@ export const serviceSchema = z.object({
 });
 
 export const testimonialsSchema = z.object({
+	id: z.string().optional(),
 	// image: z.custom<File[] | null>(fileValidation),
 	videoUrl: z.string().optional(),
 	imageAlt: z.string().optional(),
@@ -73,6 +77,7 @@ export const testimonialsSchema = z.object({
 });
 
 export const gallerySchema = z.object({
+	id: z.string().optional(),
 	// image: z.custom<File[] | null>(fileValidation),
 	imageAlt: z.string().optional(),
 	title: z.string().optional(),
@@ -80,6 +85,7 @@ export const gallerySchema = z.object({
 });
 
 export const teamsSchema = z.object({
+	id: z.string().optional(),
 	imageAlt: z.string().optional(),
 	name: z.string().min(3, "Name must be at least 3 characters"),
 	designation: z.string().optional(),
