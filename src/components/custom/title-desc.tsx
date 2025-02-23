@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import parse from "html-react-parser"
 
 const TitleDescription = ({
 	desc,
@@ -8,7 +9,7 @@ const TitleDescription = ({
 	desc: string;
 	className?: string;
 }) => (
-	<motion.p
+	<motion.div
 		className={cn(
 			"text-muted-foreground font-semibold text-lg mt-3",
 			className
@@ -17,8 +18,8 @@ const TitleDescription = ({
 		whileInView={{ opacity: 1, filter: "blur(0)", y: 0 }}
 		transition={{ duration: 1, ease: "easeOut" }}
 	>
-		{desc}
-	</motion.p>
+		{parse(desc)}
+	</motion.div>
 );
 
 export default TitleDescription;

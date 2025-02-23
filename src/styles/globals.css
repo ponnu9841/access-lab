@@ -17,9 +17,9 @@
 	min-height: 80px !important;
 }
 
-/* body {
-	cursor: none;
-} */
+body {
+	overflow-x: hidden;
+}
 
 @layer base {
 	:root {
