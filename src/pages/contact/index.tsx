@@ -1,11 +1,13 @@
 import axiosClient from "@/axios/axios-client";
 import SectionTitle from "@/components/custom/section-title";
+import HeadTags from "@/components/head-tags";
 import Layout from "@/components/layout";
 import BannerPages from "@/components/section/banner-pages";
 import ContactCard from "@/components/section/contact/contact-card";
 import { Card } from "@/components/ui/card";
 import {
   getContactData,
+  getCurrentMetaTag,
   getCurrentPageBanner,
   getCurrentSectionHeading,
 } from "@/utils";
@@ -14,16 +16,20 @@ export default function ContactPage({
   contact,
   heading,
   banners,
+  metaTags,
 }: {
   contact: Contact | null;
   heading: Heading[] | [];
   banners: PagesBanner[] | [];
+  metaTags: Seo[] | [];
 }) {
   const contactData = getContactData(contact);
   const contactHeading = getCurrentSectionHeading(heading, "contact");
   const contactBanner = getCurrentPageBanner(banners, "contact");
+  const currentMetaTag = getCurrentMetaTag(metaTags, "contact");
   return (
-    <div>
+    <>
+      <HeadTags currentMetaTag={currentMetaTag} />
       <BannerPages
         image={contactBanner?.image || "/banner-page.jpg"}
         title={contactBanner?.title}
@@ -63,7 +69,7 @@ export default function ContactPage({
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
 
@@ -73,10 +79,11 @@ ContactPage.getLayout = function getLayout(page: React.ReactElement) {
 
 export async function getServerSideProps() {
   try {
-    const [banners, contact, heading] = await Promise.all([
+    const [banners, contact, heading, metaTags] = await Promise.all([
       axiosClient.get("/pagesBanner"),
-      axiosClient.get("/about"),
-      axiosClient.get("heading"),
+      axiosClient.get("/contact"),
+      axiosClient.get("/heading"),
+      axiosClient.get("/seoTags"),
     ]);
 
     return {
@@ -84,6 +91,7 @@ export async function getServerSideProps() {
         banners: banners.data.data,
         contact: contact.data.data,
         heading: heading.data.data,
+        metaTags: metaTags.data.data,
       },
     };
   } catch (error) {

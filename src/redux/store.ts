@@ -11,6 +11,7 @@ import contactReducer from "./features/contact-slice";
 import aboutReducer from "./features/about-slice";
 import headingsReducer from "./features/heading-slice";
 import pagesBannerReducer from "./features/pages-banner-slice";
+import seoReducer from "./features/seo-slice";
 
 //Step 1
 const combinedReducer = combineReducers({
@@ -26,6 +27,7 @@ const combinedReducer = combineReducers({
 	about: aboutReducer,
 	headings: headingsReducer,
 	pagesBanner: pagesBannerReducer,
+	seoTags: seoReducer
 });
 
 //eslint-disable-next-line

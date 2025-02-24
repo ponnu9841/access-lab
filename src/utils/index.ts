@@ -93,7 +93,7 @@ export function getSectionHeadings() {
 }
 
 export function getPages() {
-  return ["about", "services", "contact"];
+  return ["home", "about", "services", "contact"];
 }
 
 export function getCurrentSectionHeading(headings: Heading[], section: string) {
@@ -102,4 +102,8 @@ export function getCurrentSectionHeading(headings: Heading[], section: string) {
 
 export function getCurrentPageBanner(banners: PagesBanner[], page: string) {
   return banners?.find((banner) => banner.page === page);
+}
+
+export function getCurrentMetaTag(metaTags: Seo[], page: string) {
+  return metaTags?.find((metaTag) => metaTag.page === page);
 }
