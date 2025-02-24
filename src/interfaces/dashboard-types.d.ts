@@ -92,3 +92,18 @@ type About = {
 	short_description: string;
 	long_description: string | null;
 }
+
+type Heading = {
+	id: string;
+	title: string;
+	description: string | null;
+	section: string;
+}
+
+type PagesBanner = {
+	id: string;
+	image: string;
+	alt: string | null;
+	title: string | null;
+	page: string;
+}

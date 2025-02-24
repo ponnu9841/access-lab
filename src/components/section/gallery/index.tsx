@@ -14,9 +14,11 @@ import { useAppSelector } from "@/redux/hooks/use-selector";
 import { fetchGallery } from "@/redux/features/gallery-slice";
 import ZoomAnimation from "@/components/animation/zoom-animation";
 import GalleryDialog from "@/components/gallery-dialog";
+import { getCurrentSectionHeading } from "@/utils";
 
 interface GalleryImagesProps {
   imagesArray: Gallery[];
+  heading: Heading[];
 }
 
 export default function ImageGallery(props: GalleryImagesProps) {
@@ -25,6 +27,7 @@ export default function ImageGallery(props: GalleryImagesProps) {
   const { gallery } = useAppSelector((state) => state.rootReducer.gallery);
   const dispatch = useAppDispatch();
   const images = gallery?.data?.length ? gallery?.data : imagesArray;
+  const galleryHeading = getCurrentSectionHeading(props.heading, "gallery");
 
   const openDialog = (id: string) => setSelectedImage(id);
 
@@ -32,7 +35,7 @@ export default function ImageGallery(props: GalleryImagesProps) {
     const controller = new AbortController();
     dispatch(fetchGallery({ controller }));
     return () => controller.abort();
-  }, []);
+  }, []); //eslint-disable-line
 
   return (
     <div>
@@ -40,7 +43,7 @@ export default function ImageGallery(props: GalleryImagesProps) {
 				<TitleBadge title="gallery" />
 			</div> */}
       <Heading
-        title="Image Gallery"
+        title={galleryHeading?.title || "Image Gallery"}
         className="text-center mb-8"
         animation="fadeInDown"
       />

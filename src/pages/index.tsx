@@ -37,12 +37,15 @@ export default function HomePage({
   banners,
   contact,
   about,
+  heading,
 }: {
   partners: Partner[];
   services: Service[];
   banners: Banner[];
   contact: Contact | null;
   about: About | null;
+  heading: Heading[] | [];
+  pagesBanner: PagesBanner[] | [];
 }) {
   let sliderData = heroData;
   if (banners && banners.length > 0) sliderData = banners;
@@ -64,12 +67,13 @@ export default function HomePage({
 
       {about && (
         <section className="pb-8 pt-10">
-          <AboutNew aboutData={about} />
+          <AboutNew aboutData={about} heading={heading} />
         </section>
       )}
       <section className="pb-16 bg-primary/5">
         <Services
           services={services?.length > 0 ? services : serviceDummyData}
+          heading={heading}
         />
       </section>
       {/* <section>
@@ -85,18 +89,18 @@ export default function HomePage({
 			</section> */}
 
       <section className="pb-24 bg-secondary/5">
-        <Testimonials testimonials={testimonials} />
+        <Testimonials testimonials={testimonials} heading={heading} />
       </section>
 
       {/* <section className="py-28 bg-primary/5 relative before:content-[''] lg:before:absolute lg:before:top-0 lg:before:right-0 lg:before:w-[45%] lg:before:h-full lg:before:bg-primary">
 				<About />
 			</section> */}
       <section className="container">
-        <Team />
+        <Team heading={heading} />
       </section>
 
       <section className="container">
-        <ImageGallery imagesArray={galleryImages} />
+        <ImageGallery imagesArray={galleryImages} heading={heading} />
       </section>
 
       {/* <section>
@@ -104,7 +108,7 @@ export default function HomePage({
 			</section> */}
 
       <section className="container">
-        <Contact contactData={contactData} />
+        <Contact contactData={contactData} heading={heading} />
       </section>
     </>
   );
@@ -116,13 +120,15 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 
 export async function getServerSideProps() {
   try {
-    const [partners, services, banners, contact, about] = await Promise.all([
-      axiosClient.get("/partner"),
-      axiosClient.get("/service"),
-      axiosClient.get("/banner"),
-      axiosClient.get("/contact"),
-      axiosClient.get("/about"),
-    ]);
+    const [partners, services, banners, contact, about, heading] =
+      await Promise.all([
+        axiosClient.get("/partner"),
+        axiosClient.get("/service"),
+        axiosClient.get("/banner"),
+        axiosClient.get("/contact"),
+        axiosClient.get("/about"),
+        axiosClient.get("heading"),
+      ]);
 
     return {
       props: {
@@ -131,6 +137,7 @@ export async function getServerSideProps() {
         banners: banners.data.data,
         contact: contact.data.data,
         about: about.data.data,
+        heading: heading.data.data,
       },
     };
   } catch (error) {

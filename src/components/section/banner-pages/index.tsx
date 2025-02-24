@@ -4,9 +4,11 @@ import NextImage from "@/components/Image";
 export default function BannerPages({
   image,
   title,
+  alt,
 }: {
   image: string;
-  title: string;
+  title?: string | null;
+  alt?: string | null;
 }) {
   return (
     <div className="relative">
@@ -14,15 +16,18 @@ export default function BannerPages({
         src={image}
         imageClassName="object-cover"
         className="w-full min-h-[60vh]"
+        alt={alt || ""}
       />
       <div className="absolute inset-0 w-full h-full bg-black/40"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <Heading
-          title={title}
-          className="text-white font-bold tracking-wider"
-          variant="h1"
-        />
-      </div>
+      {title && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <Heading
+            title={title}
+            className="text-white font-bold tracking-wider"
+            variant="h1"
+          />
+        </div>
+      )}
     </div>
   );
 }

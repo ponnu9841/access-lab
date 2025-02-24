@@ -4,18 +4,41 @@ import Layout from "@/components/layout";
 import BannerPages from "@/components/section/banner-pages";
 import ContactCard from "@/components/section/contact/contact-card";
 import { Card } from "@/components/ui/card";
-import { getContactData } from "@/utils";
+import {
+  getContactData,
+  getCurrentPageBanner,
+  getCurrentSectionHeading,
+} from "@/utils";
 
-export default function ContactPage({ contact }: { contact: Contact | null }) {
+export default function ContactPage({
+  contact,
+  heading,
+  banners,
+}: {
+  contact: Contact | null;
+  heading: Heading[] | [];
+  banners: PagesBanner[] | [];
+}) {
   const contactData = getContactData(contact);
+  const contactHeading = getCurrentSectionHeading(heading, "contact");
+  const contactBanner = getCurrentPageBanner(banners, "contact");
   return (
     <div>
-      <BannerPages image="/banner-page.jpg" title="Contact Us" />
+      <BannerPages
+        image={contactBanner?.image || "/banner-page.jpg"}
+        title={contactBanner?.title}
+        alt={contactBanner?.alt}
+      />
       <section className="container md:mb-12">
         <div className="mb-8">
           <SectionTitle
-            title="We are a full-service creative agency"
-            description="Our team of designers, developers and creatives are perfectionists who love what they do and love"
+            title={
+              contactHeading?.title || "We are a full-service creative agency"
+            }
+            description={
+              contactHeading?.description ||
+              "Our team of designers, developers and creatives are perfectionists who love what they do and love"
+            }
             headingAnimation="fadeInDown"
             descriptionAnimation="fadeInUp"
           />
@@ -50,11 +73,17 @@ ContactPage.getLayout = function getLayout(page: React.ReactElement) {
 
 export async function getServerSideProps() {
   try {
-    const contact = await axiosClient.get("/contact");
+    const [banners, contact, heading] = await Promise.all([
+      axiosClient.get("/pagesBanner"),
+      axiosClient.get("/about"),
+      axiosClient.get("heading"),
+    ]);
 
     return {
       props: {
+        banners: banners.data.data,
         contact: contact.data.data,
+        heading: heading.data.data,
       },
     };
   } catch (error) {
