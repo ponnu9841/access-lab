@@ -107,3 +107,10 @@ type PagesBanner = {
 	title: string | null;
 	page: string;
 }
+
+type Seo = {
+	id: string;
+	title: string;
+	description: string;
+	page: string;
+}

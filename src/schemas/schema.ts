@@ -136,6 +136,15 @@ export const pagesBannerSchema = z.object({
 	page: z.string()
 });
 
+export const seoSchema = z.object({
+	id: z.string().optional(),
+	title: z.string().min(3, "Title must be at least 3 characters"),
+	description: z.string().min(3, "Title must be at least 3 characters"),
+	page: z.string(),
+})
+
+export type SeoFormData = z.infer<typeof seoSchema>;
+
 export type PagesBannerFormData = z.infer<typeof pagesBannerSchema>;
 
 export type HeadingFormData = z.infer<typeof headingSchema>;

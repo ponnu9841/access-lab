@@ -23,8 +23,8 @@ import Services from "@/components/section/services/services2";
 import Contact from "@/components/section/contact";
 import Layout from "@/components/layout";
 import axiosClient from "@/axios/axios-client";
-import { getContactData } from "@/utils";
-import Head from "next/head";
+import { getContactData, getCurrentMetaTag } from "@/utils";
+import HeadTags from "@/components/head-tags";
 
 export const metadata: Metadata = {
   title: "Home Page",
@@ -38,6 +38,7 @@ export default function HomePage({
   contact,
   about,
   heading,
+  metaTags
 }: {
   partners: Partner[];
   services: Service[];
@@ -46,18 +47,17 @@ export default function HomePage({
   about: About | null;
   heading: Heading[] | [];
   pagesBanner: PagesBanner[] | [];
+  metaTags: Seo[] | [];
 }) {
   let sliderData = heroData;
   if (banners && banners.length > 0) sliderData = banners;
 
   const contactData = getContactData(contact);
+  const currentMetaTag = getCurrentMetaTag(metaTags, "home");
 
   return (
     <>
-      <Head>
-        <title>Access Labs</title>
-        <meta name="description" content="Access Labs" />
-      </Head>
+      <HeadTags currentMetaTag={currentMetaTag} />
       <HomeSlider sliderData={sliderData} />
       {/* <ServiceCards /> */}
 
@@ -120,7 +120,7 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 
 export async function getServerSideProps() {
   try {
-    const [partners, services, banners, contact, about, heading] =
+    const [partners, services, banners, contact, about, heading, metaTags] =
       await Promise.all([
         axiosClient.get("/partner"),
         axiosClient.get("/service"),
@@ -128,6 +128,7 @@ export async function getServerSideProps() {
         axiosClient.get("/contact"),
         axiosClient.get("/about"),
         axiosClient.get("heading"),
+        axiosClient.get("seoTags"),
       ]);
 
     return {
@@ -138,6 +139,7 @@ export async function getServerSideProps() {
         contact: contact.data.data,
         about: about.data.data,
         heading: heading.data.data,
+        metaTags: metaTags.data.data,
       },
     };
   } catch (error) {

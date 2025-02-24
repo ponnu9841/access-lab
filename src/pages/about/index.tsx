@@ -1,22 +1,27 @@
 import axiosClient from "@/axios/axios-client";
+import HeadTags from "@/components/head-tags";
 import Layout from "@/components/layout";
 import AboutNew from "@/components/section/about/about-2";
 import BannerPages from "@/components/section/banner-pages";
-import { getCurrentPageBanner } from "@/utils";
+import { getCurrentMetaTag, getCurrentPageBanner } from "@/utils";
 import React from "react";
 
 export default function AboutPage({
   about,
   heading,
   banners,
+  metaTags,
 }: {
   about: About | null;
   heading: Heading[] | [];
   banners: PagesBanner[] | [];
+  metaTags: Seo[] | [];
 }) {
   const aboutBanner = getCurrentPageBanner(banners, "about");
+  const currentMetaTag = getCurrentMetaTag(metaTags, "about");
   return (
     <>
+      <HeadTags currentMetaTag={currentMetaTag} />
       <BannerPages
         image={aboutBanner?.image || "/banner-page.jpg"}
         title={aboutBanner?.title}
@@ -30,15 +35,17 @@ export default function AboutPage({
 }
 
 AboutPage.getLayout = function getLayout(page: React.ReactElement) {
+  console.log(page)
   return <Layout>{page}</Layout>;
 };
 
 export async function getServerSideProps() {
   try {
-    const [banners, about, heading] = await Promise.all([
+    const [banners, about, heading, metaTags] = await Promise.all([
       axiosClient.get("/pagesBanner"),
       axiosClient.get("/about"),
-      axiosClient.get("heading"),
+      axiosClient.get("/heading"),
+      axiosClient.get("/seoTags"),
     ]);
 
     return {
@@ -46,6 +53,7 @@ export async function getServerSideProps() {
         banners: banners.data.data,
         about: about.data.data,
         heading: heading.data.data,
+        metaTags: metaTags.data.data,
       },
     };
   } catch (error) {
