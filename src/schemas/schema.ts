@@ -95,6 +95,7 @@ export const teamsSchema = z.object({
 export const contactSchema = z.object({
 	id: z.string().optional(),
 	location: z.string().min(3, "Location must be at least 3 characters"),
+	map: z.string().url("This is not a valid URL."),
 	contactOne: z.string().regex(/^\d{10}$/, {
 		message: "Phone number must be exactly 10 digits",
 	}),
