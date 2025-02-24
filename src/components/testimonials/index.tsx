@@ -7,9 +7,11 @@ import TestimonialCard from "./testimonial-card2";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import { fetchTestimonial } from "@/redux/features/testimonial-slice";
 import { useAppSelector } from "@/redux/hooks/use-selector";
+import { getCurrentSectionHeading } from "@/utils";
 
 type TestimonialPropsType = {
 	testimonials: Testimonial[];
+	heading: Heading[]
 };
 
 export default function Testimonials(props: TestimonialPropsType) {
@@ -18,19 +20,20 @@ export default function Testimonials(props: TestimonialPropsType) {
 		(state) => state.rootReducer.testimonial
 	);
 	const testimonials = data.length > 0 ? data : props.testimonials;
+	const testimonialHeading = getCurrentSectionHeading(props.heading, "testimonials");
 
 	useEffect(() => {
 		const controller = new AbortController();
 		dispatch(fetchTestimonial(controller));
 		// dispatch partner
 		return () => controller.abort();
-	}, []);
+	}, []); //eslint-disable-line
 	
 	return (
 		<div className="container">
 			<div className="flex flex-col items-center justify-center mb-3">
 				{/* <TitleBadge title="Our Clients" /> */}
-				<Heading title="What our Clients Say About Us" animation="fadeInDown" />
+				<Heading title={testimonialHeading?.title || "What our Clients Say About Us"} animation="fadeInDown" />
 			</div>
 			<div className="mt-6">
 				<CarouselSlider

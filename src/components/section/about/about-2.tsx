@@ -4,16 +4,27 @@ import SectionTitle from "@/components/custom/section-title";
 import TitleBadge from "@/components/custom/title-badge2";
 import { Button } from "@/components/ui/button";
 import ParallaxTiltMultiple from "@/components/ui/parallax/parallax-multiple";
+import { getCurrentSectionHeading } from "@/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function AboutNew({ aboutData }: { aboutData: About }) {
+export default function AboutNew({
+  aboutData,
+  heading,
+}: {
+  aboutData: About;
+  heading: Heading[] | [];
+}) {
   const router = useRouter();
+  const aboutHeading = getCurrentSectionHeading(heading, "about");
   return (
     <div className="container">
       <SectionTitle
-        title="We are a full-service creative agency"
-        description="Our team of designers, developers and creatives are perfectionists who love what they do and love"
+        title={aboutHeading?.title || "We are a full-service creative agency"}
+        description={
+          aboutHeading?.description ||
+          "Our team of designers, developers and creatives are perfectionists who love what they do and love"
+        }
         headingAnimation="fadeInDown"
         descriptionAnimation="fadeInUp"
       />

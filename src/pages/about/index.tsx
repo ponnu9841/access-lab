@@ -2,13 +2,29 @@ import axiosClient from "@/axios/axios-client";
 import Layout from "@/components/layout";
 import AboutNew from "@/components/section/about/about-2";
 import BannerPages from "@/components/section/banner-pages";
+import { getCurrentPageBanner } from "@/utils";
 import React from "react";
 
-export default function AboutPage({ about }: { about: About | null }) {
+export default function AboutPage({
+  about,
+  heading,
+  banners,
+}: {
+  about: About | null;
+  heading: Heading[] | [];
+  banners: PagesBanner[] | [];
+}) {
+  const aboutBanner = getCurrentPageBanner(banners, "about");
   return (
     <>
-      <BannerPages image="/banner-page.jpg" title="About Us" />
-      <section>{about && <AboutNew aboutData={about} />}</section>
+      <BannerPages
+        image={aboutBanner?.image || "/banner-page.jpg"}
+        title={aboutBanner?.title}
+        alt={aboutBanner?.alt || ""}
+      />
+      <section>
+        {about && <AboutNew aboutData={about} heading={heading} />}
+      </section>
     </>
   );
 }
@@ -19,11 +35,17 @@ AboutPage.getLayout = function getLayout(page: React.ReactElement) {
 
 export async function getServerSideProps() {
   try {
-    const about = await axiosClient.get("/about");
+    const [banners, about, heading] = await Promise.all([
+      axiosClient.get("/pagesBanner"),
+      axiosClient.get("/about"),
+      axiosClient.get("heading"),
+    ]);
 
     return {
       props: {
+        banners: banners.data.data,
         about: about.data.data,
+        heading: heading.data.data,
       },
     };
   } catch (error) {

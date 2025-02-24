@@ -3,13 +3,25 @@ import NextImage from "@/components/Image";
 import Layout from "@/components/layout";
 import BannerPages from "@/components/section/banner-pages";
 import { Button } from "@/components/ui/button";
+import { getCurrentPageBanner } from "@/utils";
 import parse from "html-react-parser";
 import Link from "next/link";
 
-export default function ServicePage({ services }: { services: Service[] }) {
+export default function ServicePage({
+  services,
+  banners,
+}: {
+  services: Service[];
+  banners: PagesBanner[] | [];
+}) {
+  const serviceBanner = getCurrentPageBanner(banners, "services");
   return (
     <>
-      <BannerPages image="/banner-page.jpg" title="Services" />
+      <BannerPages
+        image={serviceBanner?.image || "/banner-page.jpg"}
+        title={serviceBanner?.title}
+        alt={serviceBanner?.alt || ""}
+      />
 
       <div className="container mt-12 md:mt-24 mb-12">
         {services.map((service, index) => (
@@ -30,7 +42,9 @@ export default function ServicePage({ services }: { services: Service[] }) {
                 {parse(service.short_description)}
               </div>
               <Link href={`/services/${service.id}`}>
-                <Button variant="link" className="p-0 text-base underline">Read More</Button>
+                <Button variant="link" className="p-0 text-base underline">
+                  Read More
+                </Button>
               </Link>
             </div>
           </div>
@@ -46,10 +60,14 @@ ServicePage.getLayout = function getLayout(page: React.ReactElement) {
 
 export async function getServerSideProps() {
   try {
-    const services = await axiosClient.get("/service");
+    const [banners, services] = await Promise.all([
+      axiosClient.get("/pagesBanner"),
+      axiosClient.get("/service"),
+    ]);
 
     return {
       props: {
+        banners: banners.data.data,
         services: services.data.data,
       },
     };

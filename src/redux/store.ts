@@ -9,6 +9,8 @@ import galleryReducer from "./features/gallery-slice";
 import teamsReducer from "./features/teams-slice";
 import contactReducer from "./features/contact-slice";
 import aboutReducer from "./features/about-slice";
+import headingsReducer from "./features/heading-slice";
+import pagesBannerReducer from "./features/pages-banner-slice";
 
 //Step 1
 const combinedReducer = combineReducers({
@@ -22,6 +24,8 @@ const combinedReducer = combineReducers({
 	teams: teamsReducer,
 	contact: contactReducer,
 	about: aboutReducer,
+	headings: headingsReducer,
+	pagesBanner: pagesBannerReducer,
 });
 
 //eslint-disable-next-line

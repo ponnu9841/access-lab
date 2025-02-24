@@ -122,6 +122,24 @@ export const aboutSchema = z.object({
 	longDescription: z.string().optional(),
 });
 
+export const headingSchema = z.object({
+	id: z.string().optional(),
+	title: z.string().min(3, "Title must be at least 3 characters"),
+	description: z.string().optional(),
+	section: z.string()
+})
+
+export const pagesBannerSchema = z.object({
+	id: z.string().optional(),
+	title: z.string().optional(),
+	alt: z.string().optional(),
+	page: z.string()
+});
+
+export type PagesBannerFormData = z.infer<typeof pagesBannerSchema>;
+
+export type HeadingFormData = z.infer<typeof headingSchema>;
+
 export type AboutFormData = z.infer<typeof aboutSchema>;
 
 export type ContactFormData = z.infer<typeof contactSchema>;

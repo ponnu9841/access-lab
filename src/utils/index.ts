@@ -82,3 +82,24 @@ export const getContactData = (contact: Contact | null) => {
   }
   return contactData;
 };
+
+export function capitalizeFirstLetter(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function getSectionHeadings() {
+  return ["about", "services", "testimonials", "teams", "gallery", "contact"];
+}
+
+export function getPages() {
+  return ["about", "services", "contact"];
+}
+
+export function getCurrentSectionHeading(headings: Heading[], section: string) {
+  return headings?.find((heading) => heading.section === section);
+}
+
+export function getCurrentPageBanner(banners: PagesBanner[], page: string) {
+  return banners?.find((banner) => banner.page === page);
+}
