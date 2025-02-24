@@ -18,9 +18,9 @@ export interface ContactCardProps {
 export default function ContactCard(props: ContactCardProps) {
 	const { icon, title, line1, line2 } = props;
 	return (
-		<Card className="shadow-2xl p-2 pt-10 pb-6 border-none">
+		<Card className="shadow-2xl p-2 pt-10 pb-6 border-none h-full">
 			<CardContent>
-				<div className="flex space-x-10">
+				<div className="flex space-x-5 md:space-x-10">
 					<div>
 						<NextImage
 							src={icon}

@@ -5,8 +5,7 @@ import ImageGallery from "@/components/section/gallery";
 import HomeSlider from "@/components/section/home-slider";
 import Testimonials from "@/components/testimonials";
 import {
-  blogData,
-  contactData as contactDummyData,
+  // blogData,
   galleryImages,
   images,
   heroData,
@@ -17,13 +16,15 @@ import {
 // import BannerWhy from "@/components/section/banner-why";
 // import ServiceCards from "@/components/section/service-cards";
 import Team from "@/components/section/teams";
-import Blog from "@/components/section/blog";
+// import Blog from "@/components/section/blog";
 import AboutNew from "@/components/section/about/about-2";
 import Services from "@/components/section/services/services2";
 // import HomeSuccess from "@/components/section/home-success";
 import Contact from "@/components/section/contact";
 import Layout from "@/components/layout";
 import axiosClient from "@/axios/axios-client";
+import { getContactData } from "@/utils";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Home Page",
@@ -46,32 +47,14 @@ export default function HomePage({
   let sliderData = heroData;
   if (banners && banners.length > 0) sliderData = banners;
 
-  let contactData = contactDummyData;
-  if (contact) {
-    contactData = [
-      {
-        title: "Our Locations",
-        icon: "/icons/map.svg",
-        line1: contact.location,
-        line2: "",
-      },
-      {
-        title: "Give Us A Call",
-        icon: "/icons/message.svg",
-        line1: `+91 ${contact.contactno_one}`,
-        line2: contact.contactno_two ? `+91 ${contact.contactno_two}` : "",
-      },
-      {
-        title: "Help Desk",
-        icon: "/icons/help.svg",
-        line1: contact.email_one,
-        line2: contact.email_two || "",
-      },
-    ];
-  }
+  const contactData = getContactData(contact);
 
   return (
     <>
+      <Head>
+        <title>Access Labs</title>
+        <meta name="description" content="Access Labs" />
+      </Head>
       <HomeSlider sliderData={sliderData} />
       {/* <ServiceCards /> */}
 
@@ -93,9 +76,9 @@ export default function HomePage({
 				<HomeSuccess />
 			</section> */}
 
-      <section className="container pb-12">
+      {/* <section className="container pb-12">
         <Blog blogs={blogData} />
-      </section>
+      </section> */}
 
       {/* <section className="pb-16">
 				<WhyUs />
@@ -133,11 +116,13 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 
 export async function getServerSideProps() {
   try {
-    const partners = await axiosClient.get("/partner");
-    const services = await axiosClient.get("/service");
-    const banners = await axiosClient.get("/banner");
-    const contact = await axiosClient.get("/contact");
-    const about = await axiosClient.get("/about");
+    const [partners, services, banners, contact, about] = await Promise.all([
+      axiosClient.get("/partner"),
+      axiosClient.get("/service"),
+      axiosClient.get("/banner"),
+      axiosClient.get("/contact"),
+      axiosClient.get("/about"),
+    ]);
 
     return {
       props: {

@@ -60,11 +60,13 @@ export default function AboutNew({ aboutData }: { aboutData: About }) {
                 }
                 headingAnimation="fadeInUp"
               />
-              <Link href="/about">
-                <Button size="lg" className="mt-3">
-                  About Us
-                </Button>
-              </Link>
+              {router.pathname === "/" && (
+                <Link href="/about">
+                  <Button size="lg" className="mt-3">
+                    About Us
+                  </Button>
+                </Link>
+              )}
             </div>
           }
         />

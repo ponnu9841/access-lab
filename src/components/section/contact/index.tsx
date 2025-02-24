@@ -13,10 +13,10 @@ export default function Contact(props: { contactData: ContactCardProps[] }) {
 				descriptionAnimation="fadeInUp"
 			/>
 			<div className="py-12">
-				<div className="flex flex-wrap justify-center gap-8">
+				<div className="flex flex-wrap justify-center items-stretch gap-8">
 					{contactData.map((item, index) => (
 						<div
-							className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)]"
+							className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)] h-full"
 							key={index}
 						>
 							<ContactCard {...item} />

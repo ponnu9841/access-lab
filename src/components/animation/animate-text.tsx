@@ -14,6 +14,7 @@ function AnimateText({ text }: { text?: string }) {
 						delay: i / 6,
 					}}
 					key={i}
+					className="whitespace-pre"
 				>
 					{`${el} `}
 				</motion.span>

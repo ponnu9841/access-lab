@@ -74,6 +74,7 @@ type Teams = {
 type Contact = {
 	id: string;
 	location: string;
+	map: string;
 	contactno_one: string;
 	contactno_two: string | null;
 	email_one: string;
