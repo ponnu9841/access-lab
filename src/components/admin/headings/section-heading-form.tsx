@@ -23,6 +23,14 @@ export default function SectionHeadingForm({ section }: { section: string }) {
     resolver: zodResolver(headingSchema),
   });
 
+  let showDescription = true;
+  if (
+    section === "testimonials" ||
+    section === "teams" ||
+    section === "gallery"
+  ) {
+    showDescription = false;
+  }
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
   const { headings } = useAppSelector((state) => state.rootReducer.headings);
@@ -72,18 +80,20 @@ export default function SectionHeadingForm({ section }: { section: string }) {
         />
         <RenderError error={errors.title?.message} />
       </div>
-      <div>
-        <Label htmlFor="description">Description</Label>
-        <Textarea
-          {...register("description")}
-          id="title"
-          placeholder="Section Title Description"
-          className={errors.title ? "border-red-500" : ""}
-          aria-invalid={errors.title ? "true" : "false"}
-          aria-describedby={errors.title ? "image-error" : undefined}
-        />
-        <RenderError error={errors.description?.message} />
-      </div>
+      {showDescription && (
+        <div>
+          <Label htmlFor="description">Description</Label>
+          <Textarea
+            {...register("description")}
+            id="title"
+            placeholder="Section Title Description"
+            className={errors.title ? "border-red-500" : ""}
+            aria-invalid={errors.title ? "true" : "false"}
+            aria-describedby={errors.title ? "image-error" : undefined}
+          />
+          <RenderError error={errors.description?.message} />
+        </div>
+      )}
       <div className="-mt-2">
         <FormAction loading={loading} showResetButton={false} />
       </div>

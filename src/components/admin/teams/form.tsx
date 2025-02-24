@@ -127,7 +127,7 @@ export default function TeamsForm() {
             <TextEditor
               value={value}
               setValue={onChange}
-              placeholder="Enter Testimonial"
+              placeholder="Enter Designation"
             />
           )}
         />
