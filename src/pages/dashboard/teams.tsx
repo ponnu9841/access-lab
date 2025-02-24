@@ -15,7 +15,7 @@ export default function TeamsPage() {
       controller.abort();
       dispatch(setSelectedTeam(null));
     };
-  }, []);
+  }, []); //eslint-disable-line
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
