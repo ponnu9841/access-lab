@@ -5,8 +5,9 @@ import { Provider } from "react-redux";
 import { Toaster } from "sonner";
 import store from "@/redux/store";
 import ReduxWrapper from "@/reduxWrapper";
-import 'react-quill/dist/quill.snow.css';
 import "@/styles/globals.css";
+import 'react-quill/dist/quill.snow.css';
+import useSrollRestoration from "@/components/scroll-restoration";
 
 //eslint-disable-next-line
 export type PageLayoutType<P = {}, IP = P> = NextPage<P, IP> & {
@@ -20,6 +21,7 @@ type AppPropsWithLayout = AppProps & {
 export default function App(props: AppPropsWithLayout) {
 	const { Component, pageProps } = props;
 	const getLayout = Component.getLayout ?? ((page) => page);
+	useSrollRestoration();
 	return (
 		<Provider store={store}>
 			<ReduxWrapper>

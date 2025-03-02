@@ -35,11 +35,10 @@ export default function AboutPage({
 }
 
 AboutPage.getLayout = function getLayout(page: React.ReactElement) {
-  console.log(page)
   return <Layout>{page}</Layout>;
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const [banners, about, heading, metaTags] = await Promise.all([
       axiosClient.get("/pagesBanner"),
@@ -55,6 +54,7 @@ export async function getServerSideProps() {
         heading: heading.data.data,
         metaTags: metaTags.data.data,
       },
+      revalidate: process.env.REVALIDATE_TIME,
     };
   } catch (error) {
     console.error("Error fetching data:", error);

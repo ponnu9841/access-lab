@@ -94,9 +94,9 @@ export default function Team({ heading }: { heading: Heading[] }) {
         {teams.map((team, index) => (
           <RenderCarouselItem
             key={index}
-            carouselItemClassName="basis-full md:basis-1/2 lg:basis-1/3"
-            cardClassName="rounded-sm relative border-none"
-            cardContentClassName={`flex flex-col items-between justify-center w-full`}
+            carouselItemClassName="basis-full md:basis-1/2 lg:basis-1/4"
+            cardClassName="rounded-sm relative border-none bg-red-500"
+            // cardContentClassName={`flex flex-col items-between justify-center w-full`}
           >
             <TeamCard key={index} {...team} />
           </RenderCarouselItem>

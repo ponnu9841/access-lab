@@ -96,6 +96,29 @@ export function getPages() {
   return ["home", "about", "services", "contact"];
 }
 
+export function getPolicies() {
+  return [
+    "privacy_policy",
+    "terms_conditions",
+    "cancellation_policy",
+    "return_policy",
+  ];
+}
+
+export function getPolicy(policies: Policy[] | null, policy: string) {
+  return policies?.find((p) => p.type === policy);
+}
+
+export function formatPolicyName(policy: string): string {
+  const policyMap: { [key: string]: string } = {
+    privacy_policy: "Privacy Policy",
+    terms_conditions: "Terms & Conditions",
+    cancellation_policy: "Cancellation Policy",
+    return_policy: "Refund Policy",
+  };
+  return policyMap[policy] || "Unknown Policy";
+}
+
 export function getCurrentSectionHeading(headings: Heading[], section: string) {
   return headings?.find((heading) => heading.section === section);
 }
@@ -107,3 +130,7 @@ export function getCurrentPageBanner(banners: PagesBanner[], page: string) {
 export function getCurrentMetaTag(metaTags: Seo[], page: string) {
   return metaTags?.find((metaTag) => metaTag.page === page);
 }
+
+export const getLayoutProps = (page: React.ReactElement) => {
+  return page.props.children.length > 0 ? page.props.children[0].props : [];
+};

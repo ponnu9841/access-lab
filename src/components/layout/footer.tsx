@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa6";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import FooterData from "./footer-data";
 
 const serviceLinks = ["Marketing", "SEO/SEM", "Development", "UX Design"];
 
@@ -24,6 +25,7 @@ const aboutLinks = [
 ];
 
 export default function Footer() {
+	
 	return (
 		<footer className="pt-20 pb-6 bg-black text-white">
 			<div className="container">
@@ -34,14 +36,7 @@ export default function Footer() {
 							className="aspect-square max-w-[100px] max-h-[100px]"
 						/>
 						<div className="mt-8">
-							<div className="text-base mb-2">
-								<Link href="tel:(+1) 212-946-2701">(+1) 212-946-2701</Link>
-							</div>
-							<div className="text-base">
-								<Link href="mailto:hello@hasagency.com">
-									hello@hasagency.com
-								</Link>
-							</div>
+							<FooterData />
 						</div>
 						<div className="mt-8 flex gap-x-2">
 							<div>

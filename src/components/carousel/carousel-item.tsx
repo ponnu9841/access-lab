@@ -19,17 +19,17 @@ export const RenderCarouselItem = ({
 	return (
 		<CarouselItem
 			className={cn(
-				"carousel-item relative",
+				"relative",
 				`${paddingValue ? "pl-" + paddingValue : "p-0"}`,
 				carouselItemClassName
 			)}
 		>
 			<Card
-				className={cn("carousel-card border-none p-0 h-full", cardClassName)}
+				className={cn("border-none p-0 h-full", cardClassName)}
 			>
 				<CardContent
 					className={cn(
-						"carousel-card-content p-0 relative h-full",
+						"p-0 relative h-full",
 						cardContentClassName
 					)}
 				>

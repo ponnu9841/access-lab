@@ -6,11 +6,13 @@ export default function FormAction({
   reset,
   setImages,
   showResetButton = true,
+  size
 }: {
   loading: boolean;
   reset?: () => void;
   setImages?: React.Dispatch<React.SetStateAction<ExtendedFile[]>>;
   showResetButton?: boolean;
+  size?: "default" | "sm" | "lg" | "icon" | null | undefined
 }) {
   const resetForm = () => {
     if (reset) reset();
@@ -19,11 +21,11 @@ export default function FormAction({
   return (
     <div className="flex space-x-4 my-4">
       {showResetButton && (
-        <Button type="button" variant="destructive" onClick={resetForm}>
+        <Button type="button" variant="destructive" onClick={resetForm} size={size}>
           Reset
         </Button>
       )}
-      <Button type="submit" disabled={loading}>
+      <Button type="submit" disabled={loading} size={size}>
         {loading ? "Saving" : "Save"}
       </Button>
     </div>
