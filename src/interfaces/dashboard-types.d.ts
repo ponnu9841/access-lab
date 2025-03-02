@@ -114,3 +114,9 @@ type Seo = {
 	description: string;
 	page: string;
 }
+
+type Policy = {
+	id: string;
+	content: string;
+	type: 'privacy_policy' | 'terms_conditions' | 'cancellation_policy' | 'return_policy';
+}

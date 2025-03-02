@@ -70,15 +70,13 @@ export default {
     			md: 'calc(var(--radius) - 2px)',
     			sm: 'calc(var(--radius) - 4px)'
     		},
-    		animation: {
-    			scroll: 'scroll 20000ms linear infinite',
-    			'accordion-down': 'accordion-down 0.2s ease-out',
-    			'accordion-up': 'accordion-up 0.2s ease-out'
+    		boxShadow: {
+    			'2xl': '0 0px 50px -12px rgb(0 0 0 / 0.25)'
     		},
     		keyframes: {
     			scroll: {
     				to: {
-    					transform: 'translateX(-50%)'
+    					transform: 'translateX(calc(-50% - 5rem))'
     				}
     			},
     			'accordion-down': {
@@ -98,9 +96,11 @@ export default {
     				}
     			}
     		},
-    		boxShadow: {
-    			'2xl': '0 0px 50px -12px rgb(0 0 0 / 0.25)'
-    		}
+			animation: {
+    			'scroll': 'scroll 25000ms linear infinite',
+    			'accordion-down': 'accordion-down 0.2s ease-out',
+    			'accordion-up': 'accordion-up 0.2s ease-out'
+    		},
     	}
     },
 	plugins: [typography, tailwindcssAnimate],

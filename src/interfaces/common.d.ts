@@ -33,3 +33,7 @@ type AnimationType =
 	| "slideInLeft"
 	| "slideInRight"
 	| "textAnimation";
+
+type PrivacyPolicyPageProps = {
+	policies: Policy[] | null;
+  }

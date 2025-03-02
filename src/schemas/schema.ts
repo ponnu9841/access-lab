@@ -143,6 +143,14 @@ export const seoSchema = z.object({
 	page: z.string(),
 })
 
+export const policySchema = z.object({
+	id: z.string().optional(),
+	content: z.string().min(3, "Content must be at least 3 characters"),
+	type: z.string(),
+})
+
+export type PolicyFormData = z.infer<typeof policySchema>;
+
 export type SeoFormData = z.infer<typeof seoSchema>;
 
 export type PagesBannerFormData = z.infer<typeof pagesBannerSchema>;

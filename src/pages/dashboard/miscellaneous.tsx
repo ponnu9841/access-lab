@@ -1,10 +1,12 @@
 import Headings from "@/components/admin/headings";
 import PagesBanner from "@/components/admin/page-banner";
+import Policies from "@/components/admin/policies";
 import Seo from "@/components/admin/seo";
 import DashBoardLayout from "@/components/layout/dashboard/dashboard-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchHeading } from "@/redux/features/heading-slice";
 import { fetchPagesBanner } from "@/redux/features/pages-banner-slice";
+import { fetchPolicy } from "@/redux/features/policy-slice";
 import { fetchSeo } from "@/redux/features/seo-slice";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import { useEffect } from "react";
@@ -16,6 +18,7 @@ export default function OthersPage() {
     dispatch(fetchHeading(controller));
     dispatch(fetchPagesBanner(controller));
     dispatch(fetchSeo(controller));
+    dispatch(fetchPolicy(controller));
     return () => controller.abort();
   }, []); //eslint-disable-line
   return (
@@ -24,6 +27,7 @@ export default function OthersPage() {
         <TabsTrigger value="headings">Headings</TabsTrigger>
         <TabsTrigger value="banner">Pages Banner</TabsTrigger>
         <TabsTrigger value="seo">Seo Meta Tags</TabsTrigger>
+        <TabsTrigger value="policies">Policies</TabsTrigger>
       </TabsList>
       <TabsContent value="headings">
         <Headings />
@@ -33,6 +37,9 @@ export default function OthersPage() {
       </TabsContent>
       <TabsContent value="seo">
         <Seo />
+      </TabsContent>
+      <TabsContent value="policies">
+        <Policies />
       </TabsContent>
     </Tabs>
   );

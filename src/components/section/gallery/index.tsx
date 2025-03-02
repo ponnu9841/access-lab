@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Heading from "../../custom/heading";
 import NextImage from "../../Image";
 // import TitleBadge from "../../custom/title-badge";
-import { Link as LinkIcon } from "lucide-react";
+// import { Link as LinkIcon } from "lucide-react";
 import CarouselSlider from "@/components/carousel";
 import { RenderCarouselItem } from "@/components/carousel/carousel-item";
 import Link from "next/link";
@@ -79,7 +79,7 @@ export default function ImageGallery(props: GalleryImagesProps) {
         {images?.map((image, index) => (
           <RenderCarouselItem
             key={index}
-            carouselItemClassName="basis-full md:basis-1/2 lg:basis-1/3"
+            carouselItemClassName="basis-full md:basis-1/2 lg:basis-1/4"
             cardClassName="rounded-sm relative border-none"
             cardContentClassName={`flex flex-col items-between justify-center w-full`}
           >
@@ -91,9 +91,9 @@ export default function ImageGallery(props: GalleryImagesProps) {
               onClick={() => openDialog(image.id)}
             >
               <div className="absolute inset-0 rounded-sm bg-black bg-opacity-0 group-hover:bg-opacity-50 opacity-0 group-hover:opacity-100 transition z-10 flex justify-center items-center">
-                <div className="p-3 rounded-full bg-background">
+                {/* <div className="p-3 rounded-full bg-background">
                   <LinkIcon size={15} />
-                </div>
+                </div> */}
               </div>
               <ZoomAnimation>
                 <div className="aspect-square">

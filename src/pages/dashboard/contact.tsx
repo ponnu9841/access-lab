@@ -13,12 +13,8 @@ export default function ContactPage() {
     // dispatch partner
     return () => controller.abort();
   }, []); //eslint-disable-line
-  
-  return (
-    <>
-      <ContactForm />
-    </>
-  );
+
+  return <ContactForm />;
 }
 
 ContactPage.getLayout = function getLayout(page: React.ReactElement) {

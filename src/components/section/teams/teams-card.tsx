@@ -48,11 +48,11 @@ export default function TeamCard(props: Teams) {
 				</div>
 				<CardContent>
 					<div className="border-none bg-background shadow-md w-[calc(100%-8rem)] absolute left-1/2 -translate-x-1/2 -bottom-10 group-hover:-bottom-6 px-6 py-4 transition-all duration-500">
-						<h3 className="text-2xl text-center font-semibold">
+						<h3 className="text-xl text-center font-semibold">
 							<AnimateText text={name} />
 						</h3>
 						{designation && (
-							<div className="text-primary text-sm uppercase text-center font-semibold">
+							<div className="text-primary [&_*]:text-xs uppercase text-center font-semibold">
 								<BlurAnimation>
 									{parse(designation)}
 								</BlurAnimation>

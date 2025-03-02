@@ -77,7 +77,7 @@ ContactPage.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const [banners, contact, heading, metaTags] = await Promise.all([
       axiosClient.get("/pagesBanner"),
@@ -102,6 +102,7 @@ export async function getServerSideProps() {
       props: {
         error: "Error fetching Data",
       },
+      revalidate: process.env.REVALIDATE_TIME,
     };
   }
 }

@@ -22,9 +22,17 @@ import Services from "@/components/section/services/services2";
 // import HomeSuccess from "@/components/section/home-success";
 import Contact from "@/components/section/contact";
 import Layout from "@/components/layout";
-import axiosClient from "@/axios/axios-client";
 import { getContactData, getCurrentMetaTag } from "@/utils";
 import HeadTags from "@/components/head-tags";
+import {
+  getAboutDataResponse,
+  getBannersResponse,
+  getContactDataResponse,
+  getHeadingsResponse,
+  getMetaTagsResponse,
+  getPartnersResponse,
+  getServicesResponse,
+} from "@/lib/getData";
 
 export const metadata: Metadata = {
   title: "Home Page",
@@ -38,7 +46,7 @@ export default function HomePage({
   contact,
   about,
   heading,
-  metaTags
+  metaTags,
 }: {
   partners: Partner[];
   services: Service[];
@@ -118,38 +126,40 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const [partners, services, banners, contact, about, heading, metaTags] =
       await Promise.all([
-        axiosClient.get("/partner"),
-        axiosClient.get("/service"),
-        axiosClient.get("/banner"),
-        axiosClient.get("/contact"),
-        axiosClient.get("/about"),
-        axiosClient.get("heading"),
-        axiosClient.get("seoTags"),
+        getPartnersResponse(),
+        getServicesResponse(),
+        getBannersResponse(),
+        getContactDataResponse(),
+        getAboutDataResponse(),
+        getHeadingsResponse(),
+        getMetaTagsResponse(),
       ]);
+    // const contact = await getContactDataResponse();
 
     return {
       props: {
-        partners: partners.data.data,
-        services: services.data.data,
-        banners: banners.data.data,
-        contact: contact.data.data,
-        about: about.data.data,
-        heading: heading.data.data,
-        metaTags: metaTags.data.data,
+        partners: partners,
+        services: services,
+        banners: banners,
+        contact: contact,
+        about: about,
+        heading: heading,
+        metaTags: metaTags,
       },
+      revalidate: process.env.REVALIDATE_TIME,
     };
   } catch (error) {
     console.error("Error fetching data:", error);
-
     // Handle the error appropriately, e.g., redirect to an error page
     return {
       props: {
         error: "Error fetching Data",
       },
+      revalidate: process.env.REVALIDATE_TIME,
     };
   }
 }

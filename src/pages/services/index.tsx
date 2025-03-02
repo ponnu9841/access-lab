@@ -63,7 +63,7 @@ ServicePage.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const [banners, services, metaTags] = await Promise.all([
       axiosClient.get("/pagesBanner"),
@@ -77,6 +77,7 @@ export async function getServerSideProps() {
         services: services.data.data,
         metaTags: metaTags.data.data,
       },
+      revalidate: process.env.REVALIDATE_TIME,
     };
   } catch (error) {
     console.error("Error fetching data:", error);
