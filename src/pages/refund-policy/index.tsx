@@ -20,7 +20,9 @@ export async function getStaticProps() {
       props: {
         policies: policies,
       },
-      revalidate: process.env.REVALIDATE_TIME,
+      revalidate: process.env.REVALIDATE_TIME
+        ? +process.env.REVALIDATE_TIME
+        : 0,
     };
   } catch (error) {
     console.error("Error fetching data:", error);
