@@ -7,21 +7,22 @@ import {
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import FooterData from "./footer-data";
+import { navItems } from "./navbar";
 
-const serviceLinks = ["Marketing", "SEO/SEM", "Development", "UX Design"];
+// const productLinks = [
+// 	"Elementor Guru",
+// 	"WooLentor Pro",
+// 	"Plugins",
+// 	"Page Builder",
+// ];
 
-const productLinks = [
-	"Elementor Guru",
-	"WooLentor Pro",
-	"Plugins",
-	"Page Builder",
-];
-
-const aboutLinks = [
-	"Features",
-	"Our Partners",
-	"Affiliate Programs",
-	"Pricing",
+const usefulLinks = [
+	{name: 'FAQ', link: "/faq"},
+	{name: "Terms & Conditions", link: "/terms-and-conditions"},
+	{name: "Privacy Policy", link: "/privacy-policy"},
+	{name: "Cancellation Policy", link: "/cancellation-policy"},
+	{name: "Refund Policy Policy", link: "/refund-policy"},
+	{name: "Grevence officer", link: "/grevence-officer"},
 ];
 
 export default function Footer() {
@@ -67,20 +68,20 @@ export default function Footer() {
 					</div>
 					<div className="w-full md:w-[calc(50%-1rem)] lg:flex-1 lg:flex gap-6">
 						<div className="lg:flex-1">
-							<div className="text-xl font-semibold mb-4">Services</div>
-							{serviceLinks.map((item, index) => (
-								<div key={index} className="mb-3">
+							<div className="text-xl font-semibold mb-4">Quick Links</div>
+							{navItems.map((item, index) => (
+								<div key={index} className="mb-2">
 									<Link
-										href="#"
+										href={item.link}
 										target="_blank"
 										className="hover:text-primary transition-all duration-300"
 									>
-										{item}
+										{item.name}
 									</Link>
 								</div>
 							))}
 						</div>
-						<div className="lg:flex-1">
+						{/* <div className="lg:flex-1">
 							<div className="text-xl font-semibold mb-4">Products</div>
 							{productLinks.map((item, index) => (
 								<div key={index} className="mb-3">
@@ -93,17 +94,16 @@ export default function Footer() {
 									</Link>
 								</div>
 							))}
-						</div>
+						</div> */}
 						<div className="lg:flex-1">
-							<div className="text-xl font-semibold mb-4">About</div>
-							{aboutLinks.map((item, index) => (
-								<div key={index} className="mb-3">
+							<div className="text-xl font-semibold mb-4">Userful Links</div>
+							{usefulLinks.map((item, index) => (
+								<div key={index} className="mb-2">
 									<Link
-										href="#"
-										target="_blank"
+										href={item.link}
 										className="hover:text-primary transition-all duration-300"
 									>
-										{item}
+										{item.name}
 									</Link>
 								</div>
 							))}

@@ -16,7 +16,7 @@ export default function GalleryPage() {
   const { loading, pageNo, gallery } = useAppSelector(
     (state) => state.rootReducer.gallery
   );
-  const lastPage = gallery?.last_page;
+  const lastPage = gallery?.totalPages;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {

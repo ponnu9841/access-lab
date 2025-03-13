@@ -19,7 +19,7 @@ import { useAppSelector } from "@/redux/hooks/use-selector";
 import { Button } from "./ui/button";
 import { clearToken } from "@/services/localStorageService";
 import { useRouter } from "next/router";
-import axiosClient from "@/axios/axios-client";
+// import axiosClient from "@/axios/axios-client";
 
 export function NavUser() {
 	const { isMobile } = useSidebar();
@@ -27,12 +27,12 @@ export function NavUser() {
 	const router = useRouter();
 
 	const handleLogout = () => {
-		axiosClient.delete("/logout").then((response) => {
-			if (response.status === 200) {
-				clearToken();
-				router.push("/login");
-			}
-		});
+		// axiosClient.delete("/logout").then((response) => {
+		// if (response.status === 200) {
+		clearToken();
+		router.push("/login");
+		// }
+		// });
 	};
 
 	return (

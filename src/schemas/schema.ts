@@ -149,6 +149,19 @@ export const policySchema = z.object({
 	type: z.string(),
 })
 
+export const grievanceOfficerSchema = z.object({
+	id: z.string().optional(),
+	name: z.string().min(3, "Name must be at least 3 characters"),
+	email: z.string().email("Invalid email address"),
+	contact: z.string().regex(/^\d{10}$/, {
+		message: "Phone should be number and exactly 10 digits",
+	}),
+	designation: z.string().min(3, "Designation must be at least 3 characters"),
+	address: z.string().optional(),
+})
+
+export type GrievanceOfficerFormData = z.infer<typeof grievanceOfficerSchema>;
+
 export type PolicyFormData = z.infer<typeof policySchema>;
 
 export type SeoFormData = z.infer<typeof seoSchema>;

@@ -57,11 +57,10 @@ export default function ServicesForm() {
       form.append("alt", data.imageAlt);
     }
     if (data.id) {
-      form.append("_method", "PUT");
       form.append("id", data.id);
     }
-    axiosClient
-      .post("/service", form)
+    const method = data.id ? axiosClient.put : axiosClient.post;
+    method("/service", form)
       .then((response) => {
         if (response.status === 200) {
           successCB();
@@ -82,21 +81,13 @@ export default function ServicesForm() {
   useEffect(() => {
     if (selectedService) {
       reset({
-		id: selectedService.id,
+        id: selectedService.id,
         title: selectedService.title,
         shortDescription: selectedService.short_description,
         longDescription: selectedService.long_description,
         imageAlt: selectedService.alt || "", // Assuming you have this field
       });
-      (async () => {
-        const fileUrl = selectedService.image; // Replace with your URL
-        const filename = "service-image.png";
-        const file = new File([fileUrl], filename, {
-          type: "image/png",
-        }) as ExtendedFile;
-        file.url = fileUrl;
-        setImages([file]);
-      })();
+      setExistingImage(selectedService.image);
     }
   }, [selectedService]); //eslint-disable-line
 

@@ -35,6 +35,7 @@ export default function PartnerForm() {
       imageAlt: "",
     });
     setExistingImage("");
+    setImages([]);
   };
 
   const onSubmit = (data: PartnerFormData) => {
@@ -43,32 +44,17 @@ export default function PartnerForm() {
       formData.append("image", images[0]);
     }
     formData.append("alt", data.imageAlt);
-    if (!data.id) {
-      axiosClient
-        .post("/partner", formData)
-        .then((response) => {
-          if (response.status === 200) {
-            successCB();
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      formData.append("_method", "PUT");
-      formData.append("id", data.id);
-      axiosClient
-        .post("/partner", formData)
-        .then((response) => {
-          if (response.status === 200) {
-            successCB();
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-
+    if (data.id) formData.append("id", data.id);
+    const method = data.id ? axiosClient.put : axiosClient.post;
+    method("/partner", formData)
+      .then((response) => {
+        if (response.status === 200) {
+          successCB();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     function successCB() {
       resetForm();
       dispatch(fetchPartner());

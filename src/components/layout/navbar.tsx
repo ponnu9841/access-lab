@@ -15,11 +15,12 @@ import { useRouter } from "next/router";
 import getCurrentRoute from "@/utils/getCurrentRoute";
 // import { ThemeToggle } from "./ThemeToggle";
 
-const navItems = [
+export const navItems = [
   { name: "Home", link: "/" },
   { name: "About", link: "/about" },
   { name: "Services", link: "/services" },
   { name: "Contact", link: "/contact" },
+  { name: "Career", link: "/career" },
 ];
 
 export default function Navbar() {
