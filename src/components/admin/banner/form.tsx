@@ -25,13 +25,15 @@ export default function BannerForm() {
   });
 
   const dispatch = useAppDispatch();
-  const { loading, selectedBanner } = useAppSelector(
+  const { selectedBanner } = useAppSelector(
     (state) => state.rootReducer.banner
   );
+  const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<ExtendedFile[]>([]);
   const [existingImage, setExistingImage] = useState("");
 
   const onSubmit = (data: BannerFormData) => {
+    setLoading(true)
     const form = new FormData();
     form.append("alt", data.imageAlt || "");
     form.append("title", data.title || "");
@@ -50,7 +52,7 @@ export default function BannerForm() {
       })
       .catch((error) => {
         console.log(error);
-      });
+      }).finally(() => setLoading(false));
   };
 
   const resetForm = () => {
