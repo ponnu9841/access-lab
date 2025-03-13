@@ -10,8 +10,6 @@ import Layout from "@/components/layout";
 import { getToken, setToken } from "@/services/localStorageService";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useRouter } from "next/router";
-import { useAppDispatch } from "@/redux/hooks/use-dispatch";
-import { fetchUser } from "@/redux/features/user-slice";
 
 export default function Login() {
 	const {
@@ -22,7 +20,6 @@ export default function Login() {
 		resolver: zodResolver(loginSchema),
 	});
 
-	const dispatch = useAppDispatch();
 
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
@@ -49,7 +46,6 @@ export default function Login() {
 			if (response.status === 200) {
 				const { token } = response.data;
 				if (token) setToken(token);
-				dispatch(fetchUser({}))
 				router.push("/dashboard");
 			}
 		} catch (error) {

@@ -15,7 +15,7 @@ export default function Gallery() {
     (state) => state.rootReducer.gallery
   );
 
-  const lastPage = gallery?.last_page;
+  const lastPage = gallery?.totalPages;
 
   useEffect(() => {
     const controller = new AbortController();

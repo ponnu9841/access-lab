@@ -40,11 +40,11 @@ export default function PagesBannerForm({ page }: { page: string }) {
     }
     if (data.id) {
       formData.append("id", data.id);
-      formData.append("_method", "PUT");
     }
+    const method = data.id ? axiosClient.put : axiosClient.post;
     try {
       setLoading(true);
-      const response = await axiosClient.post("/pagesBanner", formData);
+      const response = await method("/pagesBanner", formData);
 
       if (response.status === 200) {
         reset({
@@ -100,7 +100,7 @@ export default function PagesBannerForm({ page }: { page: string }) {
         />
       </div>
       <div className="mt-4">
-        <Label htmlFor="alt">Title</Label>
+        <Label htmlFor="alt">Image Alt</Label>
         <Input
           {...register("alt")}
           type="text"

@@ -1,9 +1,11 @@
+import GrievanceOfficer from "@/components/admin/grievance-officer";
 import Headings from "@/components/admin/headings";
 import PagesBanner from "@/components/admin/page-banner";
 import Policies from "@/components/admin/policies";
 import Seo from "@/components/admin/seo";
 import DashBoardLayout from "@/components/layout/dashboard/dashboard-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { fetchGrievanceOfficer } from "@/redux/features/grievance-officer-slice";
 import { fetchHeading } from "@/redux/features/heading-slice";
 import { fetchPagesBanner } from "@/redux/features/pages-banner-slice";
 import { fetchPolicy } from "@/redux/features/policy-slice";
@@ -19,6 +21,7 @@ export default function OthersPage() {
     dispatch(fetchPagesBanner(controller));
     dispatch(fetchSeo(controller));
     dispatch(fetchPolicy(controller));
+    dispatch(fetchGrievanceOfficer(controller));
     return () => controller.abort();
   }, []); //eslint-disable-line
   return (
@@ -28,6 +31,7 @@ export default function OthersPage() {
         <TabsTrigger value="banner">Pages Banner</TabsTrigger>
         <TabsTrigger value="seo">Seo Meta Tags</TabsTrigger>
         <TabsTrigger value="policies">Policies</TabsTrigger>
+        <TabsTrigger value="officer">Grievance Officer</TabsTrigger>
       </TabsList>
       <TabsContent value="headings">
         <Headings />
@@ -40,6 +44,9 @@ export default function OthersPage() {
       </TabsContent>
       <TabsContent value="policies">
         <Policies />
+      </TabsContent>
+      <TabsContent value="officer">
+        <GrievanceOfficer />
       </TabsContent>
     </Tabs>
   );

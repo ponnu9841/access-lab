@@ -93,7 +93,7 @@ export function getSectionHeadings() {
 }
 
 export function getPages() {
-  return ["home", "about", "services", "contact"];
+  return ["home", "about", "services", "contact", "career"];
 }
 
 export function getPolicies() {

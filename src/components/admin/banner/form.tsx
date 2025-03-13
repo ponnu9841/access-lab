@@ -39,33 +39,18 @@ export default function BannerForm() {
     if (images.length > 0) {
       form.append("image", images[0]);
     }
-    if (!data.id) {
-      axiosClient
-        .post("/banner", form)
-        .then((response) => {
-          if (response.status === 200) {
-            dispatch(fetchBanner());
-            resetForm();
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      form.append("_method", "PUT");
-      form.append("id", data.id);
-      axiosClient
-        .post("/banner", form)
-        .then((response) => {
-          if (response.status === 200) {
-            dispatch(fetchBanner());
-            resetForm();
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    if (data.id) form.append("id", data.id);
+    const method = data.id ? axiosClient.put : axiosClient.post;
+    method("/banner", form)
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch(fetchBanner());
+          resetForm();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const resetForm = () => {

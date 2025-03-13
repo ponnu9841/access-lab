@@ -49,11 +49,10 @@ export default function ContactForm() {
       form.append("imageTwo", imageRight[0]);
     }
     if (data.id) {
-      form.append("_method", "PUT");
       form.append("id", data.id);
     }
-    axiosClient
-      .post("/about", form)
+    const method = data.id ? axiosClient.put : axiosClient.post
+    method("/about", form)
       .then((response) => {
         if (response.status === 200) {
           reset();

@@ -27,27 +27,15 @@ export default function ContactForm() {
   const { data } = useAppSelector((state) => state.rootReducer.contact);
 
   const onSubmit = (data: ContactFormData) => {
-    if (data.id) {
-      axiosClient
-        .put("/contact", data)
-        .then((response) => {
-          if (response.status === 200) {
-            reset();
-            dispatch(fetchContact());
-          }
-        })
-        .finally(() => setLoading(false));
-    } else {
-      axiosClient
-        .post("/contact", data)
-        .then((response) => {
-          if (response.status === 200) {
-            reset();
-            dispatch(fetchContact());
-          }
-        })
-        .finally(() => setLoading(false));
-    }
+    setLoading(true);
+    const method = data.id ? axiosClient.put : axiosClient.post;
+    method("/contact", data)
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch(fetchContact());
+        }
+      })
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {

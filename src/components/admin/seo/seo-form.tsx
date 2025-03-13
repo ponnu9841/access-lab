@@ -64,7 +64,7 @@ export default function SeoForm({ page }: { page: string }) {
           type="text"
           name="title"
           id="title"
-          placeholder="Section Title"
+          placeholder="Title"
           className={errors.title ? "border-red-500" : ""}
           aria-invalid={errors.title ? "true" : "false"}
           aria-describedby={errors.title ? "image-error" : undefined}

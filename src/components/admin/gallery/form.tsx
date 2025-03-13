@@ -52,11 +52,10 @@ export default function GalleryForm() {
     formData.append("title", data.title || "");
     formData.append("description", data.description || "");
     if (data.id) {
-      formData.append("_method", "PUT");
       formData.append("id", data.id);
     }
-    axiosClient
-      .post("/gallery", formData)
+    const method = data.id ? axiosClient.put : axiosClient.post;
+    method("/gallery", formData)
       .then((response) => {
         if (response.status === 200) {
           resetForm();
