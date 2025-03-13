@@ -43,6 +43,7 @@ export default function TeamsForm() {
   };
 
   const onSubmit = (data: TeamsFormData) => {
+    setLoading(true);
     const form = new FormData();
     form.append("name", data.name);
     form.append("designation", data.designation || "");

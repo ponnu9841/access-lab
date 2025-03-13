@@ -23,9 +23,10 @@ export default function PartnerForm() {
 
   const [images, setImages] = useState<ExtendedFile[]>([]);
   const [existingImage, setExistingImage] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const dispatch = useAppDispatch();
-  const { loading, selectedPartner } = useAppSelector(
+  const { selectedPartner } = useAppSelector(
     (state) => state.rootReducer.partner
   );
 
@@ -39,6 +40,7 @@ export default function PartnerForm() {
   };
 
   const onSubmit = (data: PartnerFormData) => {
+    setLoading(true);
     const formData = new FormData();
     if (images.length > 0) {
       formData.append("image", images[0]);
@@ -54,7 +56,7 @@ export default function PartnerForm() {
       })
       .catch((error) => {
         console.log(error);
-      });
+      }).finally(() => setLoading(false));
     function successCB() {
       resetForm();
       dispatch(fetchPartner());
