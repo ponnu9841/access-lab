@@ -80,7 +80,7 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 		>
 			<CarouselContent
 				className={cn(
-					"carousel-content",
+					"carousel-content w-full",
 					`${paddingValue ? "-ml-" + paddingValue : "m-0"}`,
 					carouselContentClassName
 				)}
@@ -134,14 +134,14 @@ const CarouselSlider = (props: CarouselSliderProps) => {
 						className={
 							togglerPosition === "default"
 								? "left-8 z-3"
-								: "bottom-0 left-1/2 -translate-x-[calc(50%+1.5rem)] z-3 translate-y-0 top-[calc(100%+1.5rem)]"
+								: "bottom-0 left-1/2 -translate-x-[calc(50%+1.5rem)] z-3 translate-y-0 top-[calc(100%-3rem)]"
 						}
 					/>
 					<CarouselNext
 						className={
 							togglerPosition === "default"
 								? "right-8 z-3"
-								: "bottom-0 left-1/2 -translate-x-[calc(50%-1.5rem)] z-3 translate-y-0 top-[calc(100%+1.5rem)]"
+								: "bottom-0 left-1/2 -translate-x-[calc(50%-1.5rem)] z-3 translate-y-0 top-[calc(100%-3rem)]"
 						}
 					/>
 				</>

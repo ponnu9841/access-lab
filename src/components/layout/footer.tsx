@@ -73,7 +73,6 @@ export default function Footer() {
 								<div key={index} className="mb-2">
 									<Link
 										href={item.link}
-										target="_blank"
 										className="hover:text-primary transition-all duration-300"
 									>
 										{item.name}

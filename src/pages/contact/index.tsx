@@ -1,4 +1,5 @@
 import axiosClient from "@/axios/axios-client";
+import CarouselSlider from "@/components/carousel";
 import SectionTitle from "@/components/custom/section-title";
 import HeadTags from "@/components/head-tags";
 import Layout from "@/components/layout";
@@ -6,10 +7,11 @@ import BannerPages from "@/components/section/banner-pages";
 import ContactCard from "@/components/section/contact/contact-card";
 import { Card } from "@/components/ui/card";
 import {
-  getContactData,
+  getContact,
   getCurrentMetaTag,
   getCurrentPageBanner,
   getCurrentSectionHeading,
+  getDefultContact,
 } from "@/utils";
 
 export default function ContactPage({
@@ -18,15 +20,17 @@ export default function ContactPage({
   banners,
   metaTags,
 }: {
-  contact: Contact | null;
+  contact: Contact[] | null;
   heading: Heading[] | [];
   banners: PagesBanner[] | [];
   metaTags: Seo[] | [];
 }) {
-  const contactData = getContactData(contact);
+  const contactData = getContact(contact);
   const contactHeading = getCurrentSectionHeading(heading, "contact");
   const contactBanner = getCurrentPageBanner(banners, "contact");
   const currentMetaTag = getCurrentMetaTag(metaTags, "contact");
+  const defaultContact = getDefultContact(contact)
+
   return (
     <>
       <HeadTags currentMetaTag={currentMetaTag} />
@@ -53,7 +57,7 @@ export default function ContactPage({
           <div className="md:col-span-3">
             <iframe
               src={
-                contact?.map ||
+                defaultContact?.map ||
                 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.9076591313856!2d75.7766633!3d11.268198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65f17dc076f07%3A0x4a9e60efe16fa084!2sTownin%20Media!5e0!3m2!1sen!2sin!4v1737115703140!5m2!1sen!2sin"
               }
               className="w-full h-full min-h-[300px]"
@@ -61,7 +65,17 @@ export default function ContactPage({
             />
           </div>
           <div className="flex flex-col gap-6 md:col-span-2">
-            {contactData.map((item, index) => (
+            <div className="shadow-2xl">
+              <CarouselSlider id="contact-slider" togglerPosition={"bottom"}>
+                {contactData.contactLocation?.map((item, index) => (
+                  <Card className="min-w-full border-none" key={index}>
+                    <ContactCard {...item} />
+                  </Card>
+                ))}
+              </CarouselSlider>
+            </div>
+            
+            {contactData.contactData.map((item, index) => (
               <Card className="w-full shadow-2xl border-none" key={index}>
                 <ContactCard {...item} />
               </Card>

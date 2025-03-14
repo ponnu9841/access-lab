@@ -51,7 +51,7 @@ export default function HomePage({
   partners: Partner[];
   services: Service[];
   banners: Banner[];
-  contact: Contact | null;
+  contact: Contact[] | null;
   about: About | null;
   heading: Heading[] | [];
   pagesBanner: PagesBanner[] | [];
