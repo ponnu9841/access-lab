@@ -8,23 +8,27 @@ export default function FooterData() {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.rootReducer.contact);
   useEffect(() => {
-    dispatch(fetchContact());
+    const controller = new AbortController()
+    dispatch(fetchContact(controller));
+    return () => controller.abort();
   }, []); //eslint-disable-line
+
+  const defautlContact = data?.find((item) => item.default === true);
 
   return (
     <>
-      {data && (
+      {defautlContact && (
         <>
           <div className="text-base">
             <Link
-              href={`tel:0${data.contactno_one}`}
-            >{`(+91) ${data?.contactno_one}`}</Link>
+              href={`tel:0${defautlContact.contactno_one}`}
+            >{`(+91) ${defautlContact?.contactno_one}`}</Link>
           </div>
           <div className="text-base">
-            <Link href="mailto:hello@hasagency.com">{data.email_one}</Link>
+            <Link href="mailto:hello@hasagency.com">{defautlContact.email_one}</Link>
           </div>
           <div className="text-base mt-2 whitespace-pre-wrap">
-            {data.location}
+            {defautlContact.location}
           </div>
         </>
       )}

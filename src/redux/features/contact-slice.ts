@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState: {
 	loading: boolean;
-	data: Contact | null;
+	data: Contact[] | null;
 	error: any; //eslint-disable-line
 	selectedContact: Contact | null;
 } = {

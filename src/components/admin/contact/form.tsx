@@ -3,7 +3,7 @@ import RenderError from "@/components/render-error";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { fetchContact } from "@/redux/features/contact-slice";
+import { fetchContact, setSelectedContact } from "@/redux/features/contact-slice";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import { ContactFormData, contactSchema } from "@/schemas/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,7 +24,7 @@ export default function ContactForm() {
 
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
-  const { data } = useAppSelector((state) => state.rootReducer.contact);
+  const { selectedContact } = useAppSelector((state) => state.rootReducer.contact);
 
   const onSubmit = (data: ContactFormData) => {
     setLoading(true);
@@ -33,29 +33,43 @@ export default function ContactForm() {
       .then((response) => {
         if (response.status === 200) {
           dispatch(fetchContact());
+          resetForm();
         }
       })
       .finally(() => setLoading(false));
   };
 
+  const resetForm = () => {
+    reset({
+      id: "",
+      location: "",
+      map: "",
+      contactOne: "",
+      contactTwo: "",
+      emailOne: "",
+      emailTwo: "",
+    });
+    dispatch(setSelectedContact(null));
+  }
+
   useEffect(() => {
-    if (data) {
+    if (selectedContact) {
       reset({
-        id: data.id,
-        location: data.location,
-        map: data.map,
-        contactOne: data.contactno_one,
-        contactTwo: data.contactno_two || undefined,
-        emailOne: data.email_one,
-        emailTwo: data.email_two || undefined,
+        id: selectedContact.id,
+        location: selectedContact.location,
+        map: selectedContact.map,
+        contactOne: selectedContact.contactno_one,
+        contactTwo: selectedContact.contactno_two || undefined,
+        emailOne: selectedContact.email_one,
+        emailTwo: selectedContact.email_two || undefined,
       });
     }
-  }, [data]); //eslint-disable-line
+  }, [selectedContact]); //eslint-disable-line
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-1 grid-cols-2 gap-4"
+
     >
       <input type="hidden" {...register("id")} />
       <div>
@@ -140,8 +154,8 @@ export default function ContactForm() {
         />
         <RenderError error={errors.emailTwo?.message} />
       </div>
-      <div className="-mt-6">
-        <FormAction loading={loading} showResetButton={false} />
+      <div className="-mt-1">
+        <FormAction loading={loading} reset={() => resetForm()} />
       </div>
     </form>
   );

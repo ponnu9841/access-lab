@@ -56,31 +56,60 @@ export async function urlToFile(url: string, filename: string): Promise<File> {
   return new File([blob], filename, { type: blob.type });
 }
 
-export const getContactData = (contact: Contact | null) => {
+export const getContactData = (contact: Contact[] | null) => {
   let contactData = contactDummyData;
-  if (contact) {
+  const defaultContact = getDefultContact(contact)
+  if (defaultContact) {
     contactData = [
       {
         title: "Our Locations",
         icon: "/icons/map.svg",
-        line1: contact.location,
+        line1: defaultContact.location,
         line2: "",
       },
       {
         title: "Give Us A Call",
         icon: "/icons/message.svg",
-        line1: `+91 ${contact.contactno_one}`,
-        line2: contact.contactno_two ? `+91 ${contact.contactno_two}` : "",
+        line1: `+91 ${defaultContact.contactno_one}`,
+        line2: defaultContact.contactno_two ? `+91 ${defaultContact.contactno_two}` : "",
       },
       {
         title: "Help Desk",
         icon: "/icons/help.svg",
-        line1: contact.email_one,
-        line2: contact.email_two || "",
+        line1: defaultContact.email_one,
+        line2: defaultContact.email_two || "",
       },
     ];
   }
   return contactData;
+};
+
+export const getContact = (contact: Contact[] | null) => {
+  let contactData = contactDummyData;
+  const defaultContact = getDefultContact(contact)
+  if (defaultContact) {
+    contactData = [
+      {
+        title: "Give Us A Call",
+        icon: "/icons/message.svg",
+        line1: `+91 ${defaultContact.contactno_one}`,
+        line2: defaultContact.contactno_two ? `+91 ${defaultContact.contactno_two}` : "",
+      },
+      {
+        title: "Help Desk",
+        icon: "/icons/help.svg",
+        line1: defaultContact.email_one,
+        line2: defaultContact.email_two || "",
+      },
+    ];
+  }
+  const contactLocation = contact?.map((c) => ({
+    title: "Our Locations",
+    icon: "/icons/map.svg",
+    line1: c.location,
+    line2: "",
+  }));
+  return {contactData, contactLocation};
 };
 
 export function capitalizeFirstLetter(str: string): string {
@@ -134,3 +163,7 @@ export function getCurrentMetaTag(metaTags: Seo[], page: string) {
 export const getLayoutProps = (page: React.ReactElement) => {
   return page.props.children.length > 0 ? page.props.children[0].props : [];
 };
+
+export const getDefultContact = (contact: Contact[] | null) => {
+  return contact?.find(e => e.default === true);
+}

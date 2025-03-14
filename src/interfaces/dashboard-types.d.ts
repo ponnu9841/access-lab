@@ -86,6 +86,7 @@ type Contact = {
    contactno_two: string | null;
    email_one: string;
    email_two: string | null;
+   default: boolean;
 };
 
 type About = {

@@ -2,7 +2,7 @@
 import axiosClient from "@/axios/axios-client";
 
 // Individual data fetchers with caching
-let cachedContactData: Contact | null = null;
+let cachedContactData: Contact[] | null = null;
 let cachedPartners: Partner[] | null = null;
 let cachedServices: Service[] | null = null;
 let cachedBanners: Banner[] | null = null;
@@ -50,7 +50,7 @@ export async function getBannersResponse(): Promise<Banner[]> {
   }
 }
 
-export async function getContactDataResponse(): Promise<Contact | null> {
+export async function getContactDataResponse(): Promise<Contact[] | null> {
   try {
     if (!cachedContactData) {
       const response = await axiosClient.get("/contact");
