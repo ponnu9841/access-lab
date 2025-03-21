@@ -4,7 +4,7 @@ export default function ImageScroll({ images }: { images: Partner[] }) {
   return (
     <>
       <div className="overflow-hidden">
-        <div className="flex gap-20 animate-scroll">
+        <div className="flex gap-16 animate-scroll">
           {images?.map((partner, index) => (
             <div key={index}>
               <div className="relative aspect-square min-w-[120px] max-w-[200px] h-auto flex items-center">
