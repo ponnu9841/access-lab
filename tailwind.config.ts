@@ -97,7 +97,7 @@ export default {
     			}
     		},
     		animation: {
-    			scroll: 'scroll 25000ms linear infinite',
+    			scroll: 'scroll 10000ms linear infinite',
     			'accordion-down': 'accordion-down 0.2s ease-out',
     			'accordion-up': 'accordion-up 0.2s ease-out'
     		}
