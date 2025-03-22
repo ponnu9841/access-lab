@@ -21,7 +21,7 @@ const usefulLinks = [
 	{name: "Terms & Conditions", link: "/terms-and-conditions"},
 	{name: "Privacy Policy", link: "/privacy-policy"},
 	{name: "Cancellation Policy", link: "/cancellation-policy"},
-	{name: "Refund Policy Policy", link: "/refund-policy"},
+	{name: "Refund Policy", link: "/refund-policy"},
 	{name: "Grevence officer", link: "/grevence-officer"},
 ];
 
