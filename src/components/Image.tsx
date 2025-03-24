@@ -19,7 +19,7 @@ export default function NextImage(props: NextImageProps) {
 				fill={true}
 				className={cn("object-contain w-full relative", imageClassName)}
 				alt={alt}
-				sizes="50vw(min-width: 768px) 100vw"
+				sizes="(max-width: 768px) 50vw, 700px"
 				priority={priority}
 			/>
 		</div>

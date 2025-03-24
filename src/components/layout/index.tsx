@@ -1,7 +1,10 @@
 import Header from "./header";
 import Footer from "./footer";
 import ScrollToTop from "./scroll-to-top";
-import LoaderAnimation from "./loader";
+import dynamic from "next/dynamic";
+const LoaderAnimation = dynamic(() => import("./loader"), {
+  ssr: false,
+});
 import CustomCursor from "../custom-cursor";
 
 export default function Layout({
