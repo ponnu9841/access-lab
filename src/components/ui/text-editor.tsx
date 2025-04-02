@@ -40,7 +40,7 @@ const formats = [
 
 export default function TextEditor(props: TextEditorProps) {
   const { value, setValue, placeholder = "", height } = props;
-  const h = height ? `h-[${height}px]` : "h-[130px]";
+  const h = height ? `min-h-[${height}px]` : "min-h-[130px]";
 
   return (
     <div className={cn(`relative h-full w-full h-[200px] max-h-[600px] overflow-auto`, h)}>

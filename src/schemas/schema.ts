@@ -160,6 +160,15 @@ export const grievanceOfficerSchema = z.object({
 	address: z.string().optional(),
 })
 
+export const blogSchema = z.object({
+	id: z.string().optional(),
+	imageAlt: z.string().optional(),
+	title: z.string().min(3, "Name must be at least 3 characters"),
+	content: z.string().min(3, "Content must be at least 3 characters"),
+})
+
+export type BlogFormData = z.infer<typeof blogSchema>;
+
 export type GrievanceOfficerFormData = z.infer<typeof grievanceOfficerSchema>;
 
 export type PolicyFormData = z.infer<typeof policySchema>;

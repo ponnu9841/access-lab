@@ -70,6 +70,11 @@ const items = [
     icon: FaAddressBook,
   },
   {
+    title: "Blog",
+    url: "/dashboard/blog",
+    icon: FaAddressBook,
+  },
+  {
     title: "Miscellaneous",
     url: "/dashboard/miscellaneous",
     icon: FaThList,

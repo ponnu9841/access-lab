@@ -14,6 +14,7 @@ import pagesBannerReducer from "./features/pages-banner-slice";
 import seoReducer from "./features/seo-slice";
 import policyReducer from "./features/policy-slice";
 import grievanceOfficerReducer from "./features/grievance-officer-slice";
+import blogReducer from "./features/blog-slice";
 
 //Step 1
 const combinedReducer = combineReducers({
@@ -31,7 +32,8 @@ const combinedReducer = combineReducers({
 	pagesBanner: pagesBannerReducer,
 	seoTags: seoReducer,
 	policies: policyReducer,
-	grievanceOfficer: grievanceOfficerReducer
+	grievanceOfficer: grievanceOfficerReducer,
+	blogs: blogReducer
 });
 
 //eslint-disable-next-line
