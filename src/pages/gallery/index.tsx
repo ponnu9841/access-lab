@@ -1,3 +1,4 @@
+import axiosClient from "@/axios/axios-client";
 import ZoomAnimation from "@/components/animation/zoom-animation";
 import GalleryDialog from "@/components/gallery-dialog";
 import NextImage from "@/components/Image";
@@ -8,10 +9,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { fetchGallery, setPageNo } from "@/redux/features/gallery-slice";
 import { useAppDispatch } from "@/redux/hooks/use-dispatch";
 import { useAppSelector } from "@/redux/hooks/use-selector";
+import { getCurrentPageBanner } from "@/utils";
 import { LinkIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function GalleryPage() {
+export default function GalleryPage({banners} : {banners: PagesBanner[] | []}) {
+  const galleryBanner = getCurrentPageBanner(banners, "gallery");
   const dispatch = useAppDispatch();
   const { loading, pageNo, gallery } = useAppSelector(
     (state) => state.rootReducer.gallery
@@ -23,13 +26,17 @@ export default function GalleryPage() {
     const controller = new AbortController();
     dispatch(fetchGallery({ controller, pageNo, pageSize: 12 }));
     return () => controller.abort();
-  }, [pageNo]);
+  }, [pageNo]); //eslint-disable-line
 
   const openDialog = (id: string) => setSelectedImage(id);
 
   return (
     <>
-      <BannerPages image="/banner-page.jpg" title="Gallery" />
+      <BannerPages
+        image={galleryBanner?.image || "/banner-page.jpg"}
+        title={galleryBanner?.title}
+        alt={galleryBanner?.alt || ""}
+      />
 
       <div className="container my-12">
         {loading &&
@@ -96,3 +103,27 @@ export default function GalleryPage() {
 GalleryPage.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
+
+export async function getStaticProps() {
+  try {
+    const banners = await axiosClient.get("/pagesBanner");
+
+    return {
+      props: {
+        banners: banners.data.data,
+      },
+      revalidate: process.env.REVALIDATE_TIME
+        ? +process.env.REVALIDATE_TIME
+        : 0,
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+
+    // Handle the error appropriately, e.g., redirect to an error page
+    return {
+      props: {
+        error: "Error fetching Data",
+      },
+    };
+  }
+}

@@ -8,6 +8,10 @@ export default function getCurrentRoute(pathname: string) {
       return "Services";
     case "/contact":
       return "Contact";
+    case "/career":
+      return "Career";
+    case "/blog":
+      return "Blog";
     case "/dashboard":
       return "Dashboard";
     case "/dashboard/about":

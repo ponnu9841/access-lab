@@ -12,13 +12,14 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import NextImage from "@/components/Image";
 import { useRouter } from "next/router";
-import getCurrentRoute from "@/utils/getCurrentRoute";
 // import { ThemeToggle } from "./ThemeToggle";
 
 export const navItems = [
   { name: "Home", link: "/" },
   { name: "About", link: "/about" },
   { name: "Services", link: "/services" },
+  { name: "Gallery", link: "/gallery" },
+  { name: "Blog", link: "/blog" },
   { name: "Contact", link: "/contact" },
   { name: "Career", link: "/career" },
 ];
@@ -52,13 +53,14 @@ export default function Navbar() {
       window.removeEventListener("mousemove", handleScroll);
     };
   }, []);
+
   return (
     <>
       <div
         ref={headerRef}
         className="h-[70px] z-50 w-full absolute top-0 left-0 z-50 md:text-background bg-black/50 border-b border-gray-300 transition-ease-in duration-300"
       >
-        <nav className="flex items-center gap-4 justify-between w-full h-full container">
+        <nav className="flex items-center gap-4 justify-between w-full h-full container bg-black/60">
           <Link href="/" className="aspect-square w-[50px] h-[50px]">
             <NextImage
               src="/logo-textless.svg"
@@ -75,7 +77,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.link}
                     className={`${
-                      getCurrentRoute(router.pathname) === item.name
+                      router.pathname.includes(item.name.toLowerCase())
                         ? "text-secondary"
                         : ""
                     } inline-flex items-center px-1 text-sm font-medium hover:text-secondary transition-ease-in duration-300`}
