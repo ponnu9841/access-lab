@@ -11,7 +11,7 @@ const TitleDescription = ({
 }) => (
 	<motion.div
 		className={cn(
-			"text-muted-foreground font-semibold text-lg mt-3",
+			"text-muted-foreground font-semibold text-lg mt-3 lg:max-h-[500px] scrollbar-hidden overflow-auto",
 			className
 		)}
 		initial={{ opacity: 0, filter: "blur(10px)", y: 30 }}

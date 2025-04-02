@@ -2,6 +2,7 @@ import SectionHeading from "@/components/custom/section-heading";
 import SectionLayout from "@/components/custom/section-layout";
 import SectionTitle from "@/components/custom/section-title";
 import TitleBadge from "@/components/custom/title-badge2";
+import BackButton from "@/components/ui/back-button";
 import { Button } from "@/components/ui/button";
 import ParallaxTiltMultiple from "@/components/ui/parallax/parallax-multiple";
 import { getCurrentSectionHeading } from "@/utils";
@@ -71,12 +72,14 @@ export default function AboutNew({
                 }
                 headingAnimation="fadeInUp"
               />
-              {router.pathname === "/" && (
+              {router.pathname === "/" ? (
                 <Link href="/about">
                   <Button size="lg" className="mt-3">
                     About Us
                   </Button>
                 </Link>
+              ) : (
+                <div className="mt-2 lg:mt-4"><BackButton /></div>
               )}
             </div>
           }

@@ -246,6 +246,15 @@ body {
 		transition: width 0.3s ease-in-out, height 0.3s ease-in-out,
 			margin 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	}
+
+	.scrollbar-hidden::-webkit-scrollbar{
+		display: none;
+	  }
+	  
+	.scrollbar-hidden {
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
 }
 
 
