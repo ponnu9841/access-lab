@@ -1,6 +1,7 @@
 import axiosClient from "@/axios/axios-client";
 import NextImage from "@/components/Image";
 import Layout from "@/components/layout";
+import BackButton from "@/components/ui/back-button";
 import parse from "html-react-parser";
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 
@@ -24,6 +25,9 @@ export default function ServiceDetailsPage({
           </div>
           <div className="mt-2 md:mt-4">
             {parse(service?.long_description || "")}
+          </div>
+          <div className="mt-2 md:mt-4">
+            <BackButton />
           </div>
         </div>
       </div>

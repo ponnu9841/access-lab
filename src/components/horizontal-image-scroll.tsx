@@ -7,7 +7,7 @@ export default function ImageScroll({ images }: { images: Partner[] }) {
         <div className="flex gap-16 animate-scroll">
           {images?.map((partner, index) => (
             <div key={index}>
-              <div className="relative aspect-square min-w-[120px] max-w-[200px] h-auto flex items-center">
+              <div className="relative aspect-square min-w-[120px] lg:min-w-[160px] max-w-[200px] h-auto flex items-center">
                 <Image
                   src={partner.image}
                   fill

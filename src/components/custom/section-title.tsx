@@ -25,7 +25,7 @@ export default function SectionTitle({
 			/>
 			{description && (
 				<motion.div
-					className="mx-auto text-center max-w-lg"
+					className="mx-auto text-center"
 					initial={selectedAnimation.initial}
 					whileInView={selectedAnimation.animate}
 					transition={{ duration: 1.5, ease: "easeOut" }}
