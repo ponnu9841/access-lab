@@ -13,7 +13,7 @@ import { useAppSelector } from "@/redux/hooks/use-selector";
 import TextEditor from "@/components/ui/text-editor";
 import ImageUpload from "@/components/custom/imageUpload";
 
-export default function ContactForm() {
+export default function AboutForm() {
   const {
     control,
     register,
@@ -76,7 +76,7 @@ export default function ContactForm() {
       setExistingImageLeft(aboutData.image_one);
       setExistingImageRight(aboutData.image_two);
     }
-  }, [aboutData]);
+  }, [aboutData]); //eslint-disable-line
 
   return (
     <form

@@ -155,3 +155,15 @@ type GrievanceOfficer = {
    designation: string;
    address: string | null;
 };
+
+type Career = {
+   id: string;
+   title: string;
+   description: string;
+   image: string;
+   alt?: string | null;
+   url: string;
+   button_title?: string | null;
+   created_at: string;
+   updated_at: string;
+}

@@ -167,6 +167,17 @@ export const blogSchema = z.object({
 	content: z.string().min(3, "Content must be at least 3 characters"),
 })
 
+export const careerSchema = z.object({
+	id: z.string().optional(),
+	imageAlt: z.string().optional(),
+	title: z.string().min(3, "Name must be at least 3 characters"),
+	description: z.string().min(10, "Description must be at least 3 characters"),
+	url: z.string().url("This is not a valid URL."),
+	buttonTitle: z.string().optional(),
+})
+
+export type CareerFormData = z.infer<typeof careerSchema>;
+
 export type BlogFormData = z.infer<typeof blogSchema>;
 
 export type GrievanceOfficerFormData = z.infer<typeof grievanceOfficerSchema>;
