@@ -9,20 +9,13 @@ import { Separator } from "@/components/ui/separator";
 import FooterData from "./footer-data";
 import { navItems } from "./navbar";
 
-// const productLinks = [
-// 	"Elementor Guru",
-// 	"WooLentor Pro",
-// 	"Plugins",
-// 	"Page Builder",
-// ];
-
 const usefulLinks = [
 	{name: 'FAQ', link: "/faq"},
 	{name: "Terms & Conditions", link: "/terms-and-conditions"},
 	{name: "Privacy Policy", link: "/privacy-policy"},
 	{name: "Cancellation Policy", link: "/cancellation-policy"},
 	{name: "Refund Policy", link: "/refund-policy"},
-	{name: "Grevence officer", link: "/grevence-officer"},
+	{name: "Grievance Officer", link: "/grievance-officer"},
 ];
 
 export default function Footer() {
