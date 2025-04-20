@@ -21,9 +21,9 @@ const usefulLinks = [
 export default function Footer() {
 	
 	return (
-		<footer className="pt-20 pb-6 bg-black text-white">
+		<footer className="pt-10 md:pt-20 pb-6 bg-black text-white">
 			<div className="container">
-				<div className="flex flex-wrap gap-8 mb-16">
+				<div className="flex flex-wrap gap-8 mb-8 md:mb-16">
 					<div className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-2rem)]">
 						<NextImage
 							src="/logo.svg"
@@ -103,18 +103,8 @@ export default function Footer() {
 					</div>
 				</div>
 				<Separator />
-				<div className="flex justify-center mt-6">
-					<div>
-						© 2025 Access Developed by{" "}
-						<Link
-							href="https://www.linkedin.com/in/ponnu-sudesh-017b0823b/"
-							target="_blank"
-							className="hover:text-primary transition-all duration-300"
-						>
-							PonnuSudesh
-						</Link>
-						.
-					</div>
+				<div className="mt-6 text-center">
+					© 2025 Access Home Lab Solutions LLP. All rights reserved.
 				</div>
 			</div>
 		</footer>
