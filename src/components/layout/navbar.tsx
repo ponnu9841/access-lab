@@ -21,7 +21,7 @@ export const navItems = [
   { name: "Gallery", link: "/gallery" },
   { name: "Blog", link: "/blog" },
   { name: "Contact", link: "/contact" },
-  { name: "Career", link: "/career" },
+  { name: "Careers", link: "/careers" },
 ];
 
 export default function Navbar() {
